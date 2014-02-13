@@ -1,0 +1,11 @@
+%h1
+	This is the home page
+
+%table
+	-@posts.each do |p|
+		%tr
+			%h3
+				=link_to("#{p.title}", post_path(p))
+				**
+				Comments are - 
+				=comment_count(p.id)

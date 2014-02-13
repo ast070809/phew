@@ -1,0 +1,22 @@
+%h1
+	This is the show page
+%h2
+	Post Title - 
+	=@post.title
+
+%p
+	=@post.description
+=form_tag add_comment_path, method: :post do
+	=label_tag 'Comment'
+	=text_field_tag 'comment'
+	=hidden_field_tag 'pid', @post.id
+	=submit_tag 'Submit'
+%table
+	-@root_comments.each do |r|
+		%div
+			=r.body
+			#child
+			=form_tag add_child_comment_path, method: :post do
+				=label_tag 'comment'
+				=text_area_tag 'comment'
+				=hidden_field_tag ''
