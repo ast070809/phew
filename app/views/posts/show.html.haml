@@ -3,7 +3,10 @@
 %h2
 	Post Title - 
 	=@post.title
-
+.comments
+	= nested_li(@all_comments) do |comment|
+		= comment.body
+      
 %p
 	=@post.description
 =form_tag add_comment_path, method: :post do

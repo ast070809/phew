@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @root_comments = @post.root_comments
+    @all_comments = @post.comment_threads
   end
 
   def add_comment
@@ -37,6 +38,9 @@ class PostsController < ApplicationController
     else
       redirect_to '/users/sign_in'
     end
+  end
+
+  def add_child_comment
   end
 
   private 

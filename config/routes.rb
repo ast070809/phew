@@ -10,6 +10,7 @@ Phew::Application.routes.draw do
   match '/posts/new', to: 'posts#new', via: 'get'
 
   post 'add_comment', to: 'posts#add_comment'
+  post 'add_child_comment', to: 'posts#add_child_comment'
 
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.
