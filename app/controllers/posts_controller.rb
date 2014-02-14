@@ -24,13 +24,13 @@ class PostsController < ApplicationController
 
   def add_comment
     if user_signed_in?
-      post_id = params[:pid]
+      post_id = params[:post_id]
       comment = params[:comment]
       @post = Post.find(post_id)
       @user_who_commented = current_user
       @comment = Comment.build_from( @post, @user_who_commented.id, comment )
       if @comment.save
-     
+          flash[:notice] = "Successfully saved"
       else
         @err = @comment.errors
       end
@@ -41,6 +41,28 @@ class PostsController < ApplicationController
   end
 
   def add_child_comment
+    if user_signed_in?
+      post_id = params[:post_id]
+      parent_id = params[:parent_id]
+      comment = params[:comment]
+
+      @post = Post.find(post_id)
+      parent_comment = Comment.find(parent_id)
+
+
+      @user_who_commented = current_user
+      @comment = Comment.build_from(@post, @user_who_commented.id, comment)
+      
+      if @comment.save
+        @comment.move_to_child_of(parent_comment)
+        flash[:notice] = "Successfully saved"
+      else
+        flash[:notice] = "#{@comment.errors.full_messages}"
+      end
+      redirect_to :back
+    else
+      redirect_to '/users/sign_in'
+    end
   end
 
   private 

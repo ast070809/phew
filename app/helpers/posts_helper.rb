@@ -11,6 +11,7 @@ module PostsHelper
 	    end
 	    @com_count = c + rcount
 	end
+	
 	def nested_li(objects, &block)
 		objects = objects.order(:lft) if objects.is_a? Class
 
