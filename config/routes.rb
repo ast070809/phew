@@ -1,4 +1,5 @@
 Phew::Application.routes.draw do
+  devise_for :admins
   get "posts/index"
   devise_for :users
 
