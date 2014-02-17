@@ -10,4 +10,10 @@ class CommentsController < ApplicationController
 	    @comment.downvote_from current_user
 	    redirect_to :back
 	end
+
+	def delete
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to :back
+	end
 end

@@ -8,11 +8,11 @@ class PostsController < ApplicationController
   end
 
   def create
-  	post = Post.create(post_params)
-  	if post
+    post = current_user.posts.create(post_params)
+  	if post.save
   		redirect_to root_path
   	else
-  		redirect_to new_path
+      redirect_to new_post_path
   	end
   end
 
@@ -51,7 +51,6 @@ class PostsController < ApplicationController
     @post.downvote_from current_user
     redirect_to :back
   end
-
 
   def add_child_comment
     if user_signed_in?

@@ -15,9 +15,9 @@
 class Post < ActiveRecord::Base
 	validates :title, presence: true
 	validates :user_id, presence: true
-	validates :tribe_id, presence: true
 	
-	acts_as_votable
+	belongs_to :user
 
+	acts_as_votable
 	acts_as_commentable
 end

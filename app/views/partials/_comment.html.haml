@@ -8,6 +8,8 @@
 		=comment.likes.size
 		=link_to "Upvote", upvote_post_comment_path(@post, comment), method: "put"
 		=link_to "Downvote", downvote_post_comment_path(@post, comment), method: "put"
+		-if current_user_commenter?(comment)
+			=link_to "Delete", delete_post_comment_path(@post, comment), method: "delete"
 		
 		%div{onclick: '$(this).next().show()'}
 			Reply
