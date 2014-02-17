@@ -6,6 +6,7 @@ Phew::Application.routes.draw do
     member do
       put "upvote", to: "posts#upvote"
       put "downvote", to: "posts#downvote"
+      delete "delete", to: "posts#delete"
     end
     resources :comments do
       member do 

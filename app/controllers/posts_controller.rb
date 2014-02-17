@@ -22,6 +22,12 @@ class PostsController < ApplicationController
     @all_comments = @post.comment_threads
   end
 
+  def delete
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to :back
+  end
+
   def add_comment
     if user_signed_in?
       post_id = params[:post_id]

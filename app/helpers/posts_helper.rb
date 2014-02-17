@@ -11,6 +11,10 @@ module PostsHelper
 	    end
 	    @com_count = c + rcount
 	end
+
+	def current_user_poster?(post)
+		return true if post.user_id == current_user.id
+	end
 	
 	def nested_li(objects, &block)
 		objects = objects.order(:lft) if objects.is_a? Class

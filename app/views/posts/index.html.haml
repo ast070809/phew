@@ -1,7 +1,7 @@
 %h1
 	This is the home page
-=link_to "Sign out", destroy_user_session_path
-
+=link_to "Sign out", destroy_user_session_path, method: "delete"
+=link_to "New Post", new_post_path
 %table
 	-@posts.each do |p|
 		%tr
@@ -12,6 +12,8 @@
 				=link_to "Upvote", upvote_post_path(p), method: "put"
 				=link_to "Downvote", downvote_post_path(p), method: "put"
 				*** 
+				-if user_signed_in? && current_user_poster?(p)
+					=link_to "Delete", delete_post_path(p), method: "delete"
 				Number of upvotes - 
 				=p.likes.size
 				Comments are - 
