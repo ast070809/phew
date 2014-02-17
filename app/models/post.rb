@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :tribe_id, presence: true
 	
+	acts_as_votable
 
 	acts_as_commentable
 end

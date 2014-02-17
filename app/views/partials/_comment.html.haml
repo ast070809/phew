@@ -4,6 +4,11 @@
 %ul
 	%li
 		= comment.body
+		*** No of votes ***
+		=comment.likes.size
+		=link_to "Upvote", upvote_post_comment_path(@post, comment), method: "put"
+		=link_to "Downvote", downvote_post_comment_path(@post, comment), method: "put"
+		
 		%div{onclick: '$(this).next().show()'}
 			Reply
 		#child{style: "display:none;"}

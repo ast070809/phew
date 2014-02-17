@@ -5,7 +5,13 @@
 	-@posts.each do |p|
 		%tr
 			%h3
+
 				=link_to("#{p.title}", post_path(p))
 				**
+				=link_to "Upvote", upvote_post_path(p), method: "put"
+				=link_to "Downvote", downvote_post_path(p), method: "put"
+				*** 
+				Number of upvotes - 
+				=p.likes.size
 				Comments are - 
 				=comment_count(p.id)
