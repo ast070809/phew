@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-  	@posts = Post.all
+  	@posts = Post.all.order("hotness desc")
   end
 
   def new
@@ -49,12 +49,14 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.liked_by current_user
+    Post.refresh_hotness(@post)
     redirect_to :back
   end
   
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_from current_user
+    Post.refresh_hotness(@post)
     redirect_to :back
   end
 
@@ -84,7 +86,8 @@ class PostsController < ApplicationController
   end
 
   private 
-  	def post_params
+  	
+    def post_params
 	  	params.require(:post).permit(:title, :link,:description)
 	  end
 

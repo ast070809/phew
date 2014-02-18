@@ -47,4 +47,44 @@ module PostsHelper
 		  output << '</li></ul>' * path.length
 		  output.html_safe
 	end
+
+	def refersh_hotness(post)
+		hotness = hot(post)
+		post.hotness = hotness
+		post.save
+	end
+
+	
+	private
+		def hot(post)
+			# The hot formula
+			ups = post.upvotes.size
+			downs = post.downvotes.size
+			date = post.created_at
+
+			s = score(ups,downs)
+			order = Math.log10([s.abs,1].max)
+
+			if s> 0
+				sign = 1
+			elsif s< 0
+				sign = -1
+			else 
+				sign = 0
+			end
+
+			seconds = epoch_seconds(date) - 1134028003
+			return (sign*order + seconds/45000).round(7)
+		end
+
+		def epoch_seconds(date)
+			epoch = DateTime.new(1988,1,1)
+			# Returns the number of seconds from the epoch to date
+			return date-epoch
+		end
+
+		def score(ups, downs)
+			return ups-downs
+		end
+
 end
