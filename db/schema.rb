@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218081149) do
+ActiveRecord::Schema.define(version: 20140218095446) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140218081149) do
     t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "hotness"
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"

@@ -2,12 +2,14 @@ class CommentsController < ApplicationController
 	def upvote
 	    @comment = Comment.find(params[:id])
 	    @comment.liked_by current_user
+	    Comment.refresh_hotness(@comment)
 	    redirect_to :back
   	end
   
 	def downvote
 	    @comment = Comment.find(params[:id])
 	    @comment.downvote_from current_user
+	    Comment.refresh_hotness(@comment)
 	    redirect_to :back
 	end
 

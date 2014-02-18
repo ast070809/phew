@@ -8,6 +8,9 @@
 		=comment.likes.size
 		=link_to "Upvote", upvote_post_comment_path(@post, comment), method: "put"
 		=link_to "Downvote", downvote_post_comment_path(@post, comment), method: "put"
+		*****
+		Hotness - 
+		=comment.hotness
 		-if current_user_commenter?(comment)
 			=link_to "Delete", delete_post_comment_path(@post, comment), method: "delete"
 		

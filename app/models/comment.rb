@@ -63,4 +63,33 @@ class Comment < ActiveRecord::Base
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def self.refresh_hotness(comment)
+    hotness = Comment.confidence(comment)
+    comment.hotness = hotness
+    comment.save
+  end
+  
+  private
+    def self.get_confidence(ups,downs)
+      n = ups+downs
+
+      return 0 if n == 0
+
+      z = 1
+      phat = ups/n
+
+      return Math.sqrt(phat+z*z/(2*n)-z*((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+    end
+
+    def self.confidence(comment)
+      ups = comment.upvotes.size
+      downs = comment.downvotes.size
+      
+      if ups+downs==0
+        return 0
+      else
+        return Comment.get_confidence(ups,downs)
+      end
+    end
 end
