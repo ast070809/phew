@@ -1,19 +1,21 @@
-%h1
-	This is the show page
-- flash.each do |key, value|
-	= content_tag(:div, value, class: "alert alert-#{key}")
-%h2
-	Post Title - 
-	=@post.title
-	%p
-		=@post.description
--if user_signed_in?
-	=form_tag add_comment_path, method: :post do
-		=label_tag 'Comment'
-		=text_field_tag 'comment'
-		=hidden_field_tag 'post_id', @post.id
-		=submit_tag 'Submit'
-#comments
-	-@root_comments.each do |comment|
-		=render :partial => 'partials/comment', :object => comment		
+.row
+	.col-md-10.col-md-offset-1
+		- flash.each do |key, value|
+			= content_tag(:div, value, class: "alert alert-#{key}")
+		%h2
+			Post Title - 
+			=@post.title
+		%p
+			=@post.description
+		-if user_signed_in?
+			=form_tag add_comment_path, method: :post do
+				=label_tag 'Comment'
+				=text_field_tag 'comment'
+				=hidden_field_tag 'post_id', @post.id
+				=submit_tag 'Submit'
+		-else
+			=link_to('Sign in to add comments', new_user_session_path) 
+		#comments
+			-@root_comments.each do |comment|
+				=render :partial => 'partials/comment', :object => comment		
 

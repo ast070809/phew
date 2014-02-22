@@ -1,28 +1,29 @@
-.row
-	.col-xs-6.col-md-4 .col-xs-6 .col-md-4
-	.col-xs-6.col-md-4 .col-xs-6 .col-md-4
-	.clearfix.visible-xs
-	.col-xs-6.col-md-4 .col-xs-6 .col-md-4
-%h1
-	This is the home page
-=link_to "Sign out", destroy_user_session_path, method: "delete"
-=link_to "New Post", new_post_path
-%table
-	-@posts.each do |p|
-		%tr
-			%h3
 
-				=link_to("#{p.title}", post_path(p))
-				**
-				=link_to "Upvote", upvote_post_path(p), method: "put"
-				=link_to "Downvote", downvote_post_path(p), method: "put"
-				*** 
-				Hotness
-				****
-				=p.hotness
-				-if user_signed_in? && current_user_poster?(p)
-					=link_to "Delete", delete_post_path(p), method: "delete"
-				Number of upvotes - 
-				=p.likes.size
-				Comments are - 
-				=comment_count(p.id)
+.row
+	.col-md-10.col-md-offset-1
+		-@posts.each do |p|
+			.panel.panel-default
+				.panel-body
+					.row
+						.col-xs-1.col-md-1.text-center
+							.row
+								=link_to upvote_post_path(p), method: 'put' do
+									%span.glyphicon.glyphicon-chevron-up
+							.row
+								=p.likes.size-p.downvotes.size
+							.row
+								=link_to downvote_post_path(p), method: 'put' do
+									%span.glyphicon.glyphicon-chevron-down
+						.col-xs-9.col-md-9
+							%h4
+								=link_to("#{p.title}", post_path(p))
+							
+							.bs-callout.bs-callout-info
+								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+						.col-xs-2.col-md-2
+							=pluralize(comment_count(p.id), 'comment')
+					.row
+						.col-md-9.col-md-offset-1
+							-if user_signed_in? && current_user_poster?(p)
+								=link_to "Delete", delete_post_path(p), method: "delete"
+							

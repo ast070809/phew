@@ -1,28 +1,42 @@
-%div{id: "comment_#{comment.id}"}
-	%h1
-		= comment.title
-%ul
-	%li
-		= comment.body
-		*** No of votes ***
-		=comment.likes.size
-		=link_to "Upvote", upvote_post_comment_path(@post, comment), method: "put"
-		=link_to "Downvote", downvote_post_comment_path(@post, comment), method: "put"
-		*****
-		Hotness - 
-		=comment.hotness
-		-if user_signed_in? && current_user_commenter?(comment)
-			=link_to "Delete", delete_post_comment_path(@post, comment), method: "delete"
-		
-		%div{onclick: '$(this).next().show()'}
-			Reply
-		#child{style: "display:none;"}
-			=form_tag add_child_comment_path, method: :post do
-				=label_tag 'comment'
-				=text_area_tag 'comment'
-				=hidden_field_tag 'parent_id', comment.id
-				=hidden_field_tag 'post_id', @post.id 
-				=submit_tag 'Submit'
-			%a{onclick: "$(this).parent().hide();"}
-				Cancel
-		= render :partial => 'partials/comment', :collection => comment.children
+
+.panel.panel-default{id: "comment_#{comment.id}"}
+	.panel-body
+		%h3
+			= comment.title
+		%ul
+			%li
+				.row
+					.col-xs-1.col-md-1.text-center
+						.row
+							=link_to upvote_post_comment_path(@post, comment), method: 'put' do
+								%span.glyphicon.glyphicon-chevron-up
+						.row
+							=comment.likes.size-comment.downvotes.size
+						.row
+							=link_to downvote_post_comment_path(@post, comment), method: 'put' do
+								%span.glyphicon.glyphicon-chevron-down
+
+
+					= comment.body
+					*** No of votes ***
+					=comment.likes.size
+					=link_to "Upvote", upvote_post_comment_path(@post, comment), method: "put"
+					=link_to "Downvote", downvote_post_comment_path(@post, comment), method: "put"
+					*****
+					Hotness - 
+					=comment.hotness
+					-if user_signed_in? && current_user_commenter?(comment)
+						=link_to "Delete", delete_post_comment_path(@post, comment), method: "delete"
+					
+					%div{onclick: '$(this).next().show()'}
+						Reply
+					#child{style: "display:none;"}
+						=form_tag add_child_comment_path, method: :post do
+							=label_tag 'comment'
+							=text_area_tag 'comment'
+							=hidden_field_tag 'parent_id', comment.id
+							=hidden_field_tag 'post_id', @post.id 
+							=submit_tag 'Submit'
+						%a{onclick: "$(this).parent().hide();"}
+							Cancel
+			= render :partial => 'partials/comment', :collection => comment.children
