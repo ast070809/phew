@@ -26,4 +26,4 @@
 						.col-md-9.col-md-offset-1
 							-if user_signed_in? && current_user_poster?(p)
 								=link_to "Delete", delete_post_path(p), method: "delete"
-							
+=paginate @posts, theme: 'twitter-bootstrap-3'

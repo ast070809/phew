@@ -38,6 +38,9 @@ GEM
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
     bcrypt-ruby (3.1.2)
+    bootstrap-kaminari-views (0.0.3)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -72,6 +75,9 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -140,12 +146,14 @@ DEPENDENCIES
   acts_as_commentable_with_threading (= 1.2.0)
   acts_as_votable (= 0.8.0)
   annotate
+  bootstrap-kaminari-views
   bootstrap-sass (~> 3.1.1.0)
   coffee-rails (~> 4.0.0)
   devise (= 3.2.2)
   haml-rails (= 0.5.3)
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari (= 0.15.1)
   rails (= 4.0.2)
   sass-rails (~> 4.0.0)
   sdoc
