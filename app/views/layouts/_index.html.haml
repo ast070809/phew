@@ -28,19 +28,21 @@
           %b.caret
         %ul.dropdown-menu
           %li
-            %a{href: "#"} Today
+            =link_to 'Today', top_path('today') 
           %li.divider
           %li
-            %a{href: "#"} This Week
+            =link_to 'This week', top_path(duration: 'week')
+            
           %li.divider
           %li
-            %a{href: "#"} This month
+            =link_to 'This month', top_path(duration: 'month') 
           %li.divider
           %li
-            %a{href: "#"} This year
+            =link_to 'This year', top_path(duration: 'year')
           %li.divider
           %li
-            %a{href: "#"} All Time
+            =link_to 'All time', top_path(duration: 'all_time')
+            
       %li
         %a{href: '#'}
           New

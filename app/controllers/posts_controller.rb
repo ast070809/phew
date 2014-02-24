@@ -4,7 +4,20 @@ class PostsController < ApplicationController
   	
     if params[:tag]
       @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(10)
-    else
+    elsif params[:duration]
+      duration = params[:duration]
+      case duration
+        when 'today'
+          @posts = Post.today.order('votes desc').page(params[:page]).per(10)
+        when 'week'
+          @posts = Post.week.order('votes desc').page(params[:page]).per(10)
+        when 'month' 
+          @posts = Post.month.order('votes desc').page(params[:page]).per(10)
+        when 'year'
+          @posts = Post.year.order('votes desc').page(params[:page]).per(10)
+        when 'all_time'
+      end
+      else
       @posts = Post.all.order("hotness desc").page(params[:page]).per(10)
     end
   end
@@ -62,14 +75,20 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.liked_by current_user
-    Post.refresh_hotness(@post)
+    @post.votes +=1
+    if @post.save
+      Post.refresh_hotness(@post)
+    end
     redirect_to :back
   end
   
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_from current_user
-    Post.refresh_hotness(@post)
+    @post.votes -=1
+    if @post.save
+      Post.refresh_hotness(@post)
+    end
     redirect_to :back
   end
 

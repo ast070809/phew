@@ -11,6 +11,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  hotness     :float
+#  votes       :integer          default(0)
 #
 
 class Post < ActiveRecord::Base
@@ -30,6 +31,22 @@ class Post < ActiveRecord::Base
 		hotness = Post.hot(post)
 		post.hotness = hotness
 		post.save
+	end
+
+	def self.today
+	  where("created_at >= ?", Time.zone.now.beginning_of_day)
+	end
+	
+	def self.week
+	  where("created_at >= ?", Time.zone.now.beginning_of_week)
+	end
+
+	def self.month
+	  where("created_at >= ?", Time.zone.now.beginning_of_month)
+	end
+
+	def self.year
+	  where("created_at >= ?", Time.zone.now.beginning_of_year)
 	end
 
 	private

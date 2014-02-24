@@ -23,7 +23,9 @@ Phew::Application.routes.draw do
 
   post 'add_comment', to: 'posts#add_comment'
   post 'add_child_comment', to: 'posts#add_child_comment'
+  
   get 'tags/:tag', to: 'posts#index', as: :tag
+  get 'top/:duration', to: 'posts#index', as: :top
 
 
 
