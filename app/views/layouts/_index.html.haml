@@ -20,8 +20,7 @@
   .panel-body
     %ul.nav.navbar-nav
       %li
-        %a{href: '#'}
-          Hot
+        =link_to 'Hot', root_path
       %li
         %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
           Top
@@ -44,7 +43,7 @@
             =link_to 'All time', top_path(duration: 'all_time')
             
       %li
-        %a{href: '#'}
-          New
+        =link_to 'New', new_path(duration: 'current')
+          
 
   =link_to 'Submit a New link', new_post_path

@@ -1,24 +1,27 @@
 class PostsController < ApplicationController
   
   def index
-  	
+    links_per_page = 10
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(10)
+      @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(links_per_page)
     elsif params[:duration]
       duration = params[:duration]
       case duration
+        when 'current'
+          @posts = Post.all.order('created_at desc').page(params[:page]).per(links_per_page)
         when 'today'
-          @posts = Post.today.order('votes desc').page(params[:page]).per(10)
+          @posts = Post.today.order('votes desc').page(params[:page]).per(links_per_page)
         when 'week'
-          @posts = Post.week.order('votes desc').page(params[:page]).per(10)
+          @posts = Post.week.order('votes desc').page(params[:page]).per(links_per_page)
         when 'month' 
-          @posts = Post.month.order('votes desc').page(params[:page]).per(10)
+          @posts = Post.month.order('votes desc').page(params[:page]).per(links_per_page)
         when 'year'
-          @posts = Post.year.order('votes desc').page(params[:page]).per(10)
+          @posts = Post.year.order('votes desc').page(params[:page]).per(links_per_page)
         when 'all_time'
+          @posts = Post.all.order('votes desc').page(params[:page]).per(links_per_page)
       end
       else
-      @posts = Post.all.order("hotness desc").page(params[:page]).per(10)
+      @posts = Post.all.order("hotness desc").page(params[:page]).per(links_per_page)
     end
   end
 

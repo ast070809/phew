@@ -26,6 +26,7 @@ Phew::Application.routes.draw do
   
   get 'tags/:tag', to: 'posts#index', as: :tag
   get 'top/:duration', to: 'posts#index', as: :top
+  get 'new/:duration', to: 'posts#index', as: :new
 
 
 
