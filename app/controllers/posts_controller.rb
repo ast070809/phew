@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
+  
   def index
-  	@posts = Post.all.order("hotness desc").page(params[:page]).per(2)
+  	
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(10)
+    else
+      @posts = Post.all.order("hotness desc").page(params[:page]).per(10)
+    end
   end
 
   def new
@@ -10,7 +16,9 @@ class PostsController < ApplicationController
   def create
     post = current_user.posts.create(post_params)
   	if post.save
-  		redirect_to root_path
+  		Post.refresh_hotness(post)
+
+      redirect_to root_path
   	else
       redirect_to new_post_path
   	end
@@ -88,7 +96,7 @@ class PostsController < ApplicationController
   private 
   	
     def post_params
-	  	params.require(:post).permit(:title, :link,:description)
+	  	params.require(:post).permit(:title, :link,:description, :tag_list)
 	  end
 
 end

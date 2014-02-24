@@ -23,6 +23,9 @@ Phew::Application.routes.draw do
 
   post 'add_comment', to: 'posts#add_comment'
   post 'add_child_comment', to: 'posts#add_child_comment'
+  get 'tags/:tag', to: 'posts#index', as: :tag
+
+
 
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.

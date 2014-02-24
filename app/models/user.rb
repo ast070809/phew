@@ -25,4 +25,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
-end
+  acts_as_tagger
+ end

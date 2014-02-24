@@ -16,6 +16,9 @@ gem "acts_as_commentable_with_threading", "1.2.0"
 gem "acts_as_votable", "0.8.0"
 gem "kaminari", "0.15.1"
 gem 'bootstrap-kaminari-views'
+gem "acts-as-taggable-on", "3.0.1"
+gem "select2-rails"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

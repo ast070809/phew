@@ -1,5 +1,5 @@
 module PostsHelper
-
+	include ActsAsTaggableOn::TagsHelper
 	def comment_count(post_id)
 		post = Post.find(post_id)
 
