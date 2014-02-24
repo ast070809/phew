@@ -11,15 +11,20 @@ class PostsController < ApplicationController
 
   def new
   	@post = Post.new
+    @tribe = Tribe.all
   end
 
   def create
     post = current_user.posts.create(post_params)
-  	if post.save
-  		Post.refresh_hotness(post)
+  	tribe = Tribe.find(params[:post][:tribe])
+    post.tribe_id = tribe.id
+    
+    if post.save
+      Post.refresh_hotness(post)
 
       redirect_to root_path
   	else
+      flash[:error] = 'Some error occurred'
       redirect_to new_post_path
   	end
   end

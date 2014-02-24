@@ -14,6 +14,7 @@
 #  rgt              :integer
 #  created_at       :datetime
 #  updated_at       :datetime
+#  hotness          :float
 #
 
 class Comment < ActiveRecord::Base

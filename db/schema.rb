@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223123306) do
+ActiveRecord::Schema.define(version: 20140224115951) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -77,6 +77,19 @@ ActiveRecord::Schema.define(version: 20140223123306) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "tribes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tribes_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "tribe_id"
+  end
+
+  add_index "tribes_users", ["user_id", "tribe_id"], name: "index_tribes_users_on_user_id_and_tribe_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
