@@ -78,7 +78,7 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.liked_by current_user
-    @post.votes +=1
+    @post.votes = @post.votes+1
     if @post.save
       Post.refresh_hotness(@post)
     end

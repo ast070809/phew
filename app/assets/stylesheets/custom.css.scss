@@ -1,0 +1,26 @@
+body{
+	background-image: image-url('bck.png');
+}
+.custom-center{
+	text-align:center;
+}
+.background-white{
+	background-color: white;
+}
+
+#duration-header .navbar{
+	margin: 0px;
+	padding: 0px;
+}
+.tribe-nav-links{	
+	border-bottom: 5px solid #FFF;
+	&:hover{
+		border-bottom: 5px solid #7DDE50;
+	}
+}
+.tribe-nav-links.active{
+	border-bottom: 5px solid #7DDE50 !important;
+}
+.color-light-green{
+	color:#7DDE50;
+}

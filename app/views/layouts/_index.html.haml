@@ -1,49 +1,67 @@
-.panel.panel-default
-  .panel-body
-    %ul.nav.navbar-nav
-      %li
-        %a{href: '#'}
-          All
-      %li
-        %a{href: '#'}
-          Politics
-      %li
-        %a{href: '#'}
-          Entertainment
-      %li
-        %a{href: '#'}
-          Sports
-      %li
-        %a{href: '#'}
-          Business
-.panel
-  .panel-body
-    %ul.nav.navbar-nav
-      %li
-        =link_to 'Hot', root_path
-      %li
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          Top
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            =link_to 'Today', top_path('today') 
-          %li.divider
-          %li
-            =link_to 'This week', top_path(duration: 'week')
-            
-          %li.divider
-          %li
-            =link_to 'This month', top_path(duration: 'month') 
-          %li.divider
-          %li
-            =link_to 'This year', top_path(duration: 'year')
-          %li.divider
-          %li
-            =link_to 'All time', top_path(duration: 'all_time')
-            
-      %li
-        =link_to 'New', new_path(duration: 'current')
-          
-
-  =link_to 'Submit a New link', new_post_path
+%nav.navbar
+  .row
+    .col-md-6.col-md-offset-4
+      %ul.nav.navbar-nav.panel
+        %li.custom-center
+          %a.tribe-nav-links.active{href: '#'}
+            %strong All
+        %li.custom-center
+          %a.tribe-nav-links{href: '#'}
+            %strong Politics
+        %li.custom-center
+          %a.tribe-nav-links{href: '#'}
+            %strong Entertainment
+        %li.custom-center
+          %a.tribe-nav-links{href: '#'}
+            %strong Sports
+        %li.custom-center
+          %a.tribe-nav-links{href: '#'}
+            %strong Business
+%nav.navbar{id: 'tribe-nav'}
+  .row
+    .col-md-10.col-md-offset-1{id: "duration-header"}
+      %ul.nav.nav-pills
+        %li.active
+          =link_to 'Hot', root_path
+        %li
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            Top
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              =link_to 'Today', top_path('today') 
+            %li.divider
+            %li
+              =link_to 'This week', top_path(duration: 'week')
+              
+            %li.divider
+            %li
+              =link_to 'This month', top_path(duration: 'month') 
+            %li.divider
+            %li
+              =link_to 'This year', top_path(duration: 'year')
+            %li.divider
+            %li
+              =link_to 'All time', top_path(duration: 'all_time')
+              
+        %li
+          =link_to 'New', new_path(duration: 'current')
+:javascript
+  $(function(){
+    var
+      $win = $(window),
+      $filter = $('#tribe-nav'),
+      $filterSpacer = $('<div />', {
+        "class": "filter-drop-spacer",
+        "height": $filter.outerHeight()
+      });
+    $win.scroll(function(){     
+      if(!$filter.hasClass('navbar-fixed-top navbar-inverse') && $win.scrollTop() > $filter.offset().top){
+        $filter.before($filterSpacer);
+        $filter.addClass("navbar-fixed-top navbar-inverse");
+      } else if ($filter.hasClass('navbar-fixed-top navbar-inverse')  && $win.scrollTop() < $filterSpacer.offset().top){
+        $filter.removeClass("navbar-fixed-top navbar-inverse");
+        $filterSpacer.remove();
+      }
+    });
+  });
