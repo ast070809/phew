@@ -19,6 +19,7 @@ gem 'bootstrap-kaminari-views'
 gem "acts-as-taggable-on", "3.0.1"
 gem "select2-rails"
 gem "font-awesome-rails", "4.0.3.1"
+gem "nokogiri", "1.6.1"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

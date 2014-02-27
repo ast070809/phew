@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  
+  require 'open-uri'
+  require 'nokogiri'
+
   def index
     links_per_page = 10
     if params[:tag]
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
 
   def new
   	@url = params[:url]
+    @title = get_link_details(@url)
     @post = Post.new
     @tribe = Tribe.all
   end
@@ -126,5 +129,9 @@ class PostsController < ApplicationController
     def post_params
 	  	params.require(:post).permit(:title, :link,:description, :tag_list)
 	  end
-
+    
+    def get_link_details(link)
+      doc = Nokogiri::HTML(open(link))
+      doc.at_css("h1").text
+    end
 end
