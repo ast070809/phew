@@ -12,7 +12,7 @@
     %ul.nav.navbar-nav
       %li.divider
       %li
-        =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#myModal"
+        =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal"
     %ul.nav.navbar-nav.navbar-right
       %li
         -if user_signed_in?
@@ -29,14 +29,4 @@
     -else
       = render 'layouts/show'
 / Modal
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
-        %h4#myModalLabel.modal-title Modal title
-      .modal-body
-        \...
-      .modal-footer
-        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button"} Save changes
+=render 'partials/create_link_modal'

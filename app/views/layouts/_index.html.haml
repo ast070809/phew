@@ -19,11 +19,11 @@
             %strong Business
 %nav.navbar{id: 'tribe-nav'}
   .row
-    .col-md-10.col-md-offset-1{id: "duration-header"}
+    .col-md-6.col-md-offset-1{id: "duration-header"}
       %ul.nav.nav-pills
         %li.active
           =link_to 'Hot', root_path
-        %li
+        %li{class: ('active' if current_page?('/top/week'))}
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             Top
             %b.caret
@@ -33,7 +33,6 @@
             %li.divider
             %li
               =link_to 'This week', top_path(duration: 'week')
-              
             %li.divider
             %li
               =link_to 'This month', top_path(duration: 'month') 
@@ -43,12 +42,27 @@
             %li.divider
             %li
               =link_to 'All time', top_path(duration: 'all_time')
-              
         %li
           =link_to 'New', new_path(duration: 'current')
+        %li
+          =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green hidden-div', id: 'submit-new-link-duration','data-toggle'=>"modal" ,'data-target'=>"#myModal"
+    .col-md-4.hidden-div{id: 'user-duration-header'}
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          -if user_signed_in?
+            =current_user.email
+          -else
+            =link_to('Login', new_user_session_path)
+        %li
+          -if user_signed_in?
+            =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
+    
+
 :javascript
   $(function(){
     var
+      $createLink = $('#submit-new-link-duration'),
+      $userLogin = $('#user-duration-header'),
       $win = $(window),
       $filter = $('#tribe-nav'),
       $filterSpacer = $('<div />', {
@@ -59,9 +73,13 @@
       if(!$filter.hasClass('navbar-fixed-top navbar-inverse') && $win.scrollTop() > $filter.offset().top){
         $filter.before($filterSpacer);
         $filter.addClass("navbar-fixed-top navbar-inverse");
+        $createLink.show();
+        $userLogin.show();
       } else if ($filter.hasClass('navbar-fixed-top navbar-inverse')  && $win.scrollTop() < $filterSpacer.offset().top){
         $filter.removeClass("navbar-fixed-top navbar-inverse");
         $filterSpacer.remove();
+        $createLink.hide();
+        $userLogin.hide();
       }
     });
   });

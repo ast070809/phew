@@ -1,0 +1,17 @@
+#create-link-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content{id: 'create-link-modal-dialog'}
+      .modal-body
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+        %h4.modal-title.font-white
+          %strong Submit a link
+        .row
+          .col-md-12
+            %p.font-white
+              Enter the link of an article, image or video
+            =form_tag new_post_path, class: 'form form-horizontal', role: 'form', method: 'get' do
+              .form-group
+                .col-md-10
+                  =url_field_tag 'url', 'http://', type: 'email', class: 'form-control', placeholder: 'http://'
+                =submit_tag 'Submit', class: 'btn btn-default control-label'
+          

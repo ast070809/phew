@@ -26,7 +26,8 @@ class PostsController < ApplicationController
   end
 
   def new
-  	@post = Post.new
+  	@url = params[:url]
+    @post = Post.new
     @tribe = Tribe.all
   end
 

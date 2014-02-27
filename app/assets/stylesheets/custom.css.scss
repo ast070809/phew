@@ -1,3 +1,4 @@
+/* Global styling*/
 body{
 	background-image: image-url('bck.png');
 }
@@ -7,7 +8,17 @@ body{
 .background-white{
 	background-color: white;
 }
+.font-white{
+	color:white;
+}
+.hidden-div{
+	display:none !important;
+}
+.color-light-green{
+	color:#7DDE50;
+}
 
+/* Header styling */
 #duration-header .navbar{
 	margin: 0px;
 	padding: 0px;
@@ -21,6 +32,9 @@ body{
 .tribe-nav-links.active{
 	border-bottom: 5px solid #7DDE50 !important;
 }
-.color-light-green{
-	color:#7DDE50;
+
+
+#create-link-modal-dialog{
+	background-color:black !important;
+	opacity: 0.90;
 }
