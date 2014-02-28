@@ -16,6 +16,7 @@
 #  pic_content_type :string(255)
 #  pic_file_size    :integer
 #  pic_updated_at   :datetime
+#  source           :string(255)
 #
 
 class Post < ActiveRecord::Base

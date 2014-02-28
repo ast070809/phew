@@ -19,6 +19,11 @@
 						.col-xs-9.col-md-7
 							%h4
 								=link_to("#{p.title}", post_path(p))
+								-if p.source?
+									.source_link
+										(
+										=p.source
+										)
 							.bs-callout.bs-callout-info
 								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
 						.col-xs-2.col-md-2

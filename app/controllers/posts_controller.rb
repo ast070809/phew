@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController < ApplicationController 
   require 'open-uri'
   require 'nokogiri'
 
@@ -22,7 +22,10 @@ class PostsController < ApplicationController
         when 'all_time'
           @posts = Post.all.order('votes desc').page(params[:page]).per(links_per_page)
       end
-      else
+    elsif params[:host]
+        source = params[:host]
+        @posts = Post.order("hotness desc").page(params[:page]).per(links_per_page)
+    else
       @posts = Post.all.order("hotness desc").page(params[:page]).per(links_per_page)
     end
   end
@@ -30,19 +33,27 @@ class PostsController < ApplicationController
   def new
   	@url = params[:url]
     @title = get_link_details(@url)
+    @s = URI.parse(@url)
+    @source = @s.host
     @post = Post.new
     @tribe = Tribe.all
   end
 
   def create
     post = current_user.posts.create(post_params)
-  	tribe = Tribe.find(params[:post][:tribe])
+  	
+    #assigning the tribe
+    tribe = Tribe.find(params[:post][:tribe])
     post.tribe_id = tribe.id
     
+    #assigning the source
+    @uri = URI.parse(params[:post][:link])
+    post.source = @uri.host
+
     if post.save
       Post.refresh_hotness(post)
 
-      redirect_to root_path
+      redirect_to root_path, notice: 'Successfully posted'
   	else
       flash[:error] = 'Some error occurred'
       redirect_to new_post_path

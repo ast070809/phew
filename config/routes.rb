@@ -29,7 +29,6 @@ Phew::Application.routes.draw do
   get 'new/:duration', to: 'posts#index', as: :new
 
 
-
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
