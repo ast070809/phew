@@ -14,10 +14,11 @@
 							.row
 								=link_to downvote_post_path(p), method: 'put' do
 									=fa_icon "arrow-down", class: 'h4'
-						.col-xs-9.col-md-9
+						.col-md-2
+							=image_tag p.pic.url(:thumb), alt: 'post photo'
+						.col-xs-9.col-md-7
 							%h4
 								=link_to("#{p.title}", post_path(p))
-							
 							.bs-callout.bs-callout-info
 								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
 						.col-xs-2.col-md-2

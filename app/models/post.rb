@@ -2,19 +2,33 @@
 #
 # Table name: posts
 #
-#  id          :integer          not null, primary key
-#  title       :text
-#  link        :text
-#  description :text
-#  user_id     :integer
-#  tribe_id    :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#  hotness     :float
-#  votes       :integer          default(0)
+#  id               :integer          not null, primary key
+#  title            :text
+#  link             :text
+#  description      :text
+#  user_id          :integer
+#  tribe_id         :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#  hotness          :float
+#  votes            :integer          default(0)
+#  pic_file_name    :string(255)
+#  pic_content_type :string(255)
+#  pic_file_size    :integer
+#  pic_updated_at   :datetime
 #
 
 class Post < ActiveRecord::Base
+	
+	has_attached_file :pic, styles: {
+	    thumb: '100x100#',
+	    square: '200x200#',
+	    medium: '300x300>'
+  	}
+  	
+  	# Validate the attached image is image/jpg, image/png, etc
+ 	validates_attachment_content_type :pic, :content_type => /\Aimage\/.*\Z/
+ 	
 	validates :title, presence: true
 	validates :user_id, presence: true
 	

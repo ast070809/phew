@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224165734) do
+ActiveRecord::Schema.define(version: 20140228093706) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -58,7 +58,11 @@ ActiveRecord::Schema.define(version: 20140224165734) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "hotness"
-    t.integer  "votes",       default: 0
+    t.integer  "votes",            default: 0
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "taggings", force: true do |t|

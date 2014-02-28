@@ -19,6 +19,9 @@ gem "select2-rails"
 gem "font-awesome-rails", "4.0.3.1"
 gem "nokogiri", "1.6.1"
 
+#For uploading images and files to S3
+gem 'paperclip'
+gem 'aws-sdk'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

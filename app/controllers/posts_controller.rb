@@ -127,7 +127,7 @@ class PostsController < ApplicationController
   private 
   	
     def post_params
-	  	params.require(:post).permit(:title, :link,:description, :tag_list)
+	  	params.require(:post).permit(:title, :link,:description, :tag_list, :pic)
 	  end
     
     def get_link_details(link)

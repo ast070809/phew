@@ -26,4 +26,14 @@ Phew::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'phewpost',
+      :access_key_id => 'AKIAJ4WTI3ASEKNXJSYQ',
+      :secret_access_key => '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',
+      :s3_host_name => "s3-ap-southeast-1.amazonaws.com"
+    }
+  }
 end
