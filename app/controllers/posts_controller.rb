@@ -62,8 +62,15 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @root_comments = @post.root_comments
-    @all_comments = @post.comment_threads
+    
+    if params[:type]
+      type = params[:type]
+      case type
+        when 'best'
+          @root_comments = @post.root_comments.order('hotness desc')
+      end
+    end
+    @root_comments = @post.root_comments.order('hotness desc', 'created_at desc')
   end
 
   def delete

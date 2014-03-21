@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 	    @comment = Comment.find(params[:id])
 	    @comment.liked_by current_user
 	    Comment.refresh_hotness(@comment)
+	    Comment.refresh_votes(@comment)
 	    redirect_to :back
   	end
   
@@ -10,6 +11,7 @@ class CommentsController < ApplicationController
 	    @comment = Comment.find(params[:id])
 	    @comment.downvote_from current_user
 	    Comment.refresh_hotness(@comment)
+	    Comment.refresh_votes(@comment)
 	    redirect_to :back
 	end
 

@@ -15,6 +15,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  hotness          :float
+#  netvote          :integer
 #
 
 class Comment < ActiveRecord::Base
@@ -68,6 +69,12 @@ class Comment < ActiveRecord::Base
   def self.refresh_hotness(comment)
     hotness = Comment.confidence(comment)
     comment.hotness = hotness
+    comment.save
+  end
+
+  def self.refresh_votes(comment)
+    votes =comment.likes.size-comment.downvotes.size
+    comment.netvote = votes
     comment.save
   end
   
