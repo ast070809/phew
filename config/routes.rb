@@ -1,7 +1,8 @@
 Phew::Application.routes.draw do
   devise_for :admins
   get "posts/index"
-  devise_for :users
+  devise_for :users,  controllers: { registrations: "registrations" }
+
 
   resources :posts do 
     member do

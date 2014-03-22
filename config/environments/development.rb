@@ -22,6 +22,10 @@ Phew::Application.configure do
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
+
+  # Set host for mailer
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -36,4 +40,18 @@ Phew::Application.configure do
       :s3_host_name => "s3-ap-southeast-1.amazonaws.com"
     }
   }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+       :authentication => :plain,
+       :address => "smtp.mailgun.org",
+       :port => 587,
+       :domain => "app22597804.mailgun.org",
+       :user_name => "postmaster@app22597804.mailgun.org",
+       :password => "7rcejt4vh212"
+  }
+  require 'net/http'
+
 end

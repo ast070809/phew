@@ -7,21 +7,38 @@ gem 'rails', '4.0.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 gem "bootstrap-sass", "~> 3.1.1.0"
+
+## Devise for authentication
 gem "devise", "3.2.2"
+##annotate for getting details of the models
 gem "annotate"
+##for getting haml
 gem "haml-rails", "0.5.3"
+##To handle the commenting and their threading
 gem "acts_as_commentable_with_threading", "1.2.0"
+## To make the posts and the comments votable
 gem "acts_as_votable", "0.8.0"
+## For Pagination
 gem "kaminari", "0.15.1"
+## Adding bootstrap views to Kaminari pagination
 gem 'bootstrap-kaminari-views'
+## To handle tags on the posts
 gem "acts-as-taggable-on", "3.0.1"
+## To make the selection menus more beautiful
 gem "select2-rails"
+## To add the font-awesome icons
 gem "font-awesome-rails", "4.0.3.1"
+
+## For parsing the urls 
 gem "nokogiri", "1.6.1"
 
 #For uploading images and files to S3
 gem 'paperclip'
 gem 'aws-sdk'
+
+## Captcha
+gem "recaptcha", :require => "recaptcha/rails"
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
