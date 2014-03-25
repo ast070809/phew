@@ -1,4 +1,4 @@
-%nav.navbar.navbar-inverse{role: "navigation"}
+%nav.navbar{role: "navigation", id: 'top-nav'}
   / Brand and toggle get grouped for better mobile display
   .navbar-header
     %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
@@ -12,16 +12,23 @@
     %ul.nav.navbar-nav
       %li.divider
       %li
-        =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal"
+        =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-success top-nav-create-btn'
     %ul.nav.navbar-nav.navbar-right
-      %li
+      %li{style: 'padding-right: 10px;'}
         -if user_signed_in?
-          =current_user.email
+          .btn-group{style: 'cursor:pointer;'}
+            #user-name-nav{"data-toggle"=> 'dropdown'}
+              =fa_icon "user"
+              =current_user.username
+              =fa_icon "caret-down"
+            %ul.dropdown-menu
+              %li
+                =link_to 'My Account', current_user
+              %li.divider
+              %li
+                =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
         -else
           =link_to('Login', new_user_session_path)
-      %li
-        -if user_signed_in?
-          =link_to 'Sign out', destroy_user_session_path, method: 'delete'
 .row
   .col-md-12
     -if current_page?(root_path)

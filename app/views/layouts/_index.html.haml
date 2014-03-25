@@ -1,29 +1,32 @@
-%nav.navbar
+%nav.navbar{id: 'tribe-navigation'}
   .row
-    .col-md-6.col-md-offset-4
-      %ul.nav.navbar-nav.panel
+    .col-md-2
+    .col-md-2
+      .refine
+    .col-md-6
+      %ul.nav.navbar-nav
         %li.custom-center
           %a.tribe-nav-links.active{href: '#'}
-            %strong All
+            All
         %li.custom-center
           %a.tribe-nav-links{href: '#'}
-            %strong Politics
+            Politics
         %li.custom-center
           %a.tribe-nav-links{href: '#'}
-            %strong Entertainment
+            Entertainment
         %li.custom-center
           %a.tribe-nav-links{href: '#'}
-            %strong Sports
+            Sports
         %li.custom-center
           %a.tribe-nav-links{href: '#'}
-            %strong Business
-%nav.navbar{id: 'tribe-nav'}
+            Business
+%nav.navbar{id: 'refine-nav'}
   .row
     .col-md-6.col-md-offset-1{id: "duration-header"}
-      %ul.nav.nav-pills
-        %li.active
+      %ul.nav.nav-tabs  
+        %li.refine-link.active
           =link_to 'Hot', root_path
-        %li{class: ('active' if current_page?('/top/week'))}
+        %li.refine-link{class: ('active' if current_page?('/top/week'))}
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
             Top
             %b.caret
@@ -42,10 +45,11 @@
             %li.divider
             %li
               =link_to 'All time', top_path(duration: 'all_time')
-        %li
+        %li.refine-link
           =link_to 'New', new_path(duration: 'current')
         %li
-          =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green hidden-div', id: 'submit-new-link-duration','data-toggle'=>"modal" ,'data-target'=>"#myModal"
+          =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-success'
+
     .col-md-4.hidden-div{id: 'user-duration-header'}
       %ul.nav.navbar-nav.navbar-right
         %li
@@ -61,25 +65,29 @@
 :javascript
   $(function(){
     var
-      $createLink = $('#submit-new-link-duration'),
+      $createLink = $('#submit-new-link-refine'),
       $userLogin = $('#user-duration-header'),
+      $test = $('#test'),
       $win = $(window),
-      $filter = $('#tribe-nav'),
+      $filter = $('#refine-nav'),
       $filterSpacer = $('<div />', {
         "class": "filter-drop-spacer",
         "height": $filter.outerHeight()
       });
     $win.scroll(function(){     
-      if(!$filter.hasClass('navbar-fixed-top navbar-inverse') && $win.scrollTop() > $filter.offset().top){
+      if(!$filter.hasClass('navbar-fixed-top remove-grey-bck-nav') && $win.scrollTop() > $filter.offset().top){
         $filter.before($filterSpacer);
-        $filter.addClass("navbar-fixed-top navbar-inverse");
+        $filter.addClass("navbar-fixed-top remove-grey-bck-nav");
         $createLink.show();
+        $test.fadeIn();
         $userLogin.show();
-      } else if ($filter.hasClass('navbar-fixed-top navbar-inverse')  && $win.scrollTop() < $filterSpacer.offset().top){
-        $filter.removeClass("navbar-fixed-top navbar-inverse");
+      } else if ($filter.hasClass('navbar-fixed-top remove-grey-bck-nav')  && $win.scrollTop() < $filterSpacer.offset().top){
+        $filter.removeClass("navbar-fixed-top remove-grey-bck-nav");
         $filterSpacer.remove();
         $createLink.hide();
         $userLogin.hide();
+        $test.fadeOut();
+
       }
     });
   });

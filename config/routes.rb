@@ -3,7 +3,7 @@ Phew::Application.routes.draw do
   get "posts/index"
   devise_for :users,  controllers: { registrations: "registrations" }
 
-
+  resources :users
   resources :posts do 
     member do
       put "upvote", to: "posts#upvote"
