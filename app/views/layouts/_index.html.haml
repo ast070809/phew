@@ -22,7 +22,10 @@
             Business
 %nav.navbar{id: 'refine-nav'}
   .row
-    .col-md-6.col-md-offset-1{id: "duration-header"}
+    .col-md-1
+      #brand-refine-bar{style: 'display:none;'}
+        Brand
+    .col-md-6{id: "duration-header"}
       %ul.nav.nav-tabs  
         %li.refine-link.active
           =link_to 'Hot', root_path
@@ -49,7 +52,24 @@
           =link_to 'New', new_path(duration: 'current')
         %li
           =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-success'
-
+    .col-md-5
+      %ul.nav.navbar-nav.navbar-right{id: 'username-refine', style: 'display:none;'}
+        %li{style: 'padding-right: 25px;'}
+          -if user_signed_in?
+            .btn-group{style: 'cursor:pointer;'}
+              #user-name-nav{"data-toggle"=> 'dropdown'}
+                =fa_icon "user"
+                =current_user.username
+                =fa_icon "caret-down"
+              %ul.dropdown-menu
+                %li
+                  =link_to 'My Account', current_user
+                %li.divider
+                %li
+                  =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
+          -else
+            =link_to('Login', new_user_session_path)
+      
     .col-md-4.hidden-div{id: 'user-duration-header'}
       %ul.nav.navbar-nav.navbar-right
         %li
@@ -67,8 +87,10 @@
     var
       $createLink = $('#submit-new-link-refine'),
       $userLogin = $('#user-duration-header'),
-      $test = $('#test'),
+      $brand = $('#brand-refine-bar'),
+      $userName = $('#username-refine')
       $win = $(window),
+
       $filter = $('#refine-nav'),
       $filterSpacer = $('<div />', {
         "class": "filter-drop-spacer",
@@ -79,14 +101,16 @@
         $filter.before($filterSpacer);
         $filter.addClass("navbar-fixed-top remove-grey-bck-nav");
         $createLink.show();
-        $test.fadeIn();
+        $brand.fadeIn();
+        $userName.fadeIn();
         $userLogin.show();
       } else if ($filter.hasClass('navbar-fixed-top remove-grey-bck-nav')  && $win.scrollTop() < $filterSpacer.offset().top){
         $filter.removeClass("navbar-fixed-top remove-grey-bck-nav");
         $filterSpacer.remove();
         $createLink.hide();
         $userLogin.hide();
-        $test.fadeOut();
+        $brand.fadeOut();
+        $userName.fadeOut();
 
       }
     });
