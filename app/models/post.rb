@@ -11,7 +11,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  hotness          :float
-#  votes            :integer          default(0)
+#  netvotes         :integer          default(0)
 #  pic_file_name    :string(255)
 #  pic_content_type :string(255)
 #  pic_file_size    :integer
