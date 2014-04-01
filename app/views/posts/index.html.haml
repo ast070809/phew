@@ -7,18 +7,21 @@
 						.col-xs-1.col-md-1.text-center
 							.row
 								=link_to upvote_post_path(p), method: 'put' do
-									=fa_icon "arrow-up", class: 'h4'
+									%span.glyphicon.glyphicon-arrow-up
 							.row
-								%strong
-									=p.likes.size-p.downvotes.size
+								.net-vote
+									%strong 
+										=p.likes.size-p.downvotes.size
+								
+
 							.row
 								=link_to downvote_post_path(p), method: 'put' do
-									=fa_icon "arrow-down", class: 'h4'
+									%span.glyphicon.glyphicon-arrow-down
 						.col-md-2
 							=image_tag p.pic.url(:thumb), alt: 'post photo'
 						.col-xs-9.col-md-7
 							%h4
-								=link_to "#{p.title}", p.link, target: '_blank'
+								=link_to "#{p.title}", p.link, target: '_blank', class: 'title-of-link'
 								-if p.source?
 									.source_link
 										(

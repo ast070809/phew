@@ -37,6 +37,9 @@ class PostsController < ApplicationController
     @source = @s.host
     @post = Post.new
     @tribe = Tribe.all
+
+    ##It will be better to move this job in background
+
   end
 
   def create
@@ -151,5 +154,13 @@ class PostsController < ApplicationController
     def get_link_details(link)
       doc = Nokogiri::HTML(open(link))
       doc.at_css("h1").text
+    end
+
+    def process_page(url)
+      doc = Nokogiri(open(url))
+    end
+
+    def process_images(doc)
+      images = doc.css('img')
     end
 end

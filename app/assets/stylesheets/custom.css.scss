@@ -1,7 +1,14 @@
 /* Global styling*/
+#main-container{
+	padding:0px;
+}
 body{
-	background-image: image-url('http://hasloo.com/freetwitterbackgrounds/wp-content/uploads/2012/08/tree-twitter-background.jpg');
-	/* background-color: #E5E5E5; */
+	/*background-image: image-url('http://hasloo.com/freetwitterbackgrounds/wp-content/uploads/2012/08/tree-twitter-background.jpg'); */
+	/*background-color: #694F92; */
+}
+
+.trnpsy{
+	opacity:0.90 !important;
 }
 .custom-center{
 	text-align:center;
@@ -23,6 +30,7 @@ body{
 #top-nav{
 	margin-bottom:0px;
 	background-color:white;
+	border-radius:0px;
 }
 #refine-nav{
 	padding-top:0px;
@@ -30,6 +38,7 @@ body{
 	box-shadow: 0px 2px 2px #D8D8D8;
 	background-color:#f5f5f5;
 	min-height:30px;
+	border-radius:0px;
 }
 #hot-btn{
 	font-size:10px;
@@ -42,6 +51,7 @@ body{
 	padding-bottom:0px;
 	background-color: #F5F5F5;
 	min-height:40px !important;
+	border-radius:0px;	
 	
 }
 #submit-new-link{
@@ -102,12 +112,23 @@ body{
 	font-size: 12px;
 	color: gray;
 }
+.title-of-link{
+	color:black !important;
+}
+
+span.glyphicon-arrow-up{
+	font-size:	2em;
+}
+span.glyphicon-arrow-down{
+	font-size:	2em;
+}
+.net-vote{
+	margin-top:10px;
+	margin-bottom:10px;
+}
 
 /* comments page */
 .comment_box{
 	 list-style-type: none;
 }
 
-.trnpsy{
-	opacity:0.90 !important;
-}
