@@ -1,7 +1,8 @@
 class PostsController < ApplicationController 
   require 'open-uri'
   require 'nokogiri'
-
+  require 'fastimage'
+  
   def index
     links_per_page = 10
     if params[:tag]
@@ -37,6 +38,8 @@ class PostsController < ApplicationController
     @source = @s.host
     @post = Post.new
     @tribe = Tribe.all
+
+    @images = get_images(@url)
 
     ##It will be better to move this job in background
 
@@ -146,14 +149,18 @@ class PostsController < ApplicationController
   end
 
   private 
-  	
+
     def post_params
 	  	params.require(:post).permit(:title, :link,:description, :tag_list, :pic)
 	  end
     
     def get_link_details(link)
       doc = Nokogiri::HTML(open(link))
-      doc.at_css("h1").text
+      if doc.at_css("h1")
+        doc.at_css("h1").text 
+      else
+        ""
+      end
     end
 
     def process_page(url)
@@ -162,5 +169,45 @@ class PostsController < ApplicationController
 
     def process_images(doc)
       images = doc.css('img')
+    end
+
+    def get_images(url)
+      page = Nokogiri::HTML(open(url)) 
+      chk_og = page.css("meta[property='og:image']")[0]
+      if chk_og
+        image_link = chk_og['content']
+      else 
+        image_link = get_first_elligible_image(page)
+      end
+    end
+
+    def get_first_elligible_image(page)
+      img_pth_content = page.xpath("//img[not(ancestor::*[contains(@id, 'sidebar') or contains(@id, 'comment') or contains(@id, 'footer') or contains(@id, 'header')]) and ancestor::*[contains(@id, 'content')]]/@src")
+      img_pth_all = page.xpath("//img[not(ancestor::*[contains(@id, 'sidebar') or contains(@id, 'comment') or contains(@id, 'footer') or contains(@id, 'header')])]/@src")
+      
+      img_paths = if img_pth_content.empty? then img_pth_all else img_pth_content end
+
+      res_path = ""
+      img_paths.each do |pth|
+          width, len= get_size(pth)
+          res_path = pth
+          if width>100 && len >100 && (width/len)<3
+            break
+          end
+      end
+      res_path
+    end
+
+    def get_size(img_pth)
+      begin
+        size = FastImage.size(img_pth,:raise_on_failure=>true, :timeout=>2.0)
+        width = size[0]
+        len = size[1]
+      rescue
+        size = [1,1]
+        width = size[0]
+        len = size[1]
+      end
+      return width, len
     end
 end
