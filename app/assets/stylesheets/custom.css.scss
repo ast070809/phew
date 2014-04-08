@@ -1,5 +1,5 @@
 /* Global styling*/
-@import url("//fonts.googleapis.com/css?family=Roboto:100,300,500");
+@import url("//fonts.googleapis.com/css?family=Roboto:100,300,400,500");
 
 #main-container{
 	padding:0px;
@@ -39,7 +39,7 @@ body{
 	padding-bottom:0px;
 	box-shadow: 0px 2px 2px #D8D8D8;
 	background-color:#f5f5f5;
-	min-height:30px;
+	min-height:20px;
 	border-radius:0px;
 }
 #hot-btn{
@@ -72,9 +72,15 @@ body{
 .refine-link{
 	padding-top:0px;
 	padding-bottom:0px;
+	font-size:12px;
 }
 .refine-link > a{
 	color: #404040;
+	padding-top:7px !important;
+	padding-bottom:7px !important;
+}
+.refine-top{
+	padding-top:0px;
 }
 .remove-grey-bck-nav{
 	background-color:white !important;
@@ -132,8 +138,9 @@ body{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 }
-.comments{
+.comments-btn{
 	font-size: 13px !important;
+	color:#428bca;
 }
 span.glyphicon-arrow-up{
 	font-size:	2em;
@@ -148,7 +155,14 @@ span.glyphicon-arrow-down{
 .up-down-vote-box{
 	padding-top:15px;
 }
-
+.post_footer{
+	border-top:1px solid #E5E5E5;
+}
+.submited_ago_cont{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size:12px;	
+}
 /* comments page */
 .comment_box{
 	 list-style-type: none;

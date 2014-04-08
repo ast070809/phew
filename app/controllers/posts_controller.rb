@@ -13,15 +13,15 @@ class PostsController < ApplicationController
         when 'current'
           @posts = Post.all.order('created_at desc').page(params[:page]).per(links_per_page)
         when 'today'
-          @posts = Post.today.order('votes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.today.order('netvotes desc').page(params[:page]).per(links_per_page)
         when 'week'
-          @posts = Post.week.order('votes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.week.order('netvotes desc').page(params[:page]).per(links_per_page)
         when 'month' 
-          @posts = Post.month.order('votes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.month.order('netvotes desc').page(params[:page]).per(links_per_page)
         when 'year'
-          @posts = Post.year.order('votes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.year.order('netvotes desc').page(params[:page]).per(links_per_page)
         when 'all_time'
-          @posts = Post.all.order('votes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.all.order('netvotes desc').page(params[:page]).per(links_per_page)
       end
     elsif params[:host]
         source = params[:host]
