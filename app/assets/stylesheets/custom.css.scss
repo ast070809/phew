@@ -1,10 +1,12 @@
 /* Global styling*/
+@import url("//fonts.googleapis.com/css?family=Roboto:100,300,500");
+
 #main-container{
 	padding:0px;
 }
 body{
 	/*background-image: image-url('http://hasloo.com/freetwitterbackgrounds/wp-content/uploads/2012/08/tree-twitter-background.jpg'); */
-	/*background-color: #694F92; */
+	background-color: #E5E5E5;
 }
 
 .trnpsy{
@@ -108,14 +110,31 @@ body{
 }
 
 /* index page */
+.post_panel{
+	border-radius:0;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:10px;
+	padding-left:10px;
+	margin-bottom:15px;
+}
+.link_descrip{
+	color:#330725;
+	font-size:13px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
 .source_link{
 	font-size: 12px;
 	color: gray;
 }
 .title-of-link{
-	color:black !important;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
 }
-
+.comments{
+	font-size: 13px !important;
+}
 span.glyphicon-arrow-up{
 	font-size:	2em;
 }
@@ -125,6 +144,9 @@ span.glyphicon-arrow-down{
 .net-vote{
 	margin-top:10px;
 	margin-bottom:10px;
+}
+.up-down-vote-box{
+	padding-top:15px;
 }
 
 /* comments page */

@@ -1,0 +1,42 @@
+.panel.panel-default.post_panel
+	.row
+		.col-xs-1.col-md-1.text-center
+			.up-down-vote-box
+				.row
+					=link_to upvote_post_path(p), method: 'put' do
+						%span.glyphicon.glyphicon-arrow-up
+				.row
+					.net-vote
+						%strong 
+							=p.likes.size-p.downvotes.size
+				.row
+					=link_to downvote_post_path(p), method: 'put' do
+						%span.glyphicon.glyphicon-arrow-down
+		.col-md-2
+			=image_tag p.pic.url(:thumb), alt: 'post photo'
+		.col-xs-9.col-md-7
+			%h4
+				=link_to "#{p.title}", p.link, target: '_blank', class: 'title-of-link'
+				-if p.source?
+					.source_link
+						(
+						=p.source
+						)
+			.link_descrip
+				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+			.row
+				-tags = p.tag_list
+				-if !tags.empty?
+					%ul.list-inline
+						Tags:
+						-tags.each do |t|
+							%li
+								=link_to t, tag_path(t), class: 'label label-info'
+		.col-xs-2.col-md-2
+			%button.btn.btn-default.btn-sm
+				.comments
+					=link_to pluralize(comment_count(p.id), 'comment'), p
+	.row
+		.col-md-9.col-md-offset-1
+			-if user_signed_in? && current_user_poster?(p)
+				=link_to "Delete", delete_post_path(p), method: "delete"
