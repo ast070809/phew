@@ -24,25 +24,26 @@
 						)
 			.link_descrip
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-			.row
-				.col-md-12.post_footer
+			.row.post_footer
+				.col-md-8
 					.submited_ago_cont
 						submited
 						=time_ago_in_words(p.created_at)
 						ago by
 						=link_to p.user.username, p.user
-				
+				.col-md-4
+					.pull-right
+						-if user_signed_in? && current_user_poster?(p)
+							=link_to "delete", delete_post_path(p), method: "delete", class: 'delete-post'
+
 			.row
-				-tags = p.tag_list
-				-if !tags.empty?
-					%ul.list-inline
-						Tags:
-						-tags.each do |t|
-							%li
-								=link_to t, tag_path(t), class: 'label label-info'
+				.col-md-12.tag-cont
+					-tags = p.tag_list
+					-if !tags.empty?
+						%ul.list-inline
+							Tags:
+							-tags.each do |t|
+								%li
+									=link_to t, tag_path(t), class: 'label label-info'
 		.col-xs-2.col-md-2
-			=button_to pluralize(comment_count(p.id), 'comment'), p, class: 'btn btn-default  comments-btn'
-	.row
-		.col-md-9.col-md-offset-1
-			-if user_signed_in? && current_user_poster?(p)
-				=link_to "Delete", delete_post_path(p), method: "delete"
+			=button_to pluralize(comment_count(p.id), 'comment'), p, class: 'btn btn-default  comments-btn', method: 'get'
