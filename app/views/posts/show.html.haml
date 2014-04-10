@@ -3,18 +3,20 @@
 		- flash.each do |key, value|
 			= content_tag(:div, value, class: "alert alert-#{key}")
 		%h2
-			Post Title - 
-			=@post.title
-		%p
-			=@post.description
+			=link_to @post.title, @post.link, target: '_blank', class: 'post-title-comment-page'
+
 		-if user_signed_in?
-			=form_tag add_comment_path, method: :post do
-				=label_tag 'Comment'
-				=text_field_tag 'comment'
+			=form_tag add_comment_path, method: :post, class:'form-inline' do
+				.form-group
+					=label_tag 'Comment'
+				.form-group
+					.col-md-10
+						=text_area_tag 'comment',"", type:'text', class: 'form-control write-comment-box-desktop'
 				=hidden_field_tag 'post_id', @post.id
-				=submit_tag 'Submit'
+				=submit_tag 'Submit', class: 'btn btn-success'
 		-else
 			=link_to('Sign in to add comments', new_user_session_path) 
+		=render 'layouts/show'
 		#comments
 			-@root_comments.each do |comment|
 				=render :partial => 'partials/comment', :object => comment		

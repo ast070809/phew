@@ -1,8 +1,9 @@
-.panel.panel-default
-  .panel-body
-    %ul.nav.navbar-nav
-      %li
-        =#link_to 'Best', post_path(@post)
-      %li
-        %a{href: '#'}
-          Related
+.row
+	.col-md-4{id: 'comment-links'}
+		%ul.nav.nav-pills
+			%li.active
+				=link_to "Best", "#"
+			%li
+				=link_to "Top", "#"
+
+		
