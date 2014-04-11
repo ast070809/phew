@@ -74,9 +74,11 @@ class PostsController < ApplicationController
       case type
         when 'best'
           @root_comments = @post.root_comments.order('hotness desc')
+        else
+          @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
       end
     end
-    @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
+    #@root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
   end
 
   def delete
