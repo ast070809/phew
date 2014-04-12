@@ -48,6 +48,9 @@ gem 'coffee-rails', '~> 4.0.0'
 ## Get the size of the images
 gem 'fastimage', '1.6.1'
 
+## Active admin
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
