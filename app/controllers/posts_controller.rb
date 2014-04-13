@@ -35,13 +35,14 @@ class PostsController < ApplicationController
 
   def new
   	@url = params[:url]
-    @title = get_link_details(@url)
+    @title = get_title(@url)
     @s = URI.parse(@url)
     @source = @s.host
     @post = Post.new
     @tribe = Tribe.all
+    @descrip = get_descrip(@url)
 
-    @description = get_descrip(@url)
+   
 
     #@images = get_images(@url)
 
@@ -60,9 +61,10 @@ class PostsController < ApplicationController
     @uri = URI.parse(params[:post][:link])
     post.source = @uri.host
 
-    #get image from url
-    img_uri = get_images(@uri)
-    post.pic = image_from_url(@uri)
+
+    #image link
+    @image_link = get_images(@uri)
+    post.pic = get_image_from_url(@image_link)
 
     if post.save
       Post.refresh_hotness(post)
@@ -164,7 +166,7 @@ class PostsController < ApplicationController
 	  	params.require(:post).permit(:title, :link,:description, :tag_list, :pic)
 	  end
     
-    def get_link_details(link)
+    def get_title(link)
       doc = Nokogiri::HTML(open(link))
       if doc.at_css("h1")
         doc.at_css("h1").text 
@@ -173,8 +175,19 @@ class PostsController < ApplicationController
       end
     end
 
-    def image_from_url(url)
-        img = open(url)      
+    def get_image_from_url(url)
+      open(url)
+    end
+
+    def get_descrip(link)
+      page = Nokogiri::HTML(open(link)) 
+      descp = page.css("meta[name='description']")[0]
+      if descp
+        description = descp['content']
+      else 
+        description = "none"
+      end
+
     end
 
     def process_page(url)
@@ -185,15 +198,6 @@ class PostsController < ApplicationController
       images = doc.css('img')
     end
 
-    def get_descrip(url)
-      page = Nokogiri::HTML(open(url)) 
-      des = page.css("meta[name='description']")[0]
-      if des
-        description = des['content']
-      else
-        description = ""
-      end
-    end
 
     def get_images(url)
       page = Nokogiri::HTML(open(url)) 

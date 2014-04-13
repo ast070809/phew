@@ -35,8 +35,8 @@ Phew::Application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'phewpost',
-      :access_key_id => 'AKIAJ4WTI3ASEKNXJSYQ',
-      :secret_access_key => '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',
+      :access_key_id => 'AKIAJBWWDXQPD32U6UMQ',
+      :secret_access_key => '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',
       :s3_host_name => "s3-ap-southeast-1.amazonaws.com"
     }
   }
