@@ -14,7 +14,7 @@
 	.form-group
 		=f.label :description, class: "col-sm-2 control-label"
 		.col-sm-10
-			=f.text_area :description, class: 'form-control'
+			=f.text_area :description, class: 'form-control', value: @description
 	.form-group
 		=f.label :tags, class: "col-sm-2 control-label"
 		.col-sm-9
@@ -24,14 +24,13 @@
 		.col-sm-4	
 			=f.select :tribe, @tribe.collect{|t| [t.name, t.id]}, {},class: 'form-control'
 	.form-group
-		=f.label 'Photo', class: "col-sm-2 control-label"
+		=#f.label 'Photo', class: "col-sm-2 control-label"
 		.col-sm-4	
-			=f.file_field :pic,class: 'form-control'
+			=#f.file_field :pic,class: 'form-control'
 	.form-group
 		.col-sm-10.col-sm-offset-2
 			=f.submit 'Post', class: 'btn btn-success'
 
-	=image_tag(@images)
 
 :javascript
 	$(function() {

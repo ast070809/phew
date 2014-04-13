@@ -112,7 +112,16 @@ body{
 
 #create-link-modal-dialog{
 	background-color:black !important;
-	opacity: 0.90;
+	opacity: 0.90 !important;
+}
+.fade.in{
+	opacity: 0.9 !important;
+}
+.modal-content{
+	margin-left:-100%;
+	margin-right:100%;
+	margin-top:0%;
+	margin-bottom:0%;
 }
 
 /* index page */

@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   require 'nokogiri'
   require 'fastimage'
   
+  before_filter :authenticate, except: [:index, :show]  
+  
   def index
     links_per_page = 10
     if params[:tag]
@@ -13,15 +15,15 @@ class PostsController < ApplicationController
         when 'current'
           @posts = Post.all.order('created_at desc').page(params[:page]).per(links_per_page)
         when 'today'
-          @posts = Post.today.order('netvotes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.today.order('netvotes desc','created_at desc').page(params[:page]).per(links_per_page)
         when 'week'
-          @posts = Post.week.order('netvotes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.week.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
         when 'month' 
-          @posts = Post.month.order('netvotes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.month.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
         when 'year'
-          @posts = Post.year.order('netvotes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.year.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
         when 'all_time'
-          @posts = Post.all.order('netvotes desc').page(params[:page]).per(links_per_page)
+          @posts = Post.all.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
       end
     elsif params[:host]
         source = params[:host]
@@ -39,7 +41,9 @@ class PostsController < ApplicationController
     @post = Post.new
     @tribe = Tribe.all
 
-    @images = get_images(@url)
+    @description = get_descrip(@url)
+
+    #@images = get_images(@url)
 
     ##It will be better to move this job in background
 
@@ -55,6 +59,10 @@ class PostsController < ApplicationController
     #assigning the source
     @uri = URI.parse(params[:post][:link])
     post.source = @uri.host
+
+    #get image from url
+    img_uri = get_images(@uri)
+    post.pic = image_from_url(@uri)
 
     if post.save
       Post.refresh_hotness(post)
@@ -165,12 +173,26 @@ class PostsController < ApplicationController
       end
     end
 
+    def image_from_url(url)
+        img = open(url)      
+    end
+
     def process_page(url)
       doc = Nokogiri(open(url))
     end
 
     def process_images(doc)
       images = doc.css('img')
+    end
+
+    def get_descrip(url)
+      page = Nokogiri::HTML(open(url)) 
+      des = page.css("meta[name='description']")[0]
+      if des
+        description = des['content']
+      else
+        description = ""
+      end
     end
 
     def get_images(url)
@@ -211,5 +233,11 @@ class PostsController < ApplicationController
         len = size[1]
       end
       return width, len
+    end
+
+    def authenticate
+      if !user_signed_in?
+        redirect_to new_user_session_path
+      end
     end
 end

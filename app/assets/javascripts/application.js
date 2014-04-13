@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require select2
+//= require manifest
 //= require_tree .
