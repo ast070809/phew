@@ -5,6 +5,10 @@ Phew::Application.routes.draw do
   get "posts/index"
   devise_for :users,  controllers: { registrations: "registrations" }
 
+  resources :tribes do 
+    resources :posts
+  end
+  
   resources :users
   resources :posts do 
     member do

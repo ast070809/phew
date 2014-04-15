@@ -35,15 +35,14 @@ class PostsController < ApplicationController
 
   def new
   	@url = params[:url]
-    @title = get_title(@url)
-    @s = URI.parse(@url)
-    @source = @s.host
+    
+    if @url.present?
+      @title = get_title(@url)
+      @source = get_host(@url)
+      @descrip = get_descrip(@url)
+    end
     @post = Post.new
     @tribe = Tribe.all
-    @descrip = get_descrip(@url)
-
-   
-
     #@images = get_images(@url)
 
     ##It will be better to move this job in background
@@ -172,6 +171,17 @@ class PostsController < ApplicationController
         doc.at_css("h1").text 
       else
         ""
+      end
+    end
+
+    def get_host(link)
+      s = URI.parse(link)
+      source = s.host
+
+      if source
+        return source
+      else
+        return "no source found"
       end
     end
 
