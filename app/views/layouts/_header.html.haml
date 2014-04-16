@@ -30,6 +30,8 @@
         -else
           =link_to('Login', new_user_session_path)
 .row
+  =render 'layouts/show_image'
+.row
   .col-md-12
     -if @no_tribe or @show_all_header
       =render 'layouts/index'

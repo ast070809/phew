@@ -7,10 +7,26 @@
 body{
 	/*background-image: image-url('http://hasloo.com/freetwitterbackgrounds/wp-content/uploads/2012/08/tree-twitter-background.jpg'); */
 	background-color: #E5E5E5;
+
 }
 
-.trnpsy{
-	opacity:0.90 !important;
+#header-top-img-cont{
+	background-image:url('landing-bck.jpg');
+	min-height:150px;
+	margin-bottom:0px;
+}
+
+#header-top-img-cont > .overlay-header {
+    z-index: 1;
+    min-height:150px;
+    background: rgba(0, 0, 0, 0.2); /*can be anything, of course*/
+}
+
+#intro-line{
+	color:white;
+	font-size:80px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
 }
 .custom-center{
 	text-align:center;
@@ -54,7 +70,6 @@ body{
 	background-color: #F5F5F5;
 	min-height:40px !important;
 	border-radius:0px;	
-	
 }
 #submit-new-link{
 	padding-top:8px;
@@ -93,6 +108,7 @@ body{
 	padding-top:5px !important;
 	padding-bottom:0px !important;
 	border-bottom: 5px solid #FFF;
+	font-size:14px;
 	&:hover{
 		border-bottom: 5px solid #7DDE50;
 		color:black;
