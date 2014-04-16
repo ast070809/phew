@@ -18,7 +18,7 @@
 			=link_to('Sign in to add comments', new_user_session_path) 
 		=render 'layouts/show'
 		#comments
-			-if !@root_comment.nil?
+			-if !@root_comments.nil?
 				-@root_comments.each do |comment|
 					=render :partial => 'partials/comment', :object => comment		
 

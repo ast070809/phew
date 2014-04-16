@@ -90,7 +90,8 @@ class PostsController < ApplicationController
           @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
       end
     end
-    #@root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
+    @all_comments = @post.comment_threads
+    @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
   end
 
   def delete
