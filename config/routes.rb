@@ -6,9 +6,12 @@ Phew::Application.routes.draw do
   devise_for :users,  controllers: { registrations: "registrations" }
 
   resources :tribes do 
-    resources :posts
+    member do
+      get 'tribe/:duration', to: 'tribes#show', as: :top
+      get 'new/:duration', to: 'tribes#show', as: :new  
+    end
   end
-  
+
   resources :users
   resources :posts do 
     member do
@@ -34,7 +37,8 @@ Phew::Application.routes.draw do
   get 'tags/:tag', to: 'posts#index', as: :tag
   get 'top/:duration', to: 'posts#index', as: :top
   get 'new/:duration', to: 'posts#index', as: :new
-
+  #get 'tribe', to: 'posts#index', as: :tribe_posts
+  
 
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.

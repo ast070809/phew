@@ -1,4 +1,5 @@
-.panel.panel-default.post_panel
+-#.panel.panel-default.post_panel
+.tag-box.tag-box-v1.tag-box-v2
 	.row
 		.col-xs-1.col-md-1.text-center
 			.up-down-vote-box
@@ -25,14 +26,19 @@
 						=p.source
 						)
 			.link_descrip
-				=p.description
+				=truncate(p.description, length:150)
 			.row.post_footer
 				.col-md-8
 					.submited_ago_cont
-						submited
+						Submited
 						=time_ago_in_words(p.created_at)
 						ago by
-						=link_to p.user.username, p.user
+						%strong 
+							=link_to p.user.username, p.user
+						-if p.tribe
+							to
+							%strong
+								=p.tribe.name
 				.col-md-4
 					.pull-right
 						-if user_signed_in? && current_user_poster?(p)
