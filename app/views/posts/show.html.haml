@@ -16,9 +16,10 @@
 				=submit_tag 'Submit', class: 'btn btn-success'
 		-else
 			=link_to('Sign in to add comments', new_user_session_path) 
-		=render 'layouts/show'
-		#comments
-			-if !@root_comments.nil?
+
+		-if !@root_comments.nil?		
+			=render 'layouts/show'
+			#comments
 				-@root_comments.each do |comment|
 					=render :partial => 'partials/comment', :object => comment		
 

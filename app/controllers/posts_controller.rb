@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     links_per_page = 10
     @tribes = Tribe.all
 
-    @no_tribe = true
+    @post_index = true
     if params[:tag]
       @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(links_per_page)
     elsif params[:duration]
