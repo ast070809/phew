@@ -21,4 +21,16 @@ class CommentsController < ApplicationController
 		redirect_to :back
 	end
 
+	def report_comment
+	    comment_id = params[:id]
+	    comment = Comment.find(comment_id)
+	    r = comment.reports.find_or_create_by(user_id: current_user.id)
+	    if r
+	      flash[:success] = "Reported Successfully"
+	    else
+	      flash[:error] = "Some error occured"
+	    end
+	    redirect_to :back
+  	end
+
 end

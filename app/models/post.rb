@@ -38,6 +38,7 @@ class Post < ActiveRecord::Base
 		
 	has_many :comments
 
+	has_many :reports, as: :reportable
 	acts_as_votable
 	acts_as_commentable
 	acts_as_taggable_on :tags

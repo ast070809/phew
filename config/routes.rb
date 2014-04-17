@@ -18,12 +18,14 @@ Phew::Application.routes.draw do
       put "upvote", to: "posts#upvote"
       put "downvote", to: "posts#downvote"
       delete "delete", to: "posts#delete"
+      post 'report', to: 'posts#report_post'
     end
     resources :comments do
       member do 
         put "upvote", to: "comments#upvote"
         put "downvote", to: "comments#downvote" 
         delete "delete", to: "comments#delete"
+        post "report", to: 'comments#report_comment'
       end
     end
   end
@@ -37,6 +39,7 @@ Phew::Application.routes.draw do
   get 'tags/:tag', to: 'posts#index', as: :tag
   get 'top/:duration', to: 'posts#index', as: :top
   get 'new/:duration', to: 'posts#index', as: :new
+  
   #get 'tribe', to: 'posts#index', as: :tribe_posts
   
 

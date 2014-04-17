@@ -164,6 +164,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def report_post
+    post_id = params[:id]
+    post = Post.find(post_id)
+    r = post.reports.find_or_create_by(user_id: current_user.id)
+    if r
+      flash[:success] = "Reported Successfully"
+    else
+      flash[:error] = "Some error occured"
+    end
+    redirect_to :back
+  end
+
   private 
 
     def post_params

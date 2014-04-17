@@ -41,5 +41,8 @@
 										=submit_tag 'Submit', class: 'btn'
 							%a{onclick: "$(this).parent().hide();$(this).parent().prev().show()", id: 'cancel', style: 'cursor:pointer'}
 								Cancel
+						
+						=link_to "report", report_post_comment_path(@post, comment), method: :post
+
 				= render :partial => 'partials/comment', :collection => comment.children.order('created_at desc')
 

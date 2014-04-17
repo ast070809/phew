@@ -41,6 +41,9 @@
 								=p.tribe.name
 				.col-md-4
 					.pull-right
+						-if user_signed_in?
+							=link_to "report", report_post_path(p), method: :post
+						
 						-if user_signed_in? && current_user_poster?(p)
 							=link_to "delete", delete_post_path(p), method: "delete", class: 'delete-post'
 
