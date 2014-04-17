@@ -1,24 +1,36 @@
-.margin-bottom-40
 .row
-  .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: 'reg-page'}) do |f|
-      .reg-header
-        %h2 Sign in
-      .input-group.margin-bottom-20
-        %span.input-group-addon
-          %i.icon-user
-        = f.text_field :login, :autofocus => true, class: 'form-control', placeholder:'Username or email'        
-      .input-group.margin-bottom-20
-        %span.input-group-addon
-          %i.icon-lock
-        = f.password_field :password, class: 'form-control', placeholder: 'Password'
-      
-      - if devise_mapping.rememberable?
-        .row
-          .col-md-6
-            %label.checkbox
-              = f.check_box :remember_me
-              Stay signed in
-          .col-md-6
-      = f.submit "Sign in", class: 'btn-u pull-right'
-      = render "devise/shared/links"
+  .col-md-12{id: 'login-pg-cont'}
+    .margin-bottom-40
+    .row
+      .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: 'reg-page'}) do |f|
+          .reg-header
+            %h2 Sign in
+          .input-group.margin-bottom-20
+            %span.input-group-addon
+              %i.icon-user
+            = f.text_field :login, :autofocus => true, class: 'form-control', placeholder:'Username or email'        
+          .input-group.margin-bottom-20
+            %span.input-group-addon
+              %i.icon-lock
+            = f.password_field :password, class: 'form-control', placeholder: 'Password'
+          
+          - if devise_mapping.rememberable?
+            .row
+              .col-md-6
+                %label.checkbox
+                  = f.check_box :remember_me
+                  Stay signed in
+              .col-md-6
+          = f.submit "Sign in", class: 'btn-u pull-right'
+          = render "devise/shared/links"
+    .margin-bottom-40
+
+:javascript
+  $.backstretch([
+    "#{asset_path('bg4.jpg')}",
+    "#{asset_path('bg5.jpg')}",
+    ], {
+      fade: 1000,
+      duration: 7000
+  });   

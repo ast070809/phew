@@ -1,0 +1,54 @@
+.container
+  / Reg Block
+  .reg-block
+    .reg-block-header
+      %h2 Sign Up
+      %p
+        Already Signed Up? Click
+        =link_to "Sign In", new_user_session_path, class: 'color-green'
+        to login your account.
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-user
+        = f.text_field :username, class: 'form-control',:autofocus => true, placeholder: 'Username'
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-envelope
+        = f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Email'        
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-lock
+        = f.password_field :password, class: 'form-control', placeholder: 'Password'
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-key
+        = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password'
+      .input-group.margin-bottom-30
+        .row
+          .col-md-6
+            = render 'shared/recaptcha'
+            = recaptcha_tags :display=>{:theme=>'custom', custom_theme_widget: 'recaptcha_widget'}
+
+      %hr/
+      %label.checkbox
+        %input{type: "checkbox"}/
+        %p
+          I read
+          %a{href: "page_terms.html", target: "_blank"} Terms and Conditions
+
+      .row
+        .col-md-10.col-md-offset-1
+          = f.submit "Register", class: 'btn-u btn-block'
+      .row
+        = render "devise/shared/links"
+          
+
+:javascript
+  $.backstretch([
+    "#{asset_path('bg4.jpg')}",
+    "#{asset_path('bg5.jpg')}",
+    ], {
+      fade: 1000,
+      duration: 7000
+  });   

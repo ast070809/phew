@@ -17,9 +17,17 @@
 		-else
 			=link_to('Sign in to add comments', new_user_session_path) 
 
-		-if !@root_comments.nil?		
+		-if !@root_comments.empty?		
 			=render 'layouts/show'
 			#comments
 				-@root_comments.each do |comment|
 					=render :partial => 'partials/comment', :object => comment		
 
+:javascript
+	$.backstretch([
+		"#{asset_path('bg4.jpg')}",
+		"#{asset_path('bg5.jpg')}",
+	], {
+		fade: 1000,
+		duration: 7000
+	});		

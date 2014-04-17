@@ -5,7 +5,7 @@
 	padding:0px;
 }
 body{
-	/*background-image: image-url('http://hasloo.com/freetwitterbackgrounds/wp-content/uploads/2012/08/tree-twitter-background.jpg'); */
+	/*background-image: image-url('login-bck.jpg'); */
 	background-color: #E5E5E5;
 
 }
@@ -24,9 +24,9 @@ body{
 
 #intro-line{
 	color:white;
-	font-size:80px;
+	font-size:50px;
 	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
+	font-weight: 500;
 }
 #post-show-top-img-cont{
 	background-image: url('post-show-bck.jpg');
@@ -153,6 +153,12 @@ body{
 	margin-bottom:0%;
 }
 
+/* Footer */
+#footer{
+	margin-top:0px;
+}
+
+
 /* index page */
 .post_panel{
 	border-radius:0;
@@ -257,4 +263,9 @@ span.glyphicon-arrow-down{
 .post-title-comment-page{
 	font-family: 'Roboto', sans-serif;
 	color: #4D4D4D;
+}
+
+/* Login page */
+#login-pg-cont{
+	background: url('login-bck.jpg');
 }

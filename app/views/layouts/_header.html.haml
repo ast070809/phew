@@ -14,8 +14,8 @@
       %li
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-success top-nav-create-btn'
     %ul.nav.navbar-nav.navbar-right
-      %li{style: 'padding-right: 10px;'}
-        -if user_signed_in?
+      -if user_signed_in?
+        %li{style: 'padding-right: 10px;'}
           .btn-group{style: 'cursor:pointer;'}
             #user-name-nav{"data-toggle"=> 'dropdown'}
               =fa_icon "user"
@@ -27,20 +27,25 @@
               %li.divider
               %li
                 =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
-        -else
+      -else
+        %li
+          =link_to "Sign Up", new_user_registration_path
+        %li.devider
+        %li
           =link_to('Login', new_user_session_path)
 .row
   .col-md-12{id: 'main-bnr-cont'}
     .row
-      -if @post_index
-        =render 'layouts/show_image'
-      -elsif @post_show
-        =render 'layouts/post_show'
-
-    .row
       .col-md-12
         -if @post_index or @show_all_header
           =render 'layouts/index'
+    .row
+      -if @post_index
+        =render 'layouts/show_image'
+      -elsif @post_show
+        =#render 'layouts/post_show'
+
+
       
 / Modal
 =render 'partials/create_link_modal'
