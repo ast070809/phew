@@ -34,7 +34,7 @@
     .row
       -if @post_index
         =render 'layouts/show_image'
-      -elsif current_page?(post_path)
+      -elsif @post_show
         =render 'layouts/post_show'
 
     .row
