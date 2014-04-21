@@ -20,7 +20,7 @@
           =link_to 'Hot', (if @post_index then root_path else @tribe end)
 
         %li.refine-link{class: ('active' if current_page?('/top/week'))}
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"5","data-close-others"=>"false"}
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"30","data-close-others"=>"false"}
             Top
             %b.caret
           %ul.dropdown-menu
@@ -49,7 +49,7 @@
         %li{style: 'padding-right: 25px;'}
           -if user_signed_in?
             .btn-group{style: 'cursor:pointer;'}
-              #user-name-nav{"data-toggle"=> 'dropdown'}
+              #user-name-nav{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"10","data-close-others"=>"false"}
                 =fa_icon "user"
                 =current_user.username
                 =fa_icon "caret-down"

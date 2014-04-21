@@ -1,0 +1,45 @@
+.panel.panel-default
+	.panel-heading
+		.row
+			.col-md-12
+				.row
+					.col-md-1.text-center
+						.row
+							=link_to upvote_post_path(p), method: 'put' do
+								=image_tag "arrow-up.png", height:25, width:20
+						.row
+							=p.netvotes
+						.row
+							=link_to downvote_post_path(p), method: 'put' do
+								=image_tag "down.png", height: 25, width:20
+					.col-md-2
+						=image_tag p.pic.url(:thumb), alt: 'post photo'
+					.col-md-9
+						.row
+							.col-md-10
+								%h4
+									=link_to "#{p.title}", p.link, target: '_blank', class: 'title-of-link'
+									-if p.source?
+										.source_link
+											(
+											=p.source
+											)	
+							.col-md-2	
+								.pull-right
+									=button_to pluralize(comment_count(p.id), 'comment'), p, class: 'btn btn-success  comments-btn', method: 'get'
+
+						.row
+							.col-md-12
+								%p
+									Submited
+									=time_ago_in_words(p.created_at)
+									ago by
+									%strong 
+										=link_to p.user.username, p.user
+									-if p.tribe
+										to
+										%strong
+											=p.tribe.name
+	.panel-body
+		=truncate(p.description, length:250)
+		

@@ -169,6 +169,11 @@ body{
 
 
 /* index page */
+.post-container{
+	padding-top:10px !important;
+	padding-bottom:10px !important;
+	margin-bottom: 15px !important;
+}
 #index-post-container{
 	margin-top:0px;
 	background-color:white !important;
@@ -182,10 +187,9 @@ body{
 	margin-bottom:15px;
 }
 .link_descrip{
-	color:#330725;
 	font-size:13px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
+	/* font-family: 'Roboto', sans-serif;
+	font-weight: 300; */
 }
 .source_link{
 	font-size: 12px;
@@ -296,4 +300,9 @@ span.glyphicon-arrow-down{
 /* Login page */
 #login-pg-cont{
 	background: url('login-bck.jpg');
+}
+
+/* user page */
+#user-page-margin{
+	margin-bottom:400px;
 }

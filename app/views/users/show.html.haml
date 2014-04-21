@@ -1,0 +1,16 @@
+.row
+	.col-md-12
+		%h2.text-center
+			Links Karma
+		-if !@posts.empty?
+			-@posts.each do |p|
+				=render 'users/link', :p=> p
+		-else
+			%h3.text-center
+				.margin-bottom-40
+				You have 0 Karma
+				.row
+				You haven't submitted any links
+			.row
+				.col-md-12
+					#user-page-margin
