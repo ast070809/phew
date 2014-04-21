@@ -1,9 +1,19 @@
-.row
+.row{id: 'comments-page-cont'}
 	.col-md-10.col-md-offset-1
 		- flash.each do |key, value|
 			= content_tag(:div, value, class: "alert alert-#{key}")
 		%h2
 			=link_to @post.title, @post.link, target: '_blank', class: 'post-title-comment-page'
+		.row
+			.col-md-8
+				=@post.description
+			.col-md-2
+				.user-detail-box-comment-page
+					Submited
+					=time_ago_in_words(@post.created_at)
+					ago by
+					%strong 
+						=link_to @post.user.username, @post.user
 
 		-if user_signed_in?
 			=form_tag add_comment_path, method: :post, class:'form-inline' do
@@ -21,13 +31,13 @@
 			=render 'layouts/show'
 			#comments
 				-@root_comments.each do |comment|
-					=render :partial => 'partials/comment', :object => comment		
+					=render :partial => 'partials/comment', :object => comment
+		-else
+			.row
+				.col-md-6.col-md-offset-2
+					%p
+						&nbsp
+						Be the first one to comment
+		.div{style:'margin-bottom:60px;'}		
 
-:javascript
-	$.backstretch([
-		"#{asset_path('bg4.jpg')}",
-		"#{asset_path('bg5.jpg')}",
-	], {
-		fade: 1000,
-		duration: 60000
-	});		
+	

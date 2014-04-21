@@ -13,13 +13,12 @@
       %li.divider
       %li
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-success top-nav-create-btn'
-      %li.tag-line
-        Share-vote-discuss
+
     %ul.nav.navbar-nav.navbar-right
       -if user_signed_in?
         %li{style: 'padding-right: 10px;'}
           .btn-group{style: 'cursor:pointer;'}
-            #user-name-nav{"data-toggle"=> 'dropdown'}
+            #user-name-nav{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"10","data-close-others"=>"false"}
               =fa_icon "user"
               =current_user.username
               =fa_icon "caret-down"
@@ -37,15 +36,17 @@
           =link_to('Login', new_user_session_path)
 .row
   .col-md-12{id: 'main-bnr-cont'}
-    .row
-      .col-md-12
-        -if @post_index or @tribe_show
-          =render 'layouts/index'
+    
     .row
       -if @post_index
         =render 'layouts/show_image'
       -elsif @post_show
         =#render 'layouts/post_show'
+    .row
+      .col-md-12
+        -if @post_index or @tribe_show
+          =render 'layouts/index'
+
 
 
       

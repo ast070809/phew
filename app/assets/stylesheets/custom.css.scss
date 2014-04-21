@@ -3,6 +3,7 @@
 
 #main-container{
 	padding:0px;
+	background-color:white;
 }
 body{
 	/*background-image: image-url('login-bck.jpg'); */
@@ -11,23 +12,28 @@ body{
 }
 
 #header-top-img-cont{
-	background-image:url('landing-bck.jpg');
-	min-height:150px;
+	/* background-image:url('landing-bck.jpg'); */
+	background-color:#5C4384;
+	min-height:100px;
 	margin-bottom:0px;
 }
 
 #header-top-img-cont > .overlay-header {
     z-index: 1;
-    min-height:150px;
-    background: rgba(0, 0, 0, 0.2); /*can be anything, of course*/
+    min-height:100px;
+    background: rgba(0, 0, 0, 0.0); /*can be anything, of course*/
 }
-
+.main-tag-line{
+	text-align:center;
+	font-size:30px;
+}
 #intro-line{
 	color:white;
 	font-size:50px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
-	
+	padding-top:20px;
+	text-shadow: rgba(0,0,0,0.1) 0px 1px 0px;
 }
 #post-show-top-img-cont{
 	background-image: url('post-show-bck.jpg');
@@ -163,6 +169,10 @@ body{
 
 
 /* index page */
+#index-post-container{
+	margin-top:0px;
+	background-color:white !important;
+}
 .post_panel{
 	border-radius:0;
 	padding-top:5px;
@@ -224,6 +234,22 @@ span.glyphicon-arrow-down{
 	background-color:white;
 }
 /* comments page */
+.user-detail-box-comment-page{
+	border-left:1px solid black;
+	padding-left:10px;
+}
+.media-body{
+	padding-left:0;
+}
+.comment-container{
+	padding-left: 15px;	
+	border-left:1px dotted #A0A0A0;
+}
+
+#comments-page-cont{
+	background-color:white !important;
+}
+
 #comments-title{
 	color:white;
 	font-size:70px;
@@ -244,7 +270,6 @@ span.glyphicon-arrow-down{
 }
 .comment-box{
 	 list-style-type: none;
-	 border-left:1px dotted #A0A0A0;
 }
 .comment-body{
 	font-size:12px;
