@@ -13,6 +13,8 @@
       %li.divider
       %li
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', class: 'color-light-green', id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-success top-nav-create-btn'
+      %li.tag-line
+        Share-vote-discuss
     %ul.nav.navbar-nav.navbar-right
       -if user_signed_in?
         %li{style: 'padding-right: 10px;'}
@@ -37,7 +39,7 @@
   .col-md-12{id: 'main-bnr-cont'}
     .row
       .col-md-12
-        -if @post_index or @show_all_header
+        -if @post_index or @tribe_show
           =render 'layouts/index'
     .row
       -if @post_index

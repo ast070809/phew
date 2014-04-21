@@ -125,11 +125,13 @@ body{
 	font-weight:bold;
 	&:hover{
 		border-bottom: 5px solid #7DDE50;
-		color:black;
+		color:#7DDE50;
 	}
 	color: 	#404040 ;
 }
+
 .tribe-nav-links.active{
+	color:#7DDE50;
 	border-bottom: 5px solid #7DDE50 !important;
 }
 .refine{

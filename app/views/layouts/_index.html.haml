@@ -1,21 +1,13 @@
 %nav.navbar{id: 'tribe-navigation'}
   .row
-    .col-md-2
-    .col-md-2
-      .refine
-    .col-md-6
+    .col-md-4
+    .col-md-8
       %ul.nav.navbar-nav
         %li.custom-center
-          =link_to "All", root_path, class: 'tribe-nav-links'
+          =link_to "All", root_path, class: "tribe-nav-links #{'active' if @post_index}"
         -@tribes.each do |tr|
           %li.custom-center
-            =link_to tr.name, tr, class: 'tribe-nav-links'
-        %li.custom-center
-          %a.tribe-nav-links{href: '#'}
-            Sports
-        %li.custom-center
-          %a.tribe-nav-links{href: '#'}
-            Business
+            =link_to tr.name, tr, class: "tribe-nav-links #{'active' if @tribe && tr.name == @tribe.name}"
 %nav.navbar{id: 'refine-nav'}
   .row
     .col-md-1

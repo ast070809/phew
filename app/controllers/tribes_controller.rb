@@ -8,8 +8,13 @@ class TribesController < ApplicationController
     links_per_page = 10
     tribe_id = params[:id]
     @tribes = Tribe.all
+    
+    # use the tribe name to activate the header
     @tribe = Tribe.find(tribe_id)
-    @show_all_header = true
+    
+    # variable to show proper header
+    @tribe_show = true
+    @post_index = false
 
     if @tribe
       if params[:duration]
