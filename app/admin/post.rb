@@ -1,6 +1,6 @@
 ActiveAdmin.register Post do
 
-  
+  permit_params :title, :link, :description, :tribe_id, :source
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
