@@ -27,23 +27,25 @@
 						-if user_signed_in? && current_user_commenter?(comment)
 							=link_to "Delete", delete_post_comment_path(@post, comment), method: "delete", class: 'delete-link'
 						
-						#reply.reply-link
-							%a{style: 'cursor:pointer', onclick: '$(this).parent().next().show(); $(this).parent().hide();'} Reply
-						#child{style: "display:none;"}
-							=form_tag add_child_comment_path, method: :post, class: 'form-horizontal' do
-								.form-group
-									=label_tag 'comment', 'Comment',class: 'col-md-2'
-									.col-md-6
-										=text_area_tag 'comment','', class: 'form-control'
-								=hidden_field_tag 'parent_id', comment.id
-								=hidden_field_tag 'post_id', @post.id 
-								.form-group
-									.col-md-offset-2
-										=submit_tag 'Submit', class: 'btn'
-							%a{onclick: "$(this).parent().hide();$(this).parent().prev().show()", id: 'cancel', style: 'cursor:pointer'}
-								Cancel
+						-if user_signed_in?
+							#reply.reply-link
+								%a{style: 'cursor:pointer', onclick: '$(this).parent().next().show(); $(this).parent().hide();'} Reply
+							#child{style: "display:none;"}
+								=form_tag add_child_comment_path, method: :post, class: 'form-horizontal' do
+									.form-group
+										=label_tag 'comment', 'Comment',class: 'col-md-2'
+										.col-md-6
+											=text_area_tag 'comment','', class: 'form-control'
+									=hidden_field_tag 'parent_id', comment.id
+									=hidden_field_tag 'post_id', @post.id 
+									.form-group
+										.col-md-offset-2
+											=submit_tag 'Submit', class: 'btn'
+								%a{onclick: "$(this).parent().hide();$(this).parent().prev().show()", id: 'cancel', style: 'cursor:pointer'}
+									Cancel
 						
-						=link_to "report", report_post_comment_path(@post, comment), method: :post
+							=link_to "report", report_post_comment_path(@post, comment), method: :post
+
 
 				= render :partial => 'partials/comment', :collection => comment.children.order('created_at desc')
 

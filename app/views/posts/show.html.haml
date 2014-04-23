@@ -25,7 +25,8 @@
 				=hidden_field_tag 'post_id', @post.id
 				=submit_tag 'Submit', class: 'btn btn-success'
 		-else
-			=link_to('Sign in to add comments', new_user_session_path) 
+			%h4
+				=link_to('Sign in to add comments or to reply to comments', new_user_session_path) 
 
 		-if !@root_comments.empty?		
 			=render 'layouts/show'
