@@ -3,10 +3,9 @@
   .reg-block
     .reg-block-header
       %h2 Sign Up
-      %p
-        Already Signed Up? Click
-        =link_to "Sign In", new_user_session_path, class: 'color-green'
-        to login your account.
+      =render 'layouts/messages'
+      =devise_error_messages!
+      
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       .input-group.margin-bottom-20
         %span.input-group-addon

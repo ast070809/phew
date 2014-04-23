@@ -6,6 +6,7 @@
         = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: 'reg-page'}) do |f|
           .reg-header
             %h2 Sign in
+          =render 'layouts/messages'
           .input-group.margin-bottom-20
             %span.input-group-addon
               %i.icon-user
