@@ -64,6 +64,9 @@ end
 
 group :development do
   gem 'sqlite3', '1.3.8'
+
+  # for previewing emails
+  gem "letter_opener"
 end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

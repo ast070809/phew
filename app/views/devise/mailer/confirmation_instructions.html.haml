@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %title RailsCasts Weekly
+    :css
+      body{
+        background-color:white;
+      }
+      #background{
+        background-color: #5C4384;
+      }
+      body, td { color:#000000; font-size:14px; font-family:Verdana,Helvetica,Arial; }
+      .divider { background-color:#555555; height:2px; }
+      .episode h2 { margin-top:0; margin-bottom:8px; font-size:18px; }
+      .episode p { margin:8px 0; }
+      .episode img { border:solid 1px #777777; }
+      .episode .duration { font-size:11px;color:#555555; }
+      #footer { font-size:11px; color:#555555; }
+      #footer a { color:#555555;}
+  %body
+    %table
+      %tr#background
+        %td
+          %h2{ style: "color:white;"}
+            Brand Name  
+      %tr
+        %td
+          Welcome #{@email} , to the elite community of informed people who like to get their opinion heard
+        %td
+      %tr
+        %td
+          You can confirm your email through the following link:
+          %a{href: '#', style: "color:#72C02C !important"}
+            %h4
+              = link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token)
+            
+      %tr
+        %td
+          %h3
+            Help others see the truth behind the news
+          %h5
+            Start sharing, voting and Commenting
+
