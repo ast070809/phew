@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	
 	def show 
+		@tribes = Tribe.all
 		links_per_page = 10
 		@user = User.find(params[:id])
 		@posts = @user.posts

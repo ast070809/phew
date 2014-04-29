@@ -45,10 +45,44 @@ class PostsController < ApplicationController
       @descrip = get_descrip(@url)
     end
     @post = Post.new
-    @tribe = Tribe.all
+    @tribes = Tribe.all
     #@images = get_images(@url)
-
     ##It will be better to move this job in background
+  end
+
+  def add_post_directly
+    @url = params[:link]
+
+    post = current_user.posts.new
+
+    if @url.present?
+      
+      @title = get_title(@url)
+      @source = get_host(@url)
+      @descrip = get_descrip(@url)
+      
+      post.title = @title
+      post.source = @source
+      post.description = @descrip
+      post.tag_list.add(params[:tag_list], parse: true)
+      
+      #assigning the tribe
+      tribe = Tribe.find(params[:tribe])
+
+      #image link
+      @image_link = get_images(@url)
+      post.pic = get_image_from_url(@image_link)
+
+      if post.save
+        Post.refresh_hotness(post)
+        redirect_to root_path, notice: 'Successfully posted'
+      else
+        flash[:error] = 'Some error occurred'
+        redirect_to new_post_path
+      end
+    else
+      redirect_to root_path, notice: 'Link not provided, please provide the link and try again'
+    end
 
   end
 
@@ -81,7 +115,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_show = true
-    
+    @tribes = Tribe.all
     if params[:type]
       type = params[:type]
       case type

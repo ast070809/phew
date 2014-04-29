@@ -3,7 +3,7 @@
     .modal-content{id: 'create-link-modal-dialog'}
       .modal-body
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
-        %h4.modal-title.font-white
+        %h3.modal-title.font-white
           %strong Submit a link
         .row
           .col-md-12
@@ -11,7 +11,37 @@
               Enter the link of an article, image or video
             =form_tag new_post_path, class: 'form form-horizontal', role: 'form', method: 'get' do
               .form-group
-                .col-md-10
+                .col-md-8
                   =url_field_tag 'url', '', type: 'email', class: 'form-control', placeholder: 'http://'
-                =submit_tag 'Submit', class: 'btn btn-default control-label'
+                =submit_tag 'Refine & Submit', class: 'btn btn-success control-label'
+        .row
+          .col-md-2.col-md-offset-5
+            %h4.font-white Or
+        .row
+          .col-md-12
+            =form_tag add_post_directly_path, class: 'form-horizontal', role: 'form', method: 'post' do
+              .form-group
+                =label_tag 'Link',nil, class: 'col-sm-2 control-label font-white'
+                .col-sm-8
+                  =url_field_tag 'link', '', type: 'email', class: 'form-control', placeholder: 'http://'
+              .form-group
+                =label_tag 'Tags',nil,  class: 'col-sm-2 control-label font-white'
+                .col-sm-10
+                  =text_field_tag :tag_list,'',  id: 'post_tags_list', class: 'col-sm-10 tag-input'
+              .form-group
+                =label_tag 'Tribe',nil, class: 'col-sm-2 control-label font-white'
+                .col-sm-8
+                  =select_tag :tribe, options_for_select(@tribes.collect{ |u| [u.name, u.id] }), class: 'form-control'
+
+              .form-group
+                .col-sm-10.col-sm-offset-2
+                  =submit_tag 'Submit Directly', class: 'btn btn-large btn-success',:onClick => "return checkform();"
+
+
+
+:javascript
+  $(function() {
+    $(' #post_tags_list').select2({tags:[],tokenSeparators: [",", " "]})
+  });
+
           

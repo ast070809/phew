@@ -95,5 +95,5 @@ class Post < ActiveRecord::Base
 		def self.score(ups, downs)
 			return ups-downs
 		end
-
+		
 end

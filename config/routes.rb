@@ -40,6 +40,7 @@ Phew::Application.routes.draw do
   get 'top/:duration', to: 'posts#index', as: :top
   get 'new/:duration', to: 'posts#index', as: :new
   
+  post 'add_post_directly', to: 'posts#add_post_directly'
   #get 'tribe', to: 'posts#index', as: :tribe_posts
   
 
