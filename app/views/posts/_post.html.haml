@@ -17,7 +17,7 @@
 						=#fa_icon "arrow-down 2x"
 		.col-md-2
 			=image_tag p.pic.url(:thumb), alt: 'post photo'
-		.col-xs-9.col-md-7
+		.col-xs-9.col-md-6.post-mid-part
 			%h4
 				=link_to "#{p.title}", p.link, target: '_blank', class: 'title-of-link'
 				-if p.source?
@@ -56,5 +56,15 @@
 							-tags.each do |t|
 								%li
 									=link_to t, tag_path(t), class: 'label label-info'
-		.col-xs-2.col-md-2
+		.col-xs-2.col-md-3.cmnt-indx-cont
 			=button_to pluralize(comment_count(p.id), 'comment'), p, class: 'btn btn-success  comments-btn', method: 'get'
+			.row
+				.col-md-12
+					- tc = top_comment(p.id)
+					-if tc.present?
+						%strong Top Comment - 
+						=truncate(tc.body, length:150)
+						%p 
+							By
+							%strong 
+								=link_to tc.user.username, tc.user

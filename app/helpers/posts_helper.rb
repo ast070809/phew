@@ -1,5 +1,17 @@
 module PostsHelper
 	include ActsAsTaggableOn::TagsHelper
+
+	def top_comment(post_id)
+		post = Post.find(post_id)
+
+		@top_comment_arr = post.root_comments.order('netvote desc, created_at desc').limit(1)
+		if @top_comment_arr.empty?
+			@top_comment = nil
+		else
+			@top_comment = @top_comment_arr[0]
+		end
+	end
+
 	def comment_count(post_id)
 		post = Post.find(post_id)
 
