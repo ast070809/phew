@@ -68,6 +68,7 @@ class PostsController < ApplicationController
       
       #assigning the tribe
       tribe = Tribe.find(params[:tribe])
+      post.tribe_id = tribe.id
 
       #image link
       @image_link = get_images(@url)
