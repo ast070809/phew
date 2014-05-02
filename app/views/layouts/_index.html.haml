@@ -10,10 +10,11 @@
             =link_to tr.name, tr, class: "tribe-nav-links #{'active' if @tribe && tr.name == @tribe.name}"
 %nav.navbar{id: 'refine-nav'}
   .row
-    .col-md-1
+    .col-md-2{style:'padding-top:5px; padding-left:20px; padding-right:20px;'}
       #brand-refine-bar{style: 'display:none;'}
-        Brand
-    .col-md-6{id: "duration-header"}
+        =image_tag 'niblin.png', height:30
+    
+    .col-md-5{id: "duration-header", style: 'padding-left:20px; padding-top:5px;'}
       %ul.nav.nav-pills.refine-top
         %li.refine-link.active
           
@@ -43,7 +44,7 @@
           =link_to 'New', if @post_index then new_path('current') else new_tribe_path(id: @tribe.id, duration: 'current') end
 
         %li
-          =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-success'
+          =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-default'
     .col-md-5
       %ul.nav.navbar-nav.navbar-right{id: 'username-refine', style: 'display:none;'}
         %li{style: 'padding-right: 25px;'}

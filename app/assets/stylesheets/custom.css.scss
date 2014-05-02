@@ -13,8 +13,8 @@ body{
 }
 
 #header-top-img-cont{
-	/* background-image:url('landing-bck.jpg'); */
-	background-color:#2ecc71;
+	background-image:url('greyzz.png');
+	/* background-color:#2ecc71; */
 	min-height:100px;
 	margin-bottom:0px;
 }
@@ -22,8 +22,15 @@ body{
 #header-top-img-cont > .overlay-header {
     z-index: 1;
     min-height:100px;
-    background: rgba(0, 0, 0, 0.0); /*can be anything, of course*/
+    background: rgba(46, 204, 113,0.5); /*can be anything, of course*/
 }
+
+#top-nav-create-btn-cont{
+	padding-top:1px;
+	padding-left:10px;
+}
+
+
 .main-tag-line{
 	text-align:center;
 	font-size:30px;
@@ -208,6 +215,7 @@ body{
 .comments-btn{
 	font-size: 13px !important;
 	color:#428bca;
+	
 }
 span.glyphicon-arrow-up{
 	font-size:	2em;
