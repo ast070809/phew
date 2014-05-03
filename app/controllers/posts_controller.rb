@@ -14,8 +14,10 @@ class PostsController < ApplicationController
       @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(links_per_page)
     elsif params[:duration]
       duration = params[:duration]
+        @duration_header = true
         case duration
           when 'current'
+            @new_header = true
             @posts = Post.all.order('created_at desc').page(params[:page]).per(links_per_page)
           when 'today'
             @posts = Post.today.order('netvotes desc','created_at desc').page(params[:page]).per(links_per_page)

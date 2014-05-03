@@ -19,8 +19,10 @@ class TribesController < ApplicationController
     if @tribe
       if params[:duration]
         duration = params[:duration]
+        @duration_header = true
         case duration
           when 'current'
+            @new_header = true
             @posts = @tribe.posts.order('created_at desc').page(params[:page]).per(links_per_page)
           when 'today'
             @posts = @tribe.posts.today.order('netvotes desc','created_at desc').page(params[:page]).per(links_per_page)

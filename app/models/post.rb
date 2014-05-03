@@ -50,19 +50,19 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.today
-	  where("created_at >= ?", Time.zone.now.beginning_of_day)
+	  where("created_at >= ?", Time.zone.now - 24*60*60)
 	end
 	
 	def self.week
-	  where("created_at >= ?", Time.zone.now.beginning_of_week)
+	  where("created_at >= ?", Time.zone.now - 7*24*60*60)
 	end
 
 	def self.month
-	  where("created_at >= ?", Time.zone.now.beginning_of_month)
+	  where("created_at >= ?", Time.zone.now - 30*24*60*60)
 	end
 
 	def self.year
-	  where("created_at >= ?", Time.zone.now.beginning_of_year)
+	  where("created_at >= ?", Time.zone.now - 365*24*60*60)
 	end
 
 	private

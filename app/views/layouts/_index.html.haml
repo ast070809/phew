@@ -12,15 +12,15 @@
   .row
     .col-md-2{style:'padding-top:5px; padding-left:20px; padding-right:20px;'}
       #brand-refine-bar{style: 'display:none;'}
-        =image_tag 'niblin.png', height:30
+        =link_to image_tag('niblin.png', height:30), root_path
     
     .col-md-5{id: "duration-header", style: 'padding-left:20px; padding-top:5px;'}
       %ul.nav.nav-pills.refine-top
-        %li.refine-link.active
+        %li.refine-link{class: "#{'active' if !@duration_header }"}
           
           =link_to 'Hot', (if @post_index then root_path else @tribe end)
 
-        %li.refine-link{class: ('active' if current_page?('/top/week'))}
+        %li.refine-link{class: "#{'active' if @duration_header && !@new_header}"}
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"30","data-close-others"=>"false"}
             Top
             %b.caret
@@ -40,7 +40,7 @@
             %li.divider
             %li
               =link_to 'All time', if @post_index then top_path('all_time') else top_tribe_path(id: @tribe.id, duration: 'all_time') end
-        %li.refine-link
+        %li.refine-link{class: "#{'active' if @new_header}"}
           =link_to 'New', if @post_index then new_path('current') else new_tribe_path(id: @tribe.id, duration: 'current') end
 
         %li

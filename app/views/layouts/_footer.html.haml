@@ -7,26 +7,15 @@
         .headline
           %h2 About
         %p.margin-bottom-25.md-margin-bottom-40 
-          Foodninja is the platform for all awesome foodies to share their knowledge about foods
+          Niblin is a community of news nibblers. We believe that everything needs to be taken with a pinch of salt and hence there should be a discussion on every news.
+          %br
+          %strong
+            We share relevant links, vote on their relevance and have a healthy discussion on it !!!
       / /col-md-4
       .col-md-4.md-margin-bottom-40
       
       / /col-md-4
-      .col-md-4
-        / Monthly Newsletter
-        .headline
-          %h2 Contact Us
-        %address.md-margin-bottom-40
-          25, Lorem Lis Street, Orange
-          %br/
-          California, US
-          %br/
-          Phone: 800 123 3456
-          %br/
-          Fax: 800 123 3456
-          %br/
-          Email:
-          %a{href: "mailto:info@anybiz.com"} info@anybiz.com
+      
       / /col-md-4
     / /row
   / /container
@@ -38,13 +27,13 @@
     .row
       .col-md-6
         %p.copyright-space
-          2013 © Edunable. ALL Rights Reserved.
+          2013 © Niblin. ALL Rights Reserved.
           %a{href: "#"} Privacy Policy
           |
           %a{href: "#"} Terms of Service
       .col-md-6
-        %a{href: "index.html"}
-          %img#logo-footer.pull-right{alt: "", src: "assets/img/logo2-default.png"}/
+        =link_to image_tag('niblin.png', id: 'logo-footer', class: 'pull-right', height:15), root_path
+        
     / /row
   / /container
 / /copyright
