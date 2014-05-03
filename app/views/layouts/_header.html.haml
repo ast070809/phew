@@ -8,7 +8,7 @@
       %span.icon-bar
       %span.icon-bar
     %a.navbar-brand{href: root_path, style: "padding-top:5px;"} 
-      =image_tag 'niblin.png', height: 35
+      =image_tag 'logo_150.png', height: 45
   / Collect the nav links, forms, and other content for toggling
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav
@@ -16,7 +16,6 @@
       %li{id: 'top-nav-create-btn-cont'}
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#',  id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-default top-nav-create-btn'
       
-
     %ul.nav.navbar-nav.navbar-right
       -if user_signed_in?
         %li{style: 'padding-right: 10px;'}
