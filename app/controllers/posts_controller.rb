@@ -63,6 +63,7 @@ class PostsController < ApplicationController
       @source = get_host(@url)
       @descrip = get_descrip(@url)
       
+      post.link = @url
       post.title = @title
       post.source = @source
       post.description = @descrip
@@ -231,7 +232,6 @@ class PostsController < ApplicationController
     def get_host(link)
       s = URI.parse(link)
       source = s.host
-
       if source
         return source
       else
