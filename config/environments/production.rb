@@ -104,5 +104,5 @@ Phew::Application.configure do
        :password => "7rcejt4vh212"
   }
   require 'net/http'
-  
+  GA.tracker = "UA-50235584-1"
 end

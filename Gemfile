@@ -51,7 +51,8 @@ gem 'fastimage', '1.6.1'
 ## Active admin
 gem 'activeadmin', github: 'gregbell/active_admin'
 
-
+## Google analytics
+gem 'google-analytics-rails'
 
 group :production do
   gem 'pg', '0.15.1'
