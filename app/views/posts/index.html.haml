@@ -7,27 +7,32 @@
 			= render 'post', :p=> p
 				
 		=paginate @posts, theme: 'twitter-bootstrap-3'
-	.col-lg-3.col-md-3.col-sm-3.col-xs-3
-		.panel
-			.panel-heading.text-center
-				%h5{style:'text-decoration:underline;'}
-					Rules
-				These rules apply to site wide usage
-			.panel-body{style: 'padding-left:2px;padding-right:2px;'}
-				%ul.rules-list-cont
-					%li.rules-list
-						%strong
-							No Posting of personal Information
-						This will include anything that is hosted on Facebook servers, as it can be traced back to the original account. No Stalking and harrasment.
-					%li.rules-list
-						%strong
-							No nudity, porn or gore
-					%li.rules-list
-						%strong
-							No Post titles or description soliciting votes
-					%li.rules-list
-						%strong
-							No personal attacks on other users
-					%li{style:'color:red;'}			
-						Breaking any of the above rules can lead to the user getting banned
+	.col-lg-3.col-md-3.col-sm-3.col-xs-3{style: 'padding-right:20px;'}
+		#accordion-1.panel-group.acc-v1
+			.panel.panel-default
+				.panel-heading
+					%h4.panel-title.text-center
+						%a.accordion-toggle.collapsed{"data-parent" => "#accordion-1", "data-toggle" => "collapse", href: "#collapse-One"}
+							Rules
+							=fa_icon "sort-down"
+			#collapse-One.panel-collapse.collapse
+				.panel-body
+					.row
+						%ul.rules-list-cont
+							%li.rules-list
+								%strong
+									No Posting of personal Information
+								This will include anything that is hosted on Facebook servers, as it can be traced back to the original account. No Stalking and harrasment.
+							%li.rules-list
+								%strong
+									No nudity, porn or gore
+							%li.rules-list
+								%strong
+									No Post titles or description soliciting votes
+							%li.rules-list
+								%strong
+									No personal attacks on other users
+							%li{style:'color:red;'}			
+								Breaking any of the above rules can lead to the user getting banned
 
+.margin-bottom-60
