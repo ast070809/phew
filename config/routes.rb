@@ -41,6 +41,10 @@ Phew::Application.routes.draw do
   get 'new/:duration', to: 'posts#index', as: :new
   
   post 'add_post_directly', to: 'posts#add_post_directly'
+
+  ##Static Pages ##
+  get '/privacy_policy', to: 'static_pages#privacy_policy', as: :privacy_policy
+  get '/terms_of_use', to: 'static_pages#terms_of_use', as: :terms_of_use
   #get 'tribe', to: 'posts#index', as: :tribe_posts
   
 

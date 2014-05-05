@@ -27,12 +27,12 @@
     .row
       .col-md-6
         %p.copyright-space
-          2013 © Niblin. ALL Rights Reserved.
-          %a{href: "#"} Privacy Policy
+          2014 © Niblin. ALL Rights Reserved.
+          =link_to "Privacy Policy", privacy_policy_path
           |
-          %a{href: "#"} Terms of Service
+          =link_to "Terms of Use", terms_of_use_path
       .col-md-6
-        =link_to image_tag('niblin.png', id: 'logo-footer', class: 'pull-right', height:15), root_path
+        =link_to image_tag('logo_150.png', id: 'logo-footer', class: 'pull-right', height:30), root_path
         
     / /row
   / /container
