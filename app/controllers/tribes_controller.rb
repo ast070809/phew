@@ -33,7 +33,7 @@ class TribesController < ApplicationController
           when 'year'
             @posts = @tribe.posts.year.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
           when 'all_time'
-            @posts = tribe.posts.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
+            @posts = @tribe.posts.order('netvotes desc' , 'created_at desc').page(params[:page]).per(links_per_page)
         end
       elsif params[:host]
           source = params[:host]

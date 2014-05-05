@@ -2,9 +2,32 @@
 	.col-md-6.col-md-offset-3
 		=render 'layouts/messages'
 .row{id: 'index-post-container'}
-	.col-lg-9.col-lg-offset-1.col-md-9.col-md-offset-1.col-sm-9.col-sm-offset-1.col-xs-9.col-xs-offset-1
+	.col-lg-9.col-md-9.col-sm-9.col-xs-9{style:'padding-left:70px; padding-right:20px;'}
 		-@posts.each do |p|
 			= render 'post', :p=> p
 				
 		=paginate @posts, theme: 'twitter-bootstrap-3'
-	.col-lg-3.col-md-3.col-sm-3.col-xs-2
+	.col-lg-3.col-md-3.col-sm-3.col-xs-3
+		.panel
+			.panel-heading.text-center
+				%h5{style:'text-decoration:underline;'}
+					Rules
+				
+			.panel-body{style: 'padding-left:2px;padding-right:2px;'}
+				%ul.rules-list-cont
+					%li.rules-list
+						%strong
+							No Posting of personal Information
+						This will include anything that is hosted on Facebook servers, as it can be traced back to the original account. No Stalking and harrasment.
+					%li.rules-list
+						%strong
+							No nudity, porn or gore
+					%li.rules-list
+						%strong
+							No Post titles or description soliciting votes
+					%li.rules-list
+						%strong
+							No personal attacks on other users
+				%div{style:'color:red;'}			
+					Breaking any of the above rules can lead to the user getting banned
+
