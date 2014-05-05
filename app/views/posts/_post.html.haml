@@ -66,9 +66,10 @@
 				.col-md-12
 					- tc = top_comment(p.id)
 					-if tc.present?
-						%strong Top comment - 
-						=link_to truncate(tc.body, length:50), p
-						%p 
-							by
-							%strong 
-								=link_to tc.user.username, tc.user
+						%p
+							%strong Top comment - 
+							=link_to truncate(tc.body, length:50), p
+							%p 
+								by
+								%strong 
+									=link_to tc.user.username, tc.user
