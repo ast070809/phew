@@ -1,6 +1,7 @@
 # /app/helpers/devise_helper.rb
  
 module DeviseHelper
+  
   def devise_error_messages!
     return '' if resource.errors.empty?
     messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
@@ -17,5 +18,9 @@ module DeviseHelper
     HTML
      
     html.html_safe
+  end
+
+  def image_url(source)    
+    "#{root_url}#{image_path(source)}"
   end
 end
