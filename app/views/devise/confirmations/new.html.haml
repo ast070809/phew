@@ -1,0 +1,29 @@
+
+.container
+  / Reg Block
+  .reg-block
+    .reg-block-header
+      %h2 Resend Confirmation instructions
+      =render 'layouts/messages'
+      =devise_error_messages!
+      
+    = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|    
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-user
+        = f.text_field :login, class: 'form-control',:autofocus => true, placeholder: 'login'
+      .row
+        .col-md-10.col-md-offset-1
+          = f.submit "Resend confirmation instructions", class: 'btn-u btn-block'
+      .row
+        = render "devise/shared/links"
+          
+
+:javascript
+  $.backstretch([
+    "#{asset_path('bg4.jpg')}",
+    "#{asset_path('bg5.jpg')}",
+    ], {
+      fade: 1000,
+      duration: 7000
+  });   

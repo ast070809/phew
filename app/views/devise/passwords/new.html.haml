@@ -1,0 +1,17 @@
+.container
+  / Reg Block
+  .reg-block
+    .reg-block-header
+      %h2 Forgot your password?
+      =render 'layouts/messages'
+      =devise_error_messages!
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-user
+        = f.text_field :login, class: 'form-control',:autofocus => true, placeholder: 'login'
+      .row
+        .col-md-10.col-md-offset-1
+          = f.submit "Send me reset password instructions", class: 'btn-u btn-block'
+      .row
+        = render "devise/shared/links"

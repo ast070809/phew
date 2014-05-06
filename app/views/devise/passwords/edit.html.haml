@@ -1,0 +1,23 @@
+.container
+  / Reg Block
+  .reg-block
+    .reg-block-header
+      %h2 Change your password
+      =render 'layouts/messages'
+      =devise_error_messages!
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|    
+      = f.hidden_field :reset_password_token
+      
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-lock
+        = f.password_field :password, class: 'form-control',:autofocus => true, placeholder: 'password'
+      .input-group.margin-bottom-20
+        %span.input-group-addon
+          %i.icon-key
+        = f.password_field :password_confirmation, class: 'form-control',:autofocus => true, placeholder: 'password confirmation'
+      .row
+        .col-md-10.col-md-offset-1
+          = f.submit "Change my password", class: 'btn-u btn-block'
+      .row
+        = render "devise/shared/links"
