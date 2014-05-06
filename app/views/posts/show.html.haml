@@ -32,7 +32,7 @@
 			=render 'layouts/show'
 			#comments
 				-@root_comments.each do |comment|
-					=render :partial => 'partials/comment', :object => comment
+					=render :partial => 'comment', :object => comment
 		-else
 			.row
 				.col-md-6.col-md-offset-2

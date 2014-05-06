@@ -120,10 +120,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_show = true
     @tribes = Tribe.all
+    @type = 'top'
     if params[:type]
       type = params[:type]
       case type
         when 'best'
+          @type = 'best'
           @root_comments = @post.root_comments.order('hotness desc')
         else
           @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
