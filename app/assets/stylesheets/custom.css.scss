@@ -1,5 +1,4 @@
 /* Global styling*/
-@import url("//fonts.googleapis.com/css?family=Roboto:100,300,400,500");
 
 
 #main-container{
@@ -38,8 +37,6 @@ body{
 #intro-line{
 	color:white;
 	font-size:50px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: 500;
 	padding-top:20px;
 	text-shadow: rgba(0,0,0,0.1) 0px 1px 0px;
 }
@@ -184,6 +181,12 @@ body{
 	text-align:justify;
 }
 
+.vote-arrow{
+	color:#333339;
+	&:hover{
+		color:#E67E2A;
+	}
+}
 .post-container{
 	padding-top:0px !important;
 	padding-bottom:0px !important;

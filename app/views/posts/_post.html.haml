@@ -6,7 +6,8 @@
 				.row
 					=link_to upvote_post_path(p), method: 'put' do
 						%h4
-							=fa_icon "chevron-up"
+							.vote-arrow
+								=fa_icon "chevron-up"
 						=#image_tag "arrow-up.png", height:25, width:20
 						=#fa_icon "arrow-up 2x"
 				.row
@@ -16,7 +17,8 @@
 				.row
 					=link_to downvote_post_path(p), method: 'put' do
 						%h4
-							=fa_icon "chevron-down"
+							.vote-arrow
+								=fa_icon "chevron-down"
 						=#image_tag "down.png", height: 25, width:20
 						=#fa_icon "arrow-down 2x"
 		.col-md-1.post-image-cont
