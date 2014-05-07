@@ -1,0 +1,37 @@
+default: &default
+  top: "<script type="text/javascript">
+        var WRInitTime=(new Date()).getTime();
+        </script>"
+  bottom: "<!-- ClickTale Bottom part -->
+        <script type='text/javascript'>
+        // The ClickTale Balkan Tracking Code may be programmatically customized using hooks:
+        // 
+        //   function ClickTalePreRecordingHook() { /* place your customized code here */  }
+        //
+        // For details about ClickTale hooks, please consult the wiki page http://wiki.clicktale.com/Article/Customizing_code_version_2
+
+        document.write(unescape("%3Cscript%20src='"+
+        (document.location.protocol=='https:'?
+        "https://cdnssl.clicktale.net/www07/ptc/cc04a3b7-88cc-4e40-a5d9-90c220fe8038.js":
+        "http://cdn.clicktale.net/www07/ptc/cc04a3b7-88cc-4e40-a5d9-90c220fe8038.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
+        </script>
+
+        <!-- ClickTale end of Bottom part -->"
+  #do_not_replace: !ruby/regexp /Not to record when this text is present on the page/i
+  #insert_after: !ruby/regexp /The top part of the script goes after this regexp, by default after opening <body> tag/
+  #insert_before: !ruby/regexp /The bottom part of the script goes before this regexp, by default before closing </body> tag/
+  #allowed_addresses: "75.125.82.64/26,50.97.162.64/26"
+  do_not_process_cookie_name: "WRUID"
+  do_not_process_cookie_value: 0
+
+production:
+  <<: *default
+  enabled: true
+
+development:
+  <<: *default
+  enabled: false
+
+test:
+  <<: *default
+  enabled: false
