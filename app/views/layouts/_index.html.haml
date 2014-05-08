@@ -1,16 +1,13 @@
-%nav.navbar{id: 'tribe-navigation'}
-  .row
-    .col-md-3
-    .col-md-8
-      %ul.nav.navbar-nav
-        %li.custom-center
-          =link_to "All", root_path, class: "tribe-nav-links #{'active' if @post_index}"
-        -@tribes.each do |tr|
-          %li.custom-center
-            =link_to tr.name, tr, class: "tribe-nav-links #{'active' if @tribe && tr.name == @tribe.name}"
+%nav.navbar.navbar-center{id: 'tribe-navigation'}
+  %ul.nav.navbar-nav
+    %li.custom-center
+      =link_to "All", root_path, class: "tribe-nav-links #{'active' if @post_index}"
+    -@tribes.each do |tr|
+      %li.custom-center
+        =link_to tr.name, tr, class: "tribe-nav-links #{'active' if @tribe && tr.name == @tribe.name}"
 %nav.navbar{id: 'refine-nav'}
   .row
-    .col-md-2{style:'padding-top:5px; padding-left:20px; padding-right:20px;'}
+    .col-md-1{style:'padding-top:5px; padding-left:20px; margin-right:20px;'}
       #brand-refine-bar{style: 'display:none;'}
         =link_to image_tag('logo_150.png', height:40), root_path
     
@@ -23,9 +20,8 @@
         %li.refine-link{class: "#{'active' if @duration_header && !@new_header}"}
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"30","data-close-others"=>"false"}
             Top
-            %b.caret
+            =fa_icon "caret-down"
           %ul.dropdown-menu
-            
             %li
               =link_to 'Today', if @post_index then top_path('today') else top_tribe_path(id: @tribe.id, duration: 'today') end
             %li.divider

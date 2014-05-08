@@ -28,8 +28,6 @@ body{
 	padding-top:1px;
 	padding-left:10px;
 }
-
-
 .main-tag-line{
 	text-align:center;
 	font-size:30px;
@@ -74,27 +72,59 @@ body{
 	background-color:white;
 	border-radius:0px;
 }
+#tribe-navigation{
+	margin-top:0px;
+	margin-bottom:0px;
+	padding-top:10px;
+	padding-bottom:15px;
+	padding-left:15px;
+	background-color: #5E4485;
+	min-height:40px !important;
+	border-radius:0px;	
+}
+.tribe-nav-links{	
+	padding-top:10px !important;
+	padding-bottom:0px !important;
+	/*border-bottom: 5px solid #FFF;*/
+	font-size:18px;
+	font-weight:bold;
+	&:hover{
+		border-bottom: 5px solid #7DDE50;
+		color:#7DDE50;
+	}
+	color: 	#CDBFE3 ;
+}
+
+.tribe-nav-links.active{
+	color:#7DDE50;
+	border-bottom: 5px solid #7DDE50 !important;
+}
 #refine-nav{
 	padding-top:0px;
 	padding-bottom:0px;
 	box-shadow: 0px 2px 2px #D8D8D8;
-	background-color:#f5f5f5;
+	background-color:#C3C3E5;
 	min-height:20px;
 	border-radius:0px;
 }
 #hot-btn{
 	font-size:10px;
 }
-
-#tribe-navigation{
-	margin-top:0px;
-	margin-bottom:0px;
+.refine-link{
 	padding-top:0px;
 	padding-bottom:0px;
-	background-color: #F5F5F5;
-	min-height:40px !important;
-	border-radius:0px;	
+	font-size:14px;
 }
+.refine-link > a{
+	color: #6E1101;
+	font-weight:bold;
+	padding-top:7px !important;
+	padding-bottom:7px !important;
+}
+.refine-top{
+	padding-top:0px;
+}
+
 #submit-new-link{
 	padding-top:8px;
 	padding-bottom:8px;
@@ -107,20 +137,6 @@ body{
 	margin-bottom:5px;
 }
 
-
-.refine-link{
-	padding-top:0px;
-	padding-bottom:0px;
-	font-size:12px;
-}
-.refine-link > a{
-	color: #404040;
-	padding-top:7px !important;
-	padding-bottom:7px !important;
-}
-.refine-top{
-	padding-top:0px;
-}
 .remove-grey-bck-nav{
 	background-color:white !important;
 }
@@ -128,23 +144,7 @@ body{
 	margin: 0px;
 	padding: 0px;
 }
-.tribe-nav-links{	
-	padding-top:10px !important;
-	padding-bottom:0px !important;
-	border-bottom: 5px solid #FFF;
-	font-size:14px;
-	font-weight:bold;
-	&:hover{
-		border-bottom: 5px solid #7DDE50;
-		color:#7DDE50;
-	}
-	color: 	#404040 ;
-}
 
-.tribe-nav-links.active{
-	color:#7DDE50;
-	border-bottom: 5px solid #7DDE50 !important;
-}
 .refine{
 	padding-top:15px;
 	padding-bottom:0px;

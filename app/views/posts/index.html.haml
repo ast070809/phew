@@ -2,12 +2,12 @@
 	.col-md-6.col-md-offset-3
 		=render 'layouts/messages'
 .row{id: 'index-post-container'}
-	.col-lg-9.col-md-9.col-sm-9.col-xs-9{style:'padding-left:70px; padding-right:20px;'}
+	.col-lg-10.col-md-10.col-sm-10.col-xs-10{style:'padding-left:30px; padding-right:20px;'}
 		-@posts.each do |p|
 			= render 'post', :p=> p
 				
 		=paginate @posts, theme: 'twitter-bootstrap-3'
-	.col-lg-3.col-md-3.col-sm-3.col-xs-3{style: 'padding-right:20px;'}
+	.col-lg-2.col-md-2.col-sm-2.col-xs-2{style: 'padding-right:20px;'}
 		#accordion-1.panel-group.acc-v1
 			.panel.panel-default
 				.panel-heading
