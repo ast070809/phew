@@ -20,8 +20,9 @@ Phew::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Set host for mailer
-  config.action_mailer.default_url_options = {:host => "http://aqueous-ocean-1510.herokuapp.com/"}
+  config.action_mailer.default_url_options = {:host => ENV['MAILER_HOST']}
 
+  #"http://aqueous-ocean-1510.herokuapp.com/"
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = true
 
