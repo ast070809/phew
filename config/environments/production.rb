@@ -99,9 +99,12 @@ Phew::Application.configure do
        :authentication => :plain,
        :address => "smtp.mailgun.org",
        :port => 587,
-       :domain => "app24956072.mailgun.org",
-       :user_name => "postmaster@app24956072.mailgun.org",
-       :password => "50bnglq5a387"
+       :domain => ENV['MAILGUN_DOMAIN'],
+       #{}"app24956072.mailgun.org",
+       :user_name => ENV['MAILGUN_USERNAME']
+       #{}"postmaster@app24956072.mailgun.org",
+       :password => ENV['MAILGUN_PASSWORD']
+       #{}"50bnglq5a387"
   }
   require 'net/http'
   GA.tracker = "UA-50235584-1"
