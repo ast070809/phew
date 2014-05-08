@@ -101,7 +101,7 @@ Phew::Application.configure do
        :port => 587,
        :domain => ENV['MAILGUN_DOMAIN'],
        #{}"app24956072.mailgun.org",
-       :user_name => ENV['MAILGUN_USERNAME']
+       :user_name => ENV['MAILGUN_USERNAME'],
        #{}"postmaster@app24956072.mailgun.org",
        :password => ENV['MAILGUN_PASSWORD']
        #{}"50bnglq5a387"
