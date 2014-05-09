@@ -5,7 +5,10 @@
       .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
         = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: 'reg-page'}) do |f|
           .reg-header
-            %h2 Sign in
+            .pull-right
+              =link_to 'X', root_path
+            %h2 
+              Sign in  
           =render 'layouts/messages'
           .input-group.margin-bottom-20
             %span.input-group-addon
