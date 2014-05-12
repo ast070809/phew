@@ -97,8 +97,8 @@ body{
 }
 
 .tribe-nav-links.active{
-	color:#6E1101;
-	border-bottom: 5px solid #6E1101 !important;
+	color:#003399;
+	border-bottom: 5px solid #003399 !important;
 }
 #refine-nav{
 	padding-top:0px;
@@ -122,6 +122,15 @@ body{
 	font-weight:bold;
 	padding-top:7px !important;
 	padding-bottom:7px !important;
+	&:hover{
+		border-bottom: 5px solid #00AEEF !important;
+	}
+}
+
+.refine-top > li.active > a{
+	color:#772011 !important;
+	background-color:white !important;
+	border-bottom: 5px solid #00AEEF !important;
 }
 .refine-top{
 	padding-top:0px;
