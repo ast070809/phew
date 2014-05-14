@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   require 'nokogiri'
   require 'fastimage'
   
+  has_mobile_fu_for :index
   before_filter :authenticate, except: [:index, :show]  
   
   def index
