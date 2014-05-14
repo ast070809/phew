@@ -5,8 +5,8 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   
-  <%= stylesheet_link_tag    "/jquery-mobile/jquery.mobile-1.4.2.min.css", media: "all", "data-turbolinks-track" => false %>
-  <%= javascript_include_tag "/jquery-mobile/jquery.mobile-1.4.2.min.js", "data-turbolinks-track" => false %>
+  <%= stylesheet_link_tag    "/assets/jquery-mobile/jquery.mobile-1.4.2.min.css", media: "all", "data-turbolinks-track" => false %>
+  <%= javascript_include_tag "/assets/jquery-mobile/jquery.mobile-1.4.2.min.js", "data-turbolinks-track" => false %>
   
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,12 +28,19 @@
 </script>
 </head>
 <body data-role = "page">
-	<div class= 'container-fluid', id='main-container', data-role= "header"> 
-		<%= render 'layouts/header' %>
-    <div data-role = 'content'>
+	<div class= 'container-fluid', id='main-container'> 
+		
+    <div  data-role= "header">
+      <%= render 'layouts/mobile/header' %>
+    </div>
+    
+    <div role='main' class='ui-content'>
 		  <%= yield %>
     </div>
-		<%= render 'layouts/footer' %>
+		
+    <div  data-role= "footer">
+      <%= render 'layouts/mobile/footer' %>
+    </div>
 	</div>
 </body>
 </html>
