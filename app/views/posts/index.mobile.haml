@@ -1,1 +1,8 @@
-This is the mobile site
+%div{'data-role'=> 'page'}
+	%div{"data-role" => "header"}
+		= render 'layouts/mobile/header'
+	.ui-content{role: "main"}	
+		%p
+			This is a mobile site
+	%div{"data-role" => "footer"}
+		= render 'layouts/mobile/footer'

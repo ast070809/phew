@@ -1,5 +1,8 @@
 %div{"data-role" => "header"}
-  %a.ui-btn.ui-icon-bullets.ui-btn-icon-notext.ui-corner-all{href: "#"} No text
-  =image_tag 'logo_90.png', class: 'ui-title'
-  =link_to 'Sign up/Login', new_user_registration_path, class: 'ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-user'
+	=image_tag 'logo_90.png', class: 'ui-title'
+	-if user_signed_in?
+		%a.ui-btn.ui-btn-right.ui-icon-bullets.ui-btn-icon-notext.ui-corner-all{href: "#rightpanel3"} No text
+						
+	-else
+		=link_to 'Sign up/Login', new_user_session_path, class: 'ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-user', 'data-transition'=> 'pop'
   

@@ -1,0 +1,19 @@
+#recaptcha_widget{style: "display:none"}
+  #recaptcha_image
+  .recaptcha_only_if_incorrect_sol{style: "color:red"} Incorrect please try again
+  %span.recaptcha_only_if_image Enter the words above:
+  %span.recaptcha_only_if_audio Enter the numbers you hear:
+  %input#recaptcha_response_field{name: "recaptcha_response_field", type: "text"}/
+  %div.row
+    .col-md-6
+      %a{href: "javascript:Recaptcha.reload()"} 
+        %p Reload
+    .col-md-6
+      .recaptcha_only_if_image
+        %a{href: "javascript:Recaptcha.switch_type('audio')"} 
+          %p Audio
+  .recaptcha_only_if_audio
+    %a{href: "javascript:Recaptcha.switch_type('image')"} Get an image CAPTCHA
+  %div
+    %a{href: "javascript:Recaptcha.showhelp()"} 
+      %p Help

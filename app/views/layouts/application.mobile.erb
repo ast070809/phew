@@ -26,21 +26,11 @@
   ga('create', 'UA-50235584-1', 'niblin.com');
   ga('send', 'pageview');
 </script>
+
 </head>
-<body data-role = "page">
-	<div class= 'container-fluid', id='main-container'> 
-		
-    <div  data-role= "header">
-      <%= render 'layouts/mobile/header' %>
-    </div>
-    
-    <div role='main' class='ui-content'>
-		  <%= yield %>
-    </div>
-		
-    <div  data-role= "footer">
-      <%= render 'layouts/mobile/footer' %>
-    </div>
-	</div>
+<body>
+  <%= render 'layouts/mobile/panel' %>
+  <%= yield %>
 </body>
+
 </html>

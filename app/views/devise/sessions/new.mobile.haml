@@ -1,0 +1,54 @@
+%div{'data-role'=> 'page', 'data-dialog'=>"true"}
+  %div{"data-role" => "header"}
+    %h1
+      Sign up / Login
+  .ui-content{role: "main"}
+    =render 'layouts/mobile/messages'
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .ui-field-contain
+        %label{for:'user[login]'}
+          Login
+        = f.text_field :login, :autofocus => true, placeholder:'Username or email'        
+      .ui-field-contain
+        %label{for:'user[password]'}
+          Password
+        = f.password_field :password, class: 'form-control', placeholder: 'Password'
+      - if devise_mapping.rememberable?
+        %label.checkbox
+          = f.check_box :remember_me
+          Stay signed in
+      = f.submit "Sign in", class: 'btn-u pull-right'
+    =link_to 'Sign up', new_user_registration_path, class: 'ui-btn ui-shadow ui-corner-all ui-btn-a', 'data-ajax'=> false
+
+
+%div{'data-role'=> 'page', 'data-dialog'=>"true"}
+  %div{"data-role" => "header"}
+    %h1
+      Sign up / Login
+  .ui-content{role: "main"}  
+    =render 'layouts/mobile/messages'
+
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      .ui-field-contain
+        %label{for:'username'}
+          Username
+        = f.text_field :username,:autofocus => true, placeholder: 'Username'
+      .ui-field-contain
+        %label{for:'email'}
+          Email
+        = f.email_field :email, :autofocus => true, placeholder: 'Email'        
+      .ui-field-contain
+        %label{for:'password'}
+          Password
+        = f.password_field :password, placeholder: 'Password'
+      .ui-field-contain
+        %label{for:'password_confirmation'}
+          Password Confirmation
+        = f.password_field :password_confirmation, placeholder: 'Confirm Password'
+      .ui-field-contain
+        = render 'shared/recaptcha'
+        = recaptcha_tags :display=>{:theme=>'custom', custom_theme_widget: 'recaptcha_widget'}
+      .ui-field-contain
+        = f.submit "Register", class: 'btn-u btn-block', 'data-ajax'=> false
+
+   
