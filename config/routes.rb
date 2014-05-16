@@ -47,6 +47,7 @@ Phew::Application.routes.draw do
   get '/terms_of_use', to: 'static_pages#terms_of_use', as: :terms_of_use
   #get 'tribe', to: 'posts#index', as: :tribe_posts
   
+  get '/new_temp', to: 'posts#new_temp', as: :new_temp
 
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.

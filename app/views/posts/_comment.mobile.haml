@@ -1,0 +1,53 @@
+%div.comment-box{id: "comment_#{comment.id}"}
+	%h3
+		= comment.title
+	
+	%ul.media-list
+		-#%li.comment_box
+		%li.media.mobile-comment-container
+			=#link_to image_tag("avatar.jpg", height:40, width:40,class: 'pull-left'), class: 'media-object'
+			.media-body
+				.row
+					.col-xs-12
+						
+						.media-heading.commenter-name
+							=comment.user.username
+						%p.comment-body
+							= comment.body
+						
+						=link_to upvote_post_comment_path(@post, comment), method: 'put' do
+							=fa_icon "chevron-up"
+						%span.mobile-net-vote
+							=comment.likes.size-comment.downvotes.size
+						
+						=link_to downvote_post_comment_path(@post, comment), method: 'put' do
+							=fa_icon "chevron-down"
+						&nbsp
+						
+						&nbsp
+						-if user_signed_in?
+							%span.reply-link{id: 'reply'}
+								%a{style: 'cursor:pointer', onclick: '$(this).parent().next().show(); $(this).parent().hide();'} reply
+							
+							%span{id: 'child',style: "display:none;"}
+								=form_tag add_child_comment_path, method: :post do
+									.form-group
+										=label_tag 'comment', 'Comment',class: 'col-md-2'
+										.col-md-6
+											=text_area_tag 'comment','', class: 'form-control'
+									=hidden_field_tag 'parent_id', comment.id
+									=hidden_field_tag 'post_id', @post.id 
+									.form-group
+										.col-md-offset-2
+											=submit_tag 'Submit', class: 'btn'
+								%a{onclick: "$(this).parent().hide();$(this).parent().prev().show()", id: 'cancel', style: 'cursor:pointer'}
+									%span{style:'font-size:12px;'}
+										cancel
+						
+							=link_to "report", report_post_comment_path(@post, comment), method: :post, class: 'mobile-report-comment'
+
+						-if user_signed_in? && current_user_commenter?(comment)
+							=link_to "delete", delete_post_comment_path(@post, comment), method: "delete", class: 'delete-link'
+						
+				= render :partial => 'comment', :collection => comment.children.order('created_at desc')
+

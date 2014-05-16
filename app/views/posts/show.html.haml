@@ -14,7 +14,6 @@
 					ago by
 					%strong 
 						=link_to @post.user.username, @post.user
-
 		-if user_signed_in?
 			=form_tag add_comment_path, method: :post, class:'form-inline' do
 				.form-group

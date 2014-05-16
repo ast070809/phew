@@ -1,0 +1,55 @@
+-#.panel.panel-default.post_panel
+.tag-box.tag-box-v1.tag-box-v2.mob-post-container
+	.row
+		.col-xs-1
+			.row
+				.col-xs-12
+					=link_to upvote_post_path(p), method: 'put' do
+						.mob-vote-arrow
+							=fa_icon "chevron-up"
+			.row
+				.col-xs-12
+					.net-vote
+						%strong 
+							=p.likes.size-p.downvotes.size
+			.row
+				.col-xs-12
+					=link_to downvote_post_path(p), method: 'put' do
+						%h4
+							.vote-arrow
+								=fa_icon "chevron-down"
+		.col-xs-9
+			=link_to "#{p.title}", p, class: 'mobile-title-link'
+			-if p.source?
+				%span.source_link
+					(
+					=p.source
+					)
+			.row.post_footer
+				.col-xs-9
+					.submited_ago_cont
+						Submited
+						=time_ago_in_words(p.created_at)
+						ago by
+						%strong 
+							=link_to p.user.username, p.user
+						-if p.tribe
+							to
+							%strong
+								=p.tribe.name
+				.col-xs-3
+					.pull-right
+						-if user_signed_in?
+							=link_to "report", report_post_path(p), method: :post, class: 'mobile-report-post'
+						
+						-if user_signed_in? && current_user_poster?(p)
+							=link_to "delete", delete_post_path(p), method: "delete", class: 'delete-post'
+			.row
+				.col-xs-12
+					.mobile-comment-cont
+						(
+						=pluralize(comment_count(p.id), 'comment')
+						)
+		.col-xs-1.mobile-img-cont
+			=link_to image_tag( p.pic.url(:thumb), alt: 'post photo', height:40, class: 'post-img'), p.link
+	.clearfix

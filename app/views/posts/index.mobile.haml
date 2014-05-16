@@ -1,8 +1,11 @@
-%div{'data-role'=> 'page'}
+%div{'data-role'=> 'page','data-url'=> "#{request.path}"}
+	= render 'layouts/mobile/panel'
 	%div{"data-role" => "header"}
 		= render 'layouts/mobile/header'
-	.ui-content{role: "main"}	
-		%p
-			This is a mobile site
+	.ui-content{role: "main", style:'padding-left:2px; padding-right:2px;'}	
+		=render 'layouts/mobile/flash'
+		-@posts.each do |p|
+			= render 'post', :p=> p
+		=paginate @posts, theme: 'twitter-bootstrap-3'
 	%div{"data-role" => "footer"}
 		= render 'layouts/mobile/footer'

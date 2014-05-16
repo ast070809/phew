@@ -1,0 +1,58 @@
+.center-wrapper{
+text-align: center;
+}
+.center-wrapper * {
+margin: 0 auto;
+}
+
+/* index page */
+.mob-post-container{
+	padding-left:5px;
+	padding-right:2px;
+	padding-top:8px !important;
+	padding-bottom:8px !important;
+	margin-bottom:10px;
+}
+.mob-vote-box{
+	float:left;
+	padding:0px;
+}
+.mob-vot-arrow{
+	padding:0px;
+}
+.mobile-title-link{
+	font-size:13px;
+	text-align:justify;
+}
+.mobile-report-post{
+	font-size:12px;
+}
+.mobile-comment-cont{
+	font-size:12px;
+}
+.mobile-label{
+	color:white !important;
+}
+.mobile-show-title{
+}
+.mobile-post-descrip{
+	font-size:13px;
+}
+.mobile-img-cont{
+	padding-left:5px;
+	padding-right:5px;
+}
+.mobile-write-comment-cont{
+	padding-right:10px;
+	padding-left:10px;
+}
+.mobile-comment-container{
+	padding-left: 10px;	
+	border-left:1px dotted #A0A0A0;
+}
+.mobile-report-comment{
+	font-size:12px;
+}
+.mobile-net-vote{
+	font-size:12px;
+}

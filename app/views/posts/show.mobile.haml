@@ -1,0 +1,37 @@
+%div{'data-role'=> 'page','data-url'=> "#{request.path}"}
+	= render 'layouts/mobile/panel'
+	%div{"data-role" => "header"}
+		= render 'layouts/mobile/header'
+	.ui-content{role: "main", style:'padding-left:2px;'}	
+		=render 'layouts/mobile/flash'
+		%h4{style: 'paddin-top:5px;'}
+			=link_to @post.title, @post.link, target: '_blank'
+		%p.mobile-post-descrip
+			=@post.description
+
+		-if user_signed_in?
+			%div.mobile-write-comment-cont
+				=form_tag add_comment_path, method: :post, class:'form-inline' do
+					.ui-field-contain
+						=label_tag 'Comment'
+					.ui-field-contain
+						=text_area_tag 'comment',"", type:'text'
+					=hidden_field_tag 'post_id', @post.id
+					.ui-field-contain
+						=submit_tag 'Submit', class: 'btn btn-success'
+		-else
+			%h4
+				=link_to('Sign in to add comments or to reply to comments', new_user_session_path) 
+		-if !@root_comments.empty?		
+			=render 'layouts/mobile/show'
+			#comments
+				-@root_comments.each do |comment|
+					=render :partial => 'comment', :object => comment
+		-else
+			.row
+				.col-md-6.col-md-offset-2
+					%p
+						&nbsp
+						Be the first one to comment
+	%div{"data-role" => "footer"}
+		= render 'layouts/mobile/footer'

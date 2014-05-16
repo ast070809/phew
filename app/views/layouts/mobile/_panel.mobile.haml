@@ -1,9 +1,16 @@
-#rightpanel3.ui-panel.ui-panel-position-right.ui-panel-display-overlay.ui-body-b.ui-panel-animate.ui-panel-closed{"data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-theme" => "b"}
-  .ui-panel-inner
-    %h3 Right Panel: Overlay
-    %p
-      This panel is positioned on the right with the overlay display mode. The panel markup is
-      %em after
-      the header, content and footer in the source order.
-    %p To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:
-    %a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a.ui-icon-delete.ui-btn-icon-left.ui-btn-inline{"data-rel" => "close", href: "#demo-links"} Close panel
+#rightpanel3{"data-display" => "overlay", "data-position" => "right", "data-role" => "panel", "data-theme" => "a"}
+	%h3
+	-if user_signed_in?
+		.center-wrapper
+			%a.ui-btn.ui-corner-all.ui-icon-home.ui-btn-icon-left
+				=current_user.username
+	.ui-panel-inner
+		%ul.ui-listview
+			%li.panel-cont
+				%div{style:'padding-right:10px;padding-left:10px;'}
+					=link_to 'Submit a link', new_temp_path, class: 'ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-plus ui-btn-icon-left', 'data-ajax'=> false
+			%li.panel-cont
+				.center-wrapper
+					=link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'ui-btn ui-shadow ui-icon-power ui-btn-icon-left'
+			%li.panel-cont
+				%a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a.ui-icon-delete.ui-btn-icon-left.ui-btn-inline{"data-rel" => "close", href: "#demo-links"} Close panel

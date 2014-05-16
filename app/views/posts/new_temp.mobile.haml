@@ -1,0 +1,13 @@
+%div{'data-role'=> 'page', 'data-dialog'=>"true"}
+  %div{"data-role" => "header"}
+    %h1
+      Submit a link
+    .center-wrapper
+      %p
+        Enter the link of an article, image or video
+  .ui-content{role: "main"}
+    =render 'layouts/mobile/messages'
+    =form_tag new_post_path, class: 'form form-horizontal', role: 'form', method: 'get' do
+      .ui-field-contain
+        =url_field_tag 'url', '', type: 'email', class: 'form-control', placeholder: 'http://'
+        =submit_tag 'Refine & Submit', class: 'btn btn-success control-label'

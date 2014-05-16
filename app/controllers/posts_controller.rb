@@ -39,6 +39,10 @@ class PostsController < ApplicationController
     end
   end
 
+  ## Controller for mobile
+  def new_temp
+  end
+  
   def new
   	@url = params[:url]
     
@@ -216,6 +220,8 @@ class PostsController < ApplicationController
     end
     redirect_to :back
   end
+
+
 
   private 
 
