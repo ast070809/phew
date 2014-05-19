@@ -16,6 +16,6 @@
 		=render 'layouts/mobile/flash'
 		-@posts.each do |p|
 			= render 'posts/post', :p=> p
-		=paginate @posts, theme: 'twitter-bootstrap-3'
+		=paginate @posts
 	%div{"data-role" => "footer"}
 		= render 'layouts/mobile/footer'
