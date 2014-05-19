@@ -48,7 +48,7 @@ Phew::Application.routes.draw do
   #get 'tribe', to: 'posts#index', as: :tribe_posts
   
   get '/new_temp', to: 'posts#new_temp', as: :new_temp
-
+  
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
