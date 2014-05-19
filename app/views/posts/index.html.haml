@@ -6,7 +6,7 @@
 		-@posts.each do |p|
 			= render 'post', :p=> p
 				
-		=paginate @posts, theme: 'twitter-bootstrap-3'
+		=paginate @posts
 	.col-lg-2.col-md-2.col-sm-2.col-xs-2{style: 'padding-right:20px;'}
 		#accordion-1.panel-group.acc-v1
 			.panel.panel-default
