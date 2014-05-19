@@ -21,7 +21,7 @@ gem "acts_as_votable", "0.8.0"
 ## For Pagination
 gem "kaminari", "0.15.1"
 ## Adding bootstrap views to Kaminari pagination
-gem 'bootstrap-kaminari-views'
+#gem 'bootstrap-kaminari-views'
 ## To handle tags on the posts
 gem "acts-as-taggable-on", "3.0.1"
 ## To make the selection menus more beautiful

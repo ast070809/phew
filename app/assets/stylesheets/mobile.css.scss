@@ -5,6 +5,10 @@ text-align: center;
 margin: 0 auto;
 }
 
+#mobile-logo-cont{
+	padding-left:140px;
+}
+
 /* index page */
 .mob-post-container{
 	padding-left:5px;
@@ -62,4 +66,11 @@ margin: 0 auto;
 	background-color:#585F69 !important;
 	opacity:0.9 !important;
 	color:white !important;
+}
+.mobile-signup-btn{
+	padding-left:2px;
+}
+.mobile-pagination{
+	font-size:12px !important;
+	background-color:black;	
 }

@@ -19,7 +19,7 @@
 							.vote-arrow
 								=fa_icon "chevron-down"
 		.col-xs-9
-			=link_to "#{p.title}", p, class: 'mobile-title-link'
+			=link_to "#{p.title}", p, class: 'mobile-title-link', 'data-ajax'=>false
 			-if p.source?
 				%span.source_link
 					(
