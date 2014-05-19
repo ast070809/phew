@@ -6,8 +6,9 @@
 				.row
 					=link_to upvote_post_path(p), method: 'put' do
 						%h4
-							.vote-arrow
+							.vote-arrow{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}"}
 								=fa_icon "chevron-up"
+
 						=#image_tag "arrow-up.png", height:25, width:20
 						=#fa_icon "arrow-up 2x"
 				.row
@@ -17,7 +18,7 @@
 				.row
 					=link_to downvote_post_path(p), method: 'put' do
 						%h4
-							.vote-arrow
+							.vote-arrow{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}"}
 								=fa_icon "chevron-down"
 						=#image_tag "down.png", height: 25, width:20
 						=#fa_icon "arrow-down 2x"

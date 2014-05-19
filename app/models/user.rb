@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   has_many :reports
   
   acts_as_tagger
+  acts_as_voter
 
 
 	def self.find_first_by_auth_conditions(warden_conditions)
