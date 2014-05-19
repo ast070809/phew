@@ -7,7 +7,7 @@
 			.ui-block-a
 				=link_to 'Hot', (if @post_index then root_path else @tribe end), 'data-ajax'=> false, class: "ui-btn #{'mobile-dr-active' if !@duration_header }"
 			.ui-block-b
-				%a.ui-btn.ui-corner-all.ui-shadow.ui-icon-gear.ui-btn-icon-left{"data-rel" => "popup", "data-transition" => "slideup", href: "#popupMenu", class: "#{'mobile-dr-active' if @duration_header && !@new_header}"}
+				%a.ui-btn.ui-corner-all.ui-shadow.ui-icon-carat-d.ui-btn-icon-right{"data-rel" => "popup", "data-transition" => "slideup", href: "#popupMenu", class: "#{'mobile-dr-active' if @duration_header && !@new_header}"}
 					Top
 					- if params[:duration]
 						(
