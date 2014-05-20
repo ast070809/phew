@@ -7,29 +7,26 @@
 			=#link_to image_tag("avatar.jpg", height:40, width:40,class: 'pull-left'), class: 'media-object'
 			.media-body
 				.row
-					.col-xs-1.col-md-1.text-center
-						.row
-							=link_to upvote_post_comment_path(@post, comment), method: 'put' do
-								%i.fa.fa-arrow-up.fa-lg
-						.row
-							=comment.likes.size-comment.downvotes.size
-						.row
-							=link_to downvote_post_comment_path(@post, comment), method: 'put' do
-								%i.fa.fa-arrow-down.fa-lg
-
-					.col-xs-11.col-md-11
+					.col-xs-12.col-md-12
+					
 						.media-heading.commenter-name
 							=comment.user.username
 						%p.comment-body
 							= comment.body
+						=link_to upvote_post_comment_path(@post, comment), method: 'put' do
+							=fa_icon "chevron-up"
+						%span
+							=comment.likes.size-comment.downvotes.size
+						=link_to downvote_post_comment_path(@post, comment), method: 'put' do
+							=fa_icon "chevron-down"
+						&nbsp
 						
-						-if user_signed_in? && current_user_commenter?(comment)
-							=link_to "Delete", delete_post_comment_path(@post, comment), method: "delete", class: 'delete-link'
 						
 						-if user_signed_in?
-							#reply.reply-link
-								%a{style: 'cursor:pointer', onclick: '$(this).parent().next().show(); $(this).parent().hide();'} Reply
-							#child{style: "display:none;"}
+							%span.reply-link{id:'reply'}
+								%a{style: 'cursor:pointer', onclick: '$(this).parent().next().show(); $(this).parent().hide();'} reply
+							
+							%span{style: "display:none;", id: 'child'}
 								=form_tag add_child_comment_path, method: :post, class: 'form-horizontal' do
 									.form-group
 										=label_tag 'comment', 'Comment',class: 'col-md-2'
@@ -42,8 +39,10 @@
 											=submit_tag 'Submit', class: 'btn'
 								%a{onclick: "$(this).parent().hide();$(this).parent().prev().show()", id: 'cancel', style: 'cursor:pointer'}
 									Cancel
-						
-							=link_to "report", report_post_comment_path(@post, comment), method: :post
+							-if user_signed_in? && current_user_commenter?(comment)
+								=link_to "delete", delete_post_comment_path(@post, comment), method: "delete", class: 'delete-link'
+							&nbsp
+							=link_to "report", report_post_comment_path(@post, comment), method: :post, class: 'report-link'
 
 
 				= render :partial => 'comment', :collection => comment.children.order('created_at desc')

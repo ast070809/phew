@@ -301,7 +301,7 @@ span.glyphicon-arrow-down{
 	padding-left:0;
 }
 .comment-container{
-	padding-left: 15px;	
+	padding-left: 12px;	
 	border-left:1px dotted #A0A0A0;
 }
 
@@ -335,9 +335,15 @@ span.glyphicon-arrow-down{
 }
 .reply-link{
 	font-size:12px;	
+	padding-left:10px;
 }
 .delete-link{
 	font-size:12px;
+	padding-left:5px;
+}
+.report-link{
+	font-size:12px;
+	padding-left:13px;
 }
 .commenter-name{
 	font-size:13px;
