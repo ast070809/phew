@@ -3,36 +3,7 @@
 	%div{"data-role" => "header"}
 		= render 'layouts/mobile/header'
 	.ui-content{role: "main", style:'padding-left:2px; padding-right:2px; padding-top:0px;'}
-		.ui-grid-b.ui-mini
-			.ui-block-a
-				=link_to 'Hot', (if @post_index then root_path else @tribe end), 'data-ajax'=> false, class: "ui-btn ui-shadow #{'mobile-dr-active' if !@duration_header }"
-			.ui-block-b
-				%a.ui-btn.ui-shadow{"data-rel" => "popup", "data-transition" => "pop", href: "#popupMenu", class: "#{'mobile-dr-active' if @duration_header && !@new_header}"}
-				
-					=fa_icon "caret-down"
-					- if params[:duration]
-						=params[:duration].humanize
-					-else
-						Top
-				#popupMenu{"data-role" => "popup", "data-theme" => "b"}
-					%ul{"data-inset" => "true", "data-role" => "listview", style: "min-width:210px;"}
-						%li{"data-role" => "list-divider"} Choose
-						%li
-							=link_to 'Today', if @post_index then top_path('today') else top_tribe_path(id: @tribe.id, duration: 'today') end, 'data-ajax'=>false
-						%li
-							=link_to 'This week', if @post_index then top_path('week') else top_tribe_path(id: @tribe.id, duration: 'week') end,'data-ajax'=>false
-						%li
-							=link_to 'This month',if @post_index then top_path('month') else top_tribe_path(id: @tribe.id, duration: 'month') end,'data-ajax'=>false
-						%li
-							=link_to 'This year', if @post_index then top_path('year') else top_tribe_path(id: @tribe.id, duration: 'year') end ,'data-ajax'=>false
-						%li
-							=link_to 'All time', if @post_index then top_path('all_time') else top_tribe_path(id: @tribe.id, duration: 'all_time') end ,'data-ajax'=>false
-							
-			.ui-block-c
-				=link_to 'New', if @post_index then new_path('current') else new_tribe_path(id: @tribe.id, duration: 'current') end, class: "ui-btn ui-shadow #{'mobile-dr-active' if @new_header}"
-				
-
-
+		=render 'layouts/mobile/duration'
 		=render 'layouts/mobile/flash'
 		-@posts.each do |p|
 			= render 'post', :p=> p
