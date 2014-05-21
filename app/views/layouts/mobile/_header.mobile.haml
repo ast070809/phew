@@ -1,15 +1,16 @@
 %div{"data-role" => "header"}
 	%ul
-		%a.dropdown-toggle.ui-btn.ui-mini.ui-btn-left{ 'data-toggle'=>"dropdown", 'data-hover'=>"dropdown", 'data-delay'=>"0", 'data-close-others'=>"false"}
+		%a.ui-btn.ui-shadow{"data-rel" => "popup", "data-transition" => "pop", href: "#tribeMenu", class: "#{'mobile-dr-active' if @duration_header && !@new_header}"}
 			= if @tribe.nil? then 'All' else @tribe.name end
 			=fa_icon 'caret-down'
-		%ul.dropdown-menu
-			%li
-				=link_to "All", root_path, 'data-ajax'=> false
-			-@tribes.each do |tr|
-				%li.divider{style:'margin-top:5px !important; margin-bottom:5px; !important'}
+		#tribeMenu{"data-role" => "popup", "data-theme" => "a"}
+			%ul{"data-inset" => "true", "data-role" => "listview", style: "min-width:210px;"}
 				%li
-					=link_to tr.name, tr, 'data-ajax'=> false
+					=link_to "All", root_path, 'data-ajax'=> false
+				-@tribes.each do |tr|
+					%li
+						=link_to tr.name, tr, 'data-ajax'=> false
+
 
 		.center-wrapper{id:'amobile-logo-cont'}
 			%span{style:'position:relative; margin-left:-50px;'}

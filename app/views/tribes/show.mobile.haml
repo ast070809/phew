@@ -3,16 +3,7 @@
 	%div{"data-role" => "header"}
 		= render 'layouts/mobile/header'
 	.ui-content{role: "main", style:'padding-left:2px; padding-right:2px; padding-top:0px;'}	
-		.ui-grid-b.ui-mini
-			.ui-block-a
-				%button
-					Hot
-			.ui-block-b
-				%button
-					Top
-			.ui-block-c
-				%button
-					New
+		=render 'layouts/mobile/duration'
 		=render 'layouts/mobile/flash'
 		-@posts.each do |p|
 			= render 'posts/post', :p=> p
