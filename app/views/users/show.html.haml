@@ -31,7 +31,7 @@
 		-if !@comments.empty?
 			-@comments.each do |c|
 				=render 'users/comment', :c=> c
-			=paginate @comments
+			=paginate @comments , :param_name => :pagina
 		-else
 			%h3.text-center
 				.margin-bottom-40
