@@ -81,6 +81,11 @@ class Comment < ActiveRecord::Base
     comment.save
   end
   
+  def self.total_comments_of_user(user)
+     c = Comment.find_comments_by_user(user)
+     c.size
+  end
+
   private
     def self.get_confidence(ups,downs)
       n = ups+downs

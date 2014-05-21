@@ -65,6 +65,10 @@ class Post < ActiveRecord::Base
 	  where("created_at >= ?", Time.zone.now - 365*24*60*60)
 	end
 
+	def self.total_posts_of_user(user)
+		
+	end
+	
 	private
 		def self.hot(post)
 			# The hot formula

@@ -1,10 +1,14 @@
 %nav.navbar{role: "navigation", id: 'user-nav'}
 	.row
 		.col-md-5
-		.col-md-7
+		.col-md-6
 			%ul.nav.navbar-nav
 				%li.custom-center
-					=link_to "My Account", @user, class: "tribe-nav-links #{'active' if current_page?(@user)}"
+					- if current_user == @user
+						=link_to "My Account", @user, class: "tribe-nav-links #{'active' if current_page?(@user)}"
+					-else
+						=link_to "#{@user.username}", @user, class: "tribe-nav-links #{'active' if current_page?(@user)}"
 				%li.custom-center
-					=link_to "Profile", edit_user_registration_path, class: "tribe-nav-links #{'active' if current_page?(edit_user_registration_path)}"
+					- if current_user == @user
+						=link_to "My Profile", edit_user_registration_path, class: "tribe-nav-links #{'active' if current_page?(edit_user_registration_path)}"
 

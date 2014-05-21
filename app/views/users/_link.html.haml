@@ -5,16 +5,16 @@
 				.row
 					.col-md-1.text-center
 						.row
-							=image_tag "arrow-up.png", height:15, width:12
+							=fa_icon "chevron-up"
 						.row
 							=p.netvotes
 						.row
-							=image_tag "down.png", height:15, width:12
+							=fa_icon "chevron-down"
 					.col-md-9
 						.row
 							.col-md-12
 								%strong
-									=link_to p.title, p.link
+									=link_to "#{p.title}", p, target:'_blank'
 								
 						.row
 							.col-md-12

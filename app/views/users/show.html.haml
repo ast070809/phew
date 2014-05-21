@@ -1,18 +1,43 @@
 =render 'layouts/user_header'
 .row.margin-bottom-40
 .row
-	.col-md-12
+	.col-md-6
 		%h2.text-center
 			Links Karma
+			-if @number_posts != 0 
+				(
+				=@number_posts
+				)
 		-if !@posts.empty?
 			-@posts.each do |p|
 				=render 'users/link', :p=> p
+			=paginate @posts
 		-else
 			%h3.text-center
 				.margin-bottom-40
 				You have 0 Karma
 				.row
 				You haven't submitted any links
+			.row
+				.col-md-12
+					#user-page-margin
+	.col-md-6
+		%h2.text-center
+			Comments Karma
+			- if @number_comments !=0
+				(
+				=@number_comments
+				)
+		-if !@comments.empty?
+			-@comments.each do |c|
+				=render 'users/comment', :c=> c
+			=paginate @comments
+		-else
+			%h3.text-center
+				.margin-bottom-40
+				You have 0 Karma
+				.row
+				You haven't written any comments
 			.row
 				.col-md-12
 					#user-page-margin

@@ -135,9 +135,9 @@ class PostsController < ApplicationController
         else
           @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
       end
+    else
+      @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
     end
-    @all_comments = @post.comment_threads
-    @root_comments = @post.root_comments.order('netvote desc', 'created_at desc')
   end
 
   def delete
@@ -167,7 +167,7 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.liked_by current_user
-    @post.netvotes +=1
+    @post.netvotes +=1 if !current_user.voted_for?(@post)
     if @post.save
       Post.refresh_hotness(@post)
     end
@@ -177,7 +177,7 @@ class PostsController < ApplicationController
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_from current_user
-    @post.netvotes -=1
+    @post.netvotes -=1 if !current_user.voted_for?(@post)
     if @post.save
       Post.refresh_hotness(@post)
     end
