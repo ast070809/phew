@@ -1,4 +1,4 @@
-%div{'data-role'=> 'page', 'data-dialog'=>"true"}
+%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'registration'}
   %div{"data-role" => "header"}
     %h1
       Sign up
@@ -28,4 +28,8 @@
       .ui-field-contain
         = f.submit "Register", class: 'btn-u btn-block', 'data-ajax'=> false
 
-   
+
+:javascript
+  $(document).on('pagebeforeshow','#registration' ,function(e,data){    
+    Recaptcha.create('6LdDa_ASAAAAACHsiJZ1UQouO0Vh2_-8wleP1I2Z', document.getElementById('dynamic_recaptcha') , '');
+  });
