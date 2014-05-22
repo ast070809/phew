@@ -20,10 +20,7 @@
 						%h4
 							.vote-arrow{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "downvote-#{p.id}"}
 								=fa_icon "chevron-down"
-						=#image_tag "down.png", height: 25, width:20
-						=#fa_icon "arrow-down 2x"
-					#post-ajax-cont
-					#post-ajax-chk
+
 		.col-md-1.post-image-cont
 			=image_tag p.pic.url(:thumb), alt: 'post photo', height:60, class: 'post-img'
 		.col-xs-10.col-md-8.post-mid-part

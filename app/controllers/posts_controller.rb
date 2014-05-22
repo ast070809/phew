@@ -167,7 +167,7 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.liked_by current_user
-    @post.netvotes +=1 if !current_user.voted_for?(@post)
+    @post.netvotes +=1 if !current_user.voted_up_on?(@post)
     
     if @post.save
       Post.refresh_hotness(@post)
@@ -182,7 +182,7 @@ class PostsController < ApplicationController
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_from current_user
-    @post.netvotes -=1 if !current_user.voted_for?(@post)
+    @post.netvotes -=1 if !current_user.voted_down_on?(@post)
     if @post.save
       Post.refresh_hotness(@post)
       respond_to do |format|
