@@ -1,6 +1,6 @@
 %div{'data-role'=> 'page','data-url'=> "#{request.path}"}
 	= render 'layouts/mobile/panel'
-	%div{"data-role" => "header"}
+	%div{"data-role" => "header", id: 'mobile-header'}
 		= render 'layouts/mobile/header'
 	.ui-content{role: "main", style:'padding-left:2px; padding-right:2px; padding-top:0px;'}	
 		=render 'layouts/mobile/duration'

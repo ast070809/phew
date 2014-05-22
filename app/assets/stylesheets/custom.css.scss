@@ -185,6 +185,15 @@ body{
 
 
 /* index page */
+.upvote-btn{
+	background:none;
+	border:none;
+}
+.downvote-btn{
+	background:none;
+	border:none;
+}
+
 .rules-list-cont{
 	padding-left:0px;
 }
@@ -202,7 +211,7 @@ body{
 	color:#E67E2A;
 }
 .downvoted{
-	color:#7ABA7A;
+	color:#CFCE96;
 }
 
 .post-container{

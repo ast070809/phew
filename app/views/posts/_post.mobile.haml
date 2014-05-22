@@ -4,20 +4,20 @@
 		.col-xs-1
 			.row
 				.col-xs-12
-					=link_to upvote_post_path(p), method: 'put' do
-						.mob-vote-arrow
+					=button_to(upvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-upvote-btn', 'data-role'=>'none')  do
+						.mobile-vote{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "upvote-#{p.id}"}
 							=fa_icon "chevron-up"
 			.row
 				.col-xs-12
-					.net-vote
-						%strong 
+					.mobile-net-vote
+						%strong{id: "netvote-#{p.id}", class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)} #{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)} "} 
 							=p.likes.size-p.downvotes.size
 			.row
 				.col-xs-12
-					=link_to downvote_post_path(p), method: 'put' do
-						%h4
-							.vote-arrow
-								=fa_icon "chevron-down"
+					=button_to(downvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-downvote-btn', 'data-role'=>'none') do
+						.mobile-vote{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "downvote-#{p.id}"}
+							=fa_icon "chevron-down"
+				#post-ajax-chk
 		.col-xs-9
 			=link_to "#{p.title}", p, class: 'mobile-title-link', 'data-ajax'=>false
 			-if p.source?
@@ -53,3 +53,9 @@
 		.col-xs-1.mobile-img-cont
 			=link_to image_tag( p.pic.url(:thumb), alt: 'post photo', height:40, class: 'post-img'), p.link
 	.clearfix
+:javascript
+	$('a.native-anchor').bind('click', function(ev) {
+		var target = $( $(this).attr('href') ).get(0).offsetTop;
+		$.mobile.silentScroll(target);
+		return false;
+	});

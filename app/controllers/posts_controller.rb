@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   require 'nokogiri'
   require 'fastimage'
   
-  has_mobile_fu_for :index
+  has_mobile_fu_for :index, :upvote, :downvote
   before_filter :authenticate, except: [:index, :show]  
   
   def index
@@ -168,10 +168,15 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.liked_by current_user
     @post.netvotes +=1 if !current_user.voted_for?(@post)
+    
     if @post.save
       Post.refresh_hotness(@post)
+      respond_to do |format|
+        format.html {redirect_to :back}
+        format.mobilejs 
+        format.js
+      end
     end
-    redirect_to :back
   end
   
   def downvote
@@ -180,8 +185,13 @@ class PostsController < ApplicationController
     @post.netvotes -=1 if !current_user.voted_for?(@post)
     if @post.save
       Post.refresh_hotness(@post)
+      respond_to do |format|
+        format.html {redirect_to :back}
+        format.mobilejs
+        format.js 
+      end
     end
-    redirect_to :back
+
   end
 
   def add_child_comment

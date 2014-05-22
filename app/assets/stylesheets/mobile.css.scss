@@ -5,10 +5,6 @@ text-align: center;
 margin: 0 auto;
 }
 
-#mobile-logo-cont{
-	padding-left:140px;
-}
-
 /* index page */
 .mob-post-container{
 	padding-left:5px;
@@ -73,4 +69,24 @@ margin: 0 auto;
 .mobile-pagination{
 	font-size:12px !important;
 	background-color:black;	
+}
+.mobile-tribe-drpdwn{
+	padding-left:5px;
+}
+.mobile-vote{
+	padding-left:5px;
+
+}
+.mobile-net-vote{
+	padding-left:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.mobile-upvote-btn{
+	background:none;
+	border:none;
+}
+.mobile-downvote-btn{
+	background:none;
+	border:none;
 }
