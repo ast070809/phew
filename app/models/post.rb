@@ -66,9 +66,13 @@ class Post < ActiveRecord::Base
 	end
 
 	def self.total_posts_of_user(user)
-		
 	end
 	
+	def self.refresh_votes(post)
+		votes =post.likes.size-post.downvotes.size
+    	post.netvotes = votes
+    	post.save
+	end
 	private
 		def self.hot(post)
 			# The hot formula

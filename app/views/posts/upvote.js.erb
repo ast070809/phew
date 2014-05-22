@@ -3,3 +3,5 @@ $("#netvote-<%= @post.id %>").html("<%= @post.likes.size-@post.downvotes.size %>
 $("#netvote-<%= @post.id %>").css("color", "#E67E2A");
 $("#upvote-<%= @post.id %>").css("color", "#E67E2A");
 $("#downvote-<%= @post.id %>").css("color", "#333339");
+$("#total-upvote-<%= @post.id %>").html("<%= @post.likes.size %>");
+$("#total-downvote-<%= @post.id %>").html("<%= @post.downvotes.size %>");

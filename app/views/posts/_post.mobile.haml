@@ -5,17 +5,17 @@
 			.row
 				.col-xs-12
 					=button_to(upvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-upvote-btn', 'data-role'=>'none')  do
-						.mobile-vote{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "upvote-#{p.id}"}
+						.mobile-vote{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "mob-upvote-#{p.id}"}
 							=fa_icon "chevron-up"
 			.row
 				.col-xs-12
 					.mobile-net-vote
-						%strong{id: "netvote-#{p.id}", class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)} #{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)} "} 
+						%strong{id: "mob-netvote-#{p.id}", class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)} #{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)} "} 
 							=p.likes.size-p.downvotes.size
 			.row
 				.col-xs-12
 					=button_to(downvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-downvote-btn', 'data-role'=>'none') do
-						.mobile-vote{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "downvote-#{p.id}"}
+						.mobile-vote{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "mob-downvote-#{p.id}"}
 							=fa_icon "chevron-down"
 				#post-ajax-chk
 		.col-xs-9
@@ -47,6 +47,17 @@
 			.row
 				.col-xs-12
 					.mobile-comment-cont
+						Votes-
+						(
+						%span{id:"mob-total-upvote-#{p.id}"}
+							=p.likes.size
+						='/'
+						%span{id:"mob-total-downvote-#{p.id}"}
+							=p.downvotes.size
+						)
+						&nbsp
+						|
+						&nbsp		
 						(
 						=pluralize(comment_count(p.id), 'comment')
 						)
