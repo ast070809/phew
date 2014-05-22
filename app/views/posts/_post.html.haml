@@ -4,24 +4,26 @@
 		.col-xs-1.col-md-1.text-center.vote-cont
 			.up-down-vote-box
 				.row
-					=link_to upvote_post_path(p), method: 'put' do
+					=button_to upvote_post_path(p), method: 'post', remote:true, class: 'upvote-btn' do
 						%h4
-							.vote-arrow{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}"}
+							.vote-arrow{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "upvote-#{p.id}"}
 								=fa_icon "chevron-up"
 
 						=#image_tag "arrow-up.png", height:25, width:20
 						=#fa_icon "arrow-up 2x"
 				.row
 					.net-vote
-						%strong 
+						%strong{id: "netvote-#{p.id}", class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)} #{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)} "} 
 							=p.likes.size-p.downvotes.size
 				.row
-					=link_to downvote_post_path(p), method: 'put' do
+					=button_to downvote_post_path(p), method: 'post', remote:true, class: 'downvote-btn' do
 						%h4
-							.vote-arrow{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}"}
+							.vote-arrow{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "downvote-#{p.id}"}
 								=fa_icon "chevron-down"
 						=#image_tag "down.png", height: 25, width:20
 						=#fa_icon "arrow-down 2x"
+					#post-ajax-cont
+					#post-ajax-chk
 		.col-md-1.post-image-cont
 			=image_tag p.pic.url(:thumb), alt: 'post photo', height:60, class: 'post-img'
 		.col-xs-10.col-md-8.post-mid-part

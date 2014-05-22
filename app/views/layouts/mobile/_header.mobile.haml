@@ -1,6 +1,6 @@
 %div{"data-role" => "header"}
 	%ul
-		%a.ui-btn.ui-shadow{"data-rel" => "popup", "data-transition" => "pop", href: "#tribeMenu", class: "#{'mobile-dr-active' if @duration_header && !@new_header}"}
+		%a.ui-btn.ui-shadow.ui-btn-left.mobile-tribe-drpdwn{"data-rel" => "popup", "data-transition" => "pop", href: "#tribeMenu"}
 			= if @tribe.nil? then 'All' else @tribe.name end
 			=fa_icon 'caret-down'
 		#tribeMenu{"data-role" => "popup", "data-theme" => "a"}
@@ -11,11 +11,10 @@
 					%li
 						=link_to tr.name, tr, 'data-ajax'=> false
 
-
-		.center-wrapper{id:'amobile-logo-cont'}
+		.center-wrapper
 			%span{style:'position:relative; margin-left:-50px;'}
 				=link_to image_tag('logo_90.png', alt: 'logo'), root_path
-	-if user_signed_in?
-		%a.ui-nodisc-icon.ui-alt-icon.ui-btn-right.ui-btn.ui-icon-bars.ui-btn-icon-notext.ui-corener-all{href:"#rightpanel3"}
-	-else
-		=link_to 'Sign up/Login', new_user_session_path, class: 'ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right mobile-signup-btn', 'data-transition'=> 'pop'
+		-if user_signed_in?
+			%a.ui-nodisc-icon.ui-alt-icon.ui-btn-right.ui-btn.ui-icon-bars.ui-btn-icon-notext.ui-corener-all{href:"#rightpanel3"}
+		-else
+			=link_to 'Sign up/Login', new_user_session_path, class: 'ui-btn-right ui-btn ui-btn-inline ui-mini mobile-signup-btn', 'data-transition'=> 'pop', 'data-prefetch'=> true

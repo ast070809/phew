@@ -26,6 +26,7 @@
 					=f.text_area :description, class: 'form-control', value: @descrip
 			.form-group
 				=f.label :tags, class: "col-sm-2 control-label"
+				(separate them by commas)
 				.col-sm-9
 					=f.text_field :tag_list, id: 'post_tags_list', class: 'col-sm-10'
 			.form-group

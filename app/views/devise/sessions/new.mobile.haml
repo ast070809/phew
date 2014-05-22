@@ -4,7 +4,7 @@
       Sign up / Login
   .ui-content{role: "main"}
     =render 'layouts/mobile/messages'
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), 'data-ajax'=>false) do |f|
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       .ui-field-contain
         %label{for:'user[login]'}
           Login

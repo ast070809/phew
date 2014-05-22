@@ -15,8 +15,8 @@ Phew::Application.routes.draw do
   resources :users
   resources :posts do 
     member do
-      put "upvote", to: "posts#upvote"
-      put "downvote", to: "posts#downvote"
+      post "upvote", to: "posts#upvote"
+      post "downvote", to: "posts#downvote"
       delete "delete", to: "posts#delete"
       post 'report', to: 'posts#report_post'
     end

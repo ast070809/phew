@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   has_mobile_fu
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :set_request_format
+  before_filter :adjust_format_for_mobile
 
   protected
 
@@ -16,8 +16,14 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def set_request_format
-    request.format = :mobile if is_mobile_device?
+  def adjust_format_for_mobile
+    if is_mobile_device?
+        if request.format == :js
+            request.format = :mobilejs
+        else
+            request.format = :mobile
+        end
+    end
   end
 
 end
