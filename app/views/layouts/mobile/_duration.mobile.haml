@@ -11,7 +11,6 @@
 				Top
 		#popupMenu{"data-role" => "popup", "data-theme" => "b"}
 			%ul{"data-inset" => "true", "data-role" => "listview", style: "min-width:210px;"}
-				%li{"data-role" => "list-divider"} Choose
 				%li
 					=link_to 'Today', if @post_index then top_path('today') else top_tribe_path(id: @tribe.id, duration: 'today') end, 'data-ajax'=>false
 				%li
