@@ -24,5 +24,5 @@
 					=link_to 'All time', if @post_index then top_path('all_time') else top_tribe_path(id: @tribe.id, duration: 'all_time') end ,'data-ajax'=>false
 					
 	.ui-block-c
-		=link_to 'New', if @post_index then new_path('current') else new_tribe_path(id: @tribe.id, duration: 'current') end, class: "ui-btn ui-shadow #{'mobile-dr-active' if @new_header}", 'data-ajax'=>false
+		=link_to 'Latest', if @post_index then new_path('current') else new_tribe_path(id: @tribe.id, duration: 'current') end, class: "ui-btn ui-shadow #{'mobile-dr-active' if @new_header}", 'data-ajax'=>false
 		
