@@ -1,0 +1,17 @@
+%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'reset-password',"data-dom-cache"=>"true"}
+  %div{"data-role" => "header"}
+    %h1 Reset password
+  .ui-content{role: "main"}  
+    .container
+      =render 'layouts/mobile/messages'
+      =devise_error_messages!
+      
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+        .ui-field-contain
+          %label{for:'login'}
+            Login
+          = f.text_field :login, class: 'form-control',:autofocus => true, placeholder: 'login'
+        .ui-field-contain
+          = f.submit "Send me reset password instructions", class: 'btn-u btn-block', style:'font-size:12px;'
+      .row
+        = render "devise/shared/links"

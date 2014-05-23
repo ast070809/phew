@@ -1,9 +1,10 @@
-%div{'data-role'=> 'page', 'data-dialog'=>"true", 'data-url'=> "#{request.path}"}
+%div{'data-role'=> 'page', 'data-dialog'=>"true", 'data-url'=> "#{request.path}", "data-dom-cache"=>"true"}
   %div{"data-role" => "header"}
     %h1
       Sign up / Login
   .ui-content{role: "main"}
     =render 'layouts/mobile/messages'
+    =devise_error_messages!
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       .ui-field-contain
         %label{for:'user[login]'}
@@ -18,6 +19,6 @@
           = f.check_box :remember_me
           Stay signed in
       = f.submit "Sign in", class: 'btn-u pull-right'
-    =link_to 'Sign up', new_user_registration_path, class: 'ui-btn ui-shadow ui-corner-all ui-btn-a', 'data-ajax'=> false
+    = render "devise/shared/links"
 
 

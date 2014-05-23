@@ -1,9 +1,10 @@
-%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'registration'}
+%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'registration',"data-dom-cache"=>"true"}
   %div{"data-role" => "header"}
     %h1
       Sign up
   .ui-content{role: "main"}  
     =render 'layouts/mobile/messages'
+    =devise_error_messages!
 
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
       .ui-field-contain
@@ -27,7 +28,7 @@
         = recaptcha_tags :display=>{:theme=>'custom', custom_theme_widget: 'recaptcha_widget'}
       .ui-field-contain
         = f.submit "Register", class: 'btn-u btn-block', 'data-ajax'=> false
-
+    = render "devise/shared/links"
 
 :javascript
   $(document).on('pagebeforeshow','#registration' ,function(e,data){    

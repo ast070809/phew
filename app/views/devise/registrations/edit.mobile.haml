@@ -1,0 +1,37 @@
+%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'edit-registrations',"data-dom-cache"=>"true"}
+	%div{"data-role" => "header"}
+		%h1
+			Edit your Profile  
+	.ui-content{role: "main"}  
+		=render 'layouts/mobile/messages'
+		=devise_error_messages!
+	= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+		.ui-field-contain
+			%label{for:'username'}
+				Username
+			= f.text_field :username, class: 'form-control',:autofocus => true, placeholder: 'Username'
+		.ui-field-contain
+			%label{for:'email'}
+				Email
+			= f.email_field :email, :autofocus => true, class: 'form-control', placeholder: 'Email'        
+		- if devise_mapping.confirmable? && resource.pending_reconfirmation?
+			.ui-field-contain
+				Currently waiting confirmation for: #{resource.unconfirmed_email}
+		.ui-field-contain
+			%label{for:'password'}
+				Password
+			= f.password_field :password, class: 'form-control', placeholder: 'Password'
+		.ui-field-contain
+			%label{for: 'password_confirmation'}
+				Password Confirmation
+			= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password'
+		.ui-field-contain
+			%label{for: 'current_password'}
+				Current Password
+			= f.password_field :current_password, class: 'form-control', placeholder: 'Current Password'
+		.ui-field-contain
+			= f.submit "Update", class: 'btn-u btn-block'
+		.ui-field-contain
+			Unhappy? 
+				
+			= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: ''

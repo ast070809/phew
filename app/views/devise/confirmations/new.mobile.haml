@@ -1,0 +1,19 @@
+%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'confirmation',"data-dom-cache"=>"true"}
+  %div{"data-role" => "header"}
+    %h1 Resend Confirmation instructions
+  .ui-content{role: "main"}  
+    .container
+      =render 'layouts/mobile/messages'
+      =devise_error_messages!
+      
+      = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|    
+        .ui-field-contain
+          %label{for:'login'}
+            Login
+          = f.text_field :login, class: 'form-control',:autofocus => true, placeholder: 'login'
+        .row
+          .col-md-10.col-md-offset-1
+            = f.submit "Resend confirmation instructions", class: 'btn-u btn-block'
+        .row
+          = render "devise/shared/links"
+            
