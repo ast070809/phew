@@ -8,7 +8,13 @@
 			=link_to @post.title, @post.link, target: '_blank'
 		%p.mobile-post-descrip
 			=@post.description
-
+		-tags = @post.tag_list
+		-if !tags.empty?
+			%ul.list-inline
+				Tags:
+				-tags.each do |t|
+					%li
+						=link_to t, tag_path(t), class: 'mobile-tag'
 		-if user_signed_in?
 			%div.mobile-write-comment-cont
 				=form_tag add_comment_path, method: :post, class:'form-inline' do

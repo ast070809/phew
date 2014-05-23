@@ -1,26 +1,26 @@
 .row
-	.col-md-10.col-md-offset-1
+	.col-xs-12
 		.panel.panel-default
-			.panel-heading
+			.panel-body
 				.row
-					.col-md-1.text-center
+					.col-xs-1.text-center
 						.row
 							=fa_icon "chevron-up"
 						.row
 							=c.netvote
 						.row
 							=fa_icon "chevron-down"
-					.col-md-9
+					.col-xs-9
 						.row
-							.col-md-12
-								%strong
+							.col-xs-12
+								%p{style:'font-size:14px'}
 									=c.body								
-									
-			.panel-body
-				-post_id = c.commentable_id
-				-post_type = c.commentable_type
-				%p
-					-post = Post.find(post_id)
-					%strong Post
-					=link_to post.title, post
+								
+						-post_id = c.commentable_id
+						-post_type = c.commentable_type
+						%p
+							-post = Post.find(post_id)
+							%span{style:'font-size:14px;'}
+								Post
+								=link_to post.title, post
 

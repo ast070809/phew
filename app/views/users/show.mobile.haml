@@ -1,0 +1,56 @@
+%div{'data-role'=> 'page','data-url'=> "#{request.path}", id: 'myaccount', "data-dom-cache"=>"true"}
+	= render 'layouts/mobile/panel'
+	%div{"data-role" => "header", style:'min-height:50px;'}
+		.center-wrapper
+			%span{style:'position:relative; margin-left:-50px;'}
+				=link_to image_tag('logo_90.png', alt: 'logo'), root_path
+		-if user_signed_in?
+			%a.ui-nodisc-icon.ui-alt-icon.ui-btn-right.ui-btn.ui-icon-bars.ui-btn-icon-notext.ui-corener-all{href:"#rightpanel3"}
+		-else
+			=link_to 'Sign up/Login', new_user_session_path, class: 'ui-btn-right ui-btn ui-btn-inline ui-mini mobile-signup-btn', 'data-transition'=> 'pop', 'data-prefetch'=> true
+
+	.ui-content{role: "main", style:'padding-left:2px; padding-right:2px; padding-top:0px;'}
+		=render 'layouts/mobile/flash'
+		.row
+			.col-md-6
+				%h2.text-center
+					Links Karma
+					-if @number_posts != 0 
+						(
+						=@number_posts
+						)
+				-if !@posts.empty?
+					-@posts.each do |p|
+						=render 'users/link', :p=> p
+					=paginate @posts
+				-else
+					%h3.text-center
+						.margin-bottom-40
+						You have 0 Karma
+						.row
+						You haven't submitted any links
+					.row
+						.col-md-12
+							#user-page-margin
+			.col-md-6
+				%h2.text-center
+					Comments Karma
+					- if @number_comments !=0
+						(
+						=@number_comments
+						)
+				-if !@comments.empty?
+					-@comments.each do |c|
+						=render 'users/comment', :c=> c
+					=paginate @comments , :param_name => :pagina
+				-else
+					%h3.text-center
+						.margin-bottom-40
+						You have 0 Karma
+						.row
+						You haven't written any comments
+					.row
+						.col-md-12
+							#user-page-margin
+	%div{"data-role" => "footer"}
+		= render 'layouts/mobile/footer'

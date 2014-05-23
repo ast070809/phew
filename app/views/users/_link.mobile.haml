@@ -1,0 +1,28 @@
+.row
+	.col-xs-12
+		.panel.panel-default
+			.panel-body
+				.row
+					.col-xs-1.text-center
+						.row
+							=fa_icon "chevron-up"
+						.row
+							=p.netvotes
+						.row
+							=fa_icon "chevron-down"
+					.col-xs-9
+						.row
+							.col-xs-12{style:'font-size:14px;'}
+								=link_to "#{p.title}", p
+							
+								
+						.row
+							.col-xs-12
+								%p{style:'font-size:12px;'}
+									Submited
+									=time_ago_in_words(p.created_at)
+									ago 
+									-if p.tribe
+										to
+										%strong
+											=p.tribe.name
