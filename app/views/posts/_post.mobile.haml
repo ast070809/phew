@@ -1,7 +1,7 @@
 -#.panel.panel-default.post_panel
 .tag-box.tag-box-v1.tag-box-v2.mob-post-container
 	.row
-		.col-xs-1
+		.col-xs-1{style:'padding-left:17px; padding-right:25px;'}
 			.row
 				.col-xs-12
 					=button_to(upvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-upvote-btn', 'data-role'=>'none')  do
