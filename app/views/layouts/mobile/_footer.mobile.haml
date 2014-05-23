@@ -1,12 +1,12 @@
 / === Footer ===
-.footer{id:'footer'}
+.footer{id:'footer', 'data-role'=> 'footer', style:'background-color:#585F69;'}
   .container
     .row
       .col-md-4.md-margin-bottom-40
         / About
         .headline
           %h2 About
-        %p.margin-bottom-25.md-margin-bottom-40 
+        %h5.margin-bottom-25.md-margin-bottom-40{style:'color:white'} 
           Niblin is a community of news nibblers. We believe that everything needs to be taken with a pinch of salt and hence there should be a discussion on every news.
           %br
           %strong
@@ -26,11 +26,11 @@
   .container
     .row
       .col-md-6
-        %p.copyright-space
+        %h5.copyright-space{style:'color:white'}
           2014 © Niblin. ALL Rights Reserved.
-          =link_to "Privacy Policy", privacy_policy_path
-          |
-          =link_to "Terms of Use", terms_of_use_path
+          =#link_to "Privacy Policy", privacy_policy_path
+          
+          =#link_to "Terms of Use", terms_of_use_path
       .col-md-6
         =link_to image_tag('logo_150.png', id: 'logo-footer', class: 'pull-right', height:30), root_path
         

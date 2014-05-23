@@ -1,3 +1,4 @@
+.margin-bottom-10
 .row
 	.col-md-4{id: 'comment-links'}
 		%ul.nav.nav-pills
@@ -6,7 +7,8 @@
 
 			%li{class: "#{'active' if @type == 'best'}"}
 				=link_to "Best", p(type:'best')
-			
+			%li{class: "#{'active' if @type == 'latest'}"}
+				=link_to "Latest", p(type:'latest')
 
 			
 
