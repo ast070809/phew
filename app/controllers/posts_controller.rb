@@ -106,10 +106,10 @@ class PostsController < ApplicationController
     @uri = URI.parse(params[:post][:link])
     post.source = @uri.host
 
-
     #image link
     @image_link = get_images(@uri)
     post.pic = get_image_from_url(@image_link)
+    
 
     if post.save
       Post.refresh_hotness(post)
@@ -261,7 +261,11 @@ class PostsController < ApplicationController
     end
 
     def get_image_from_url(url)
-      open(url)
+      begin 
+        open(url)
+      rescue 
+        ""
+      end
     end
 
     def get_descrip(link)
@@ -306,6 +310,8 @@ class PostsController < ApplicationController
           res_path = pth
           if width>100 && len >100 && (width/len)<3
             break
+          else 
+            res_path = ""
           end
       end
       res_path
