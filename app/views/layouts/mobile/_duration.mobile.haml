@@ -11,15 +11,16 @@
 				Top
 		#popupMenu{"data-role" => "popup", "data-theme" => "b"}
 			%ul{"data-inset" => "true", "data-role" => "listview", style: "min-width:210px;"}
-				%li
+				%li{style:'min-width:210px;'}
 					=link_to 'Today', if @post_index then top_path('today') else top_tribe_path(id: @tribe.id, duration: 'today') end, 'data-ajax'=>false
-				%li
+				
+				%li{style:'min-width:210px;'}
 					=link_to 'This week', if @post_index then top_path('week') else top_tribe_path(id: @tribe.id, duration: 'week') end,'data-ajax'=>false
-				%li
+				%li{style:'min-width:210px;'}
 					=link_to 'This month',if @post_index then top_path('month') else top_tribe_path(id: @tribe.id, duration: 'month') end,'data-ajax'=>false
-				%li
+				%li{style:'min-width:210px;'}
 					=link_to 'This year', if @post_index then top_path('year') else top_tribe_path(id: @tribe.id, duration: 'year') end ,'data-ajax'=>false
-				%li
+				%li{style:'min-width:210px;'}
 					=link_to 'All time', if @post_index then top_path('all_time') else top_tribe_path(id: @tribe.id, duration: 'all_time') end ,'data-ajax'=>false
 					
 	.ui-block-c

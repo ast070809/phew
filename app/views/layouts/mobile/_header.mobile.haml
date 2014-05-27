@@ -5,10 +5,10 @@
 			=fa_icon 'caret-down'
 		#tribeMenu{"data-role" => "popup", "data-theme" => "a"}
 			%ul{"data-inset" => "true", "data-role" => "listview", style: "min-width:210px;"}
-				%li
+				%li{style:'min-width:210px;'}
 					=link_to "All", root_path, 'data-ajax'=> false
 				-@tribes.each do |tr|
-					%li
+					%li{style:'min-width:210px;'}
 						=link_to tr.name, tr, 'data-ajax'=> false
 
 		.center-wrapper
