@@ -16,11 +16,11 @@
 								ago
 						%p.comment-body
 							= comment.body
-						=link_to upvote_post_comment_path(@post, comment), method: 'put' do
+						=link_to upvote_post_comment_path(@post, comment), method: 'put', class: 'comment-vote-arrow' do
 							=fa_icon "chevron-up"
 						%span
 							=comment.likes.size-comment.downvotes.size
-						=link_to downvote_post_comment_path(@post, comment), method: 'put' do
+						=link_to downvote_post_comment_path(@post, comment), method: 'put', class: 'comment-vote-arrow' do
 							=fa_icon "chevron-down"
 						&nbsp
 						
