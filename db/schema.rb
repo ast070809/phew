@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417205431) do
+ActiveRecord::Schema.define(version: 20140527110509) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140417205431) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "hotness"
-    t.integer  "netvote"
+    t.integer  "netvote",          default: 0
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
