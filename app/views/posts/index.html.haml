@@ -35,3 +35,12 @@
 								Breaking any of the above rules can lead to the user getting banned
 
 .margin-bottom-60
+:javascript
+	$('.vote-arrow').click(function(){
+		var signed_in = #{user_signed_in?};
+		if(signed_in){
+		}
+		else{
+			notify('Please Sign in to vote!', 'error', 2000);
+		}
+	});

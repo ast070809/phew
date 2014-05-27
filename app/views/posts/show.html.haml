@@ -40,4 +40,13 @@
 						Be the first one to comment
 		.div{style:'margin-bottom:60px;'}		
 
+:javascript
+	$('.comment-vote-arrow').click(function(){
+		var signed_in = #{user_signed_in?};
+		if(signed_in){
+		}
+		else{
+			notify('Please Sign in to vote!', 'error', 2000);
+		}
+	});
 	
