@@ -1,0 +1,22 @@
+%div{'data-role'=> 'page', 'data-dialog'=>"true", id: 'edit-password'}
+  %div{"data-role" => "header"}
+    %h1 Change your password
+  .ui-content{role: "main"}  
+    .container
+      =render 'layouts/mobile/messages'
+      =devise_error_messages!
+      
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|    
+        = f.hidden_field :reset_password_token
+        .ui-field-contain
+          %label{for:'password'}
+            Password    
+          = f.password_field :password, class: 'form-control',:autofocus => true, placeholder: 'password'
+        .ui-field-contain
+          %label{for:'password confirmation'}
+            Password confirmation
+          = f.password_field :password_confirmation, class: 'form-control',:autofocus => true, placeholder: 'password confirmation'
+        .ui-field-contain
+          = f.submit "Change my password", class: 'btn-u btn-block'
+      .row
+        = render "devise/shared/links"
