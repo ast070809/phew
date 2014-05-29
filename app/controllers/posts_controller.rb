@@ -8,8 +8,7 @@ class PostsController < ApplicationController
   
   def index
     links_per_page = 10
-    @tribes = Tribe.all
-
+    
     @post_index = true
     if params[:tag]
       @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(links_per_page)

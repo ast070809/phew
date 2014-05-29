@@ -15,7 +15,7 @@
 #  created_at       :datetime
 #  updated_at       :datetime
 #  hotness          :float
-#  netvote          :integer
+#  netvote          :integer          default(0)
 #
 
 class Comment < ActiveRecord::Base
