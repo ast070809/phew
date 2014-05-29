@@ -92,6 +92,7 @@ Phew::Application.configure do
     },
     :url => ':s3_alias_url',
     :s3_host_alias => ENV['CLOUDFRONT_URL'],
+    :path=> '/:class/pics/:id_:basename.:style.:extension'
   }
 
   config.action_mailer.delivery_method = :smtp
