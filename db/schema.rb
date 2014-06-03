@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529055523) do
+ActiveRecord::Schema.define(version: 20140603052659) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -82,6 +82,16 @@ ActiveRecord::Schema.define(version: 20140529055523) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "post_feeds", force: true do |t|
+    t.integer  "hot"
+    t.integer  "top_today"
+    t.integer  "top_week"
+    t.integer  "top_all"
+    t.integer  "latest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.text     "title"

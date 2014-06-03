@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hot: 1
+  top_today: 1
+  top_week: 1
+  top_all: 1
+  latest: 1
+
+two:
+  hot: 1
+  top_today: 1
+  top_week: 1
+  top_all: 1
+  latest: 1

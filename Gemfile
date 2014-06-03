@@ -90,6 +90,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Asynchronous processing
+gem 'sidekiq'
+
+#clockwork for scheduling jobs
+gem 'clockwork', '~> 0.7.5'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
