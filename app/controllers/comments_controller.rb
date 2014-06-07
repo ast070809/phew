@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 	    @comment.liked_by current_user
 	    Comment.refresh_hotness(@comment)
 	    Comment.refresh_votes(@comment)
+	    #Pusher["private-#{@comment.user.id}"].trigger('comment_upvote', {:by => current_user.username, :id => @comment.id})
 	    redirect_to :back
   	end
   
@@ -12,6 +13,7 @@ class CommentsController < ApplicationController
 	    @comment.downvote_from current_user
 	    Comment.refresh_hotness(@comment)
 	    Comment.refresh_votes(@comment)
+	    #Pusher['private-'+"#{current_user.id}"].trigger('comment_downvote', {:by => current_user.username, :id => @comment.id})
 	    redirect_to :back
 	end
 
