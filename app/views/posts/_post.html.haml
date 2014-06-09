@@ -23,17 +23,17 @@
 						
 		.col-md-1.post-image-cont
 			- if p.pic.url(:thumb) != '/pics/thumb/missing.png'
-				=image_tag p.pic.url(:thumb), alt: 'post photo', height:85, class: 'post-img'
+				=link_to image_tag(p.pic.url(:thumb), alt: 'post photo', height:85, class: 'post-img'), p
 			-else 
 				=image_tag 'lamp_post.jpg', alt:'post photo', height:85, class: 'post-img'
 		.col-xs-10.col-md-8.post-mid-part
-			.post-heading
-				=link_to "#{p.title}", p.link, target: '_blank', class: 'title-of-link'
-				-if p.source?
-					%span.source_link
-						(
-						=p.source
-						)
+			
+			=link_to "#{p.title}", p.link,target:'_blank', class: 'title-of-link'
+			-if p.source?
+				%span.source_link
+					(
+					=p.source
+					)
 			.link_descrip
 				=truncate(p.description, length:240)
 				-tags = p.tag_list
@@ -60,7 +60,8 @@
 						=time_ago_in_words(p.created_at)
 						ago by
 						%strong 
-							=link_to p.user.username, p.user
+							%span{style:'font-size:13px;'}
+								=link_to p.user.username, p.user
 							(
 							= pluralize(p.user.followers.count, 'follower')
 							)

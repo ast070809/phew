@@ -218,11 +218,10 @@ body{
 
 .post-container{
 	padding-top:7px !important;
-	padding-bottom:7px !important;
+	padding-bottom:20px !important;
 	padding-left:0px !important;
-	margin-bottom: 10px !important;
 	
-	border-bottom:1px dotted #E5E5E5;
+	border-bottom:1px dotted #E9E9E9;
 }
 .post-mid-part{
 	/* border-right:1px solid #E5E5E5; */
@@ -263,6 +262,7 @@ body{
 }
 .link_descrip{
 	font-size:13px;
+	line-height:19.5px;
 	color:#444;
 }
 .source_link{
@@ -270,6 +270,7 @@ body{
 	color: gray;
 }
 .title-of-link{
+	font-size:16px;
 }
 .comments-btn{
 	font-size: 13px !important;
