@@ -12,7 +12,13 @@ Phew::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    member do 
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  
   resources :posts do 
     member do
       post "upvote", to: "posts#upvote"

@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+$grayLighter: #333;
+$orange: #E6872B;
 #user-nav{
 	margin-top:0px;
 	margin-bottom:0px;
@@ -14,4 +15,54 @@
 }
 #user-page-margin{
 	margin-bottom:400px;
+}
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $orange;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.username-show{
+	font-weight:bold;
+	font-size:30px;
+	padding-bottom:10px;
+	border-bottom:1px solid $grayLighter;
+}
+#karma-heading-cont{
+	padding-left:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+}
+#karma-heading{
+  font-weight:bold !important;
+}
+.user-post-cont{
+  border-bottom:1px solid #DDDDDD;
+}
+#links-karma-heading{
+  padding-left:20px;
+  padding-top:20px;
+  text-decoration:underline;
+}
+
+#comments-karma-heading{
+  text-decoration:underline;
+}
+.user-comment-cont{
+  border-bottom:1px solid #DDDDDD;
 }

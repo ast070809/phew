@@ -36,11 +36,17 @@
 						=p.source
 						)
 			.link_descrip
-				=truncate(p.description, length:150)
+				=truncate(p.description, length:240)
+				-tags = p.tag_list
+				- if tags.any?
+					-tags.each do |t|
+						%span
+							=link_to t, tag_path(t), class: 'label label-info'
+				
 			.row.post_footer
-				.col-md-8
+				.col-md-9
 					.submited_ago_cont
-						Votes -
+						Votes:
 						(
 						%span{id:"total-upvote-#{p.id}"}
 							=p.likes.size
@@ -56,11 +62,14 @@
 						ago by
 						%strong 
 							=link_to p.user.username, p.user
+							(
+							= pluralize(p.user.followers.count, 'follower')
+							)
+
 						-if p.tribe
 							to
-							%strong
-								=p.tribe.name
-				.col-md-4
+							=p.tribe.name
+				.col-md-3
 					.pull-right
 						-if user_signed_in?
 							=link_to "report", report_post_path(p), method: :post
@@ -70,13 +79,7 @@
 
 			.row
 				.col-md-12.tag-cont
-					-tags = p.tag_list
-					-if !tags.empty?
-						%ul.list-inline
-							Tags:
-							-tags.each do |t|
-								%li
-									=link_to t, tag_path(t), class: 'label label-info'
+					
 		.col-xs-2.col-md-2.cmnt-indx-cont
 			=link_to "<i class='fa fa-comment color-light-green'></i>&nbsp#{pluralize(comment_count(p.id), 'comment')}</i>".html_safe, p, class: 'btn btn-default  comments-btn', method: 'get'
 			.row
