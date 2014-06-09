@@ -3,12 +3,10 @@
 
 #main-container{
 	padding:0px;
-	background-color:white;
+	background-image: image-url('mainpgbck.png');	
 }
 body{
-	/*background-image: image-url('login-bck.jpg'); */
-	background-color: #E5E5E5;
-
+	/*background-color: black; */
 }
 
 #header-top-img-cont{
@@ -80,7 +78,7 @@ body{
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:15px;
-	background-color: #00AEEF;
+	background-color: #31B0D5;
 	min-height:40px !important;
 	border-radius:0px;	
 	z-index:999;
@@ -190,6 +188,8 @@ body{
 .upvote-btn{
 	background:none;
 	border:none;
+	padding-top:0px;
+	line-height: 10px;
 }
 .downvote-btn{
 	background:none;
@@ -217,25 +217,28 @@ body{
 }
 
 .post-container{
-	padding-top:0px !important;
-	padding-bottom:0px !important;
-	margin-bottom: 15px !important;
+	padding-top:7px !important;
+	padding-bottom:7px !important;
+	padding-left:0px !important;
+	margin-bottom: 10px !important;
+	
+	border-bottom:1px dotted #E5E5E5;
 }
 .post-mid-part{
-	border-right:1px solid #E5E5E5;
+	/* border-right:1px solid #E5E5E5; */
 	padding-top:0px !important;
 	padding-left:10px;
 }
 .vote-cont{
-	padding-left:5px !important;
-	padding-right:5px !important;	
+	padding-left:0px !important;
+	padding-right:0px !important;	
 }
 
 .post-heading{
 	font-size:16px;	
 }
 .post-image-cont{
-	padding-top:10px;
+	padding-top:0px;
 	padding-right:20px;
 	padding-left:0px !important;
 }
@@ -244,7 +247,11 @@ body{
 }
 #index-post-container{
 	margin-top:0px;
-	background-color:white !important;
+	background-color:white;
+}
+.tribe-post-cont{
+	margin-top:0px;
+	background-color:white;
 }
 .post_panel{
 	border-radius:0;
@@ -256,6 +263,7 @@ body{
 }
 .link_descrip{
 	font-size:13px;
+	color:#444;
 }
 .source_link{
 	font-size: 12px;
@@ -278,14 +286,16 @@ span.glyphicon-arrow-down{
 	font-size:	2em;
 }
 .net-vote{
-	margin-top:10px;
-	margin-bottom:10px;
+	margin-top:0px;
+	margin-bottom:0px;
 }
 .up-down-vote-box{
-	padding-top:15px;
+	padding-top:0px;
 }
 .post_footer{
-	border-top:1px solid #E5E5E5;
+	margin-top:10px; 
+	/* border-top:1px solid #E5E5E5; */
+	color:#313538;
 }
 .submited_ago_cont{
 	font-size:12px;	
