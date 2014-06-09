@@ -50,9 +50,9 @@
 								-else
 									%h3.text-center
 										.margin-bottom-40
-										You have 0 Karma
+										0 Karma
 										.row
-										You haven't submitted any links
+										No posts submitted
 									.row
 										.col-md-12
 											#user-page-margin
@@ -63,16 +63,16 @@
 										(
 										=@number_comments
 										)
-								-if !@comments.empty?
+								-if @comments.any?
 									-@comments.each do |c|
 										=render 'users/comment', :c=> c
 									=paginate @comments , :param_name => :pagina
 								-else
 									%h3.text-center
 										.margin-bottom-40
-										You have 0 Karma
+										0 Karma
 										.row
-										You haven't written any comments
+										No comments written
 									.row
 										.col-md-12
 											#user-page-margin
