@@ -1,2 +1,8 @@
 .username-show
-	=@user.username
+	=link_to @user.username, @user
+	- if current_user?(@user)
+		%span{style:'font-size:16px'}
+			(
+		=link_to "Edit Profile", edit_user_registration_path, class: "edit-profile"
+		%span{style:'font-size:16px'}
+			)

@@ -1,16 +1,17 @@
 =#render 'layouts/user_header'
-.row.margin-bottom-40
+#user-follow-cont{style:'background-color:white;'}
+	.row.margin-bottom-40
 
-.row
-	.col-md-3{style: 'padding-left:30px;'}
-		= render 'users/info'
-		= render 'users/stats'
-	.col-md-8
-		%h4{style: 'font-weight:bold !important;'}
-			=  @title
-		.margin-bottom-20
-		-if @users.any?
-			-@users.each do |u|
-				=render 'users/user_show', u: u
-
-.margin-bottom-60		
+	.row
+		.col-md-3{style: 'padding-left:30px;'}
+			= render 'users/info'
+			= render 'users/stats'
+			
+		.col-md-8
+			%h4{style: 'font-weight:bold !important;'}
+				=  @title
+			.margin-bottom-20
+			-if @users.any?
+				-@users.each do |u|
+					=render 'users/user_show', u: u
+		.margin-bottom-60		

@@ -43,6 +43,13 @@ $orange: #E6872B;
 	padding-bottom:10px;
 	border-bottom:1px solid $grayLighter;
 }
+.username-show a{
+  color:#555 !important;
+  &:hover{
+    color:#72C02C !important;
+  }
+}
+
 #karma-heading-cont{
 	padding-left:10px;
   padding-right:10px;
@@ -65,4 +72,8 @@ $orange: #E6872B;
 }
 .user-comment-cont{
   border-bottom:1px solid #DDDDDD;
+}
+
+.edit-profile{
+  font-size:16px;
 }

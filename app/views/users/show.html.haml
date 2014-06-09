@@ -1,81 +1,82 @@
 =#render 'layouts/user_header'
-.row.margin-bottom-40
+#user-show-cont{style:'background-color:white;'}
+	.row.margin-bottom-40
 
-.row
-	.col-md-3{style: 'padding-left:30px;'}
-		= render 'users/info'
-		= render 'users/stats'
-	.col-md-9
-		.row
-			.col-md-12
-				- if user_signed_in?
-					= render 'users/follow_form'		
-		.row
-			.col-md-11
-				.margin-bottom-20
-				.row
-					.col-md-11#karma-heading-cont
-						%h3#karma-heading
-							Karma
-				.row
-					.col-md-12
-						%ul.nav.nav-tabs
-							%li.active
-								%a{href: "#links", 'data-toggle'=> 'tab'} 	
-									Links
-									-if @number_posts != 0 
-										(
-										=@number_posts
-										)
-							%li
-								%a{href: "#comments", 'data-toggle'=> 'tab'} 	
-									Comments
-									- if @number_comments !=0
-										(
-										=@number_comments
-										)
-	
-						.tab-content
-							#links.tab-pane.active.fade.in
-								%h4#links-karma-heading
-									Links Karma
-									-if @number_posts != 0 
-										(
-										=@number_posts
-										)
-								-if !@posts.empty?
-									-@posts.each do |p|
-										=render 'users/link', :p=> p
-									=paginate @posts
-								-else
-									%h3.text-center
-										.margin-bottom-40
-										0 Karma
+	.row
+		.col-md-3{style: 'padding-left:30px;'}
+			= render 'users/info'
+			= render 'users/stats'
+		.col-md-9
+			.row
+				.col-md-12
+					- if user_signed_in?
+						= render 'users/follow_form'		
+			.row
+				.col-md-11
+					.margin-bottom-20
+					.row
+						.col-md-11#karma-heading-cont
+							%h3#karma-heading
+								Karma
+					.row
+						.col-md-12
+							%ul.nav.nav-tabs
+								%li.active
+									%a{href: "#links", 'data-toggle'=> 'tab'} 	
+										Links
+										-if @number_posts != 0 
+											(
+											=@number_posts
+											)
+								%li
+									%a{href: "#comments", 'data-toggle'=> 'tab'} 	
+										Comments
+										- if @number_comments !=0
+											(
+											=@number_comments
+											)
+		
+							.tab-content
+								#links.tab-pane.active.fade.in
+									%h4#links-karma-heading
+										Links Karma
+										-if @number_posts != 0 
+											(
+											=@number_posts
+											)
+									-if !@posts.empty?
+										-@posts.each do |p|
+											=render 'users/link', :p=> p
+										=paginate @posts
+									-else
+										%h3.text-center
+											.margin-bottom-40
+											0 Karma
+											.row
+											No posts submitted
 										.row
-										No posts submitted
-									.row
-										.col-md-12
-											#user-page-margin
-							#comments.tab-pane.fade
-								%h4#comments-karma-heading
-									Comments Karma
-									- if @number_comments !=0
-										(
-										=@number_comments
-										)
-								-if @comments.any?
-									-@comments.each do |c|
-										=render 'users/comment', :c=> c
-									=paginate @comments , :param_name => :pagina
-								-else
-									%h3.text-center
-										.margin-bottom-40
-										0 Karma
+											.col-md-12
+												#user-page-margin
+								#comments.tab-pane.fade
+									%h4#comments-karma-heading
+										Comments Karma
+										- if @number_comments !=0
+											(
+											=@number_comments
+											)
+									-if @comments.any?
+										-@comments.each do |c|
+											=render 'users/comment', :c=> c
+										=paginate @comments , :param_name => :pagina
+									-else
+										%h3.text-center
+											.margin-bottom-40
+											0 Karma
+											.row
+											No comments written
 										.row
-										No comments written
-									.row
-										.col-md-12
-											#user-page-margin
+											.col-md-12
+												#user-page-margin
 
 
-				
+					
