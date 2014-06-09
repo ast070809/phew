@@ -24,9 +24,9 @@
 					
 		.col-md-1.post-image-cont
 			- if p.pic.url(:thumb) != '/pics/thumb/missing.png'
-				=image_tag p.pic.url(:thumb), alt: 'post photo', height:60, class: 'post-img'
+				=image_tag p.pic.url(:thumb), alt: 'post photo', height:75, class: 'post-img'
 			-else 
-				=image_tag 'lamp_post.jpg', alt:'post photo', height:60, class: 'post-img'
+				=image_tag 'lamp_post.jpg', alt:'post photo', height:75, class: 'post-img'
 		.col-xs-10.col-md-8.post-mid-part
 			.post-heading
 				=link_to "#{p.title}", p.link, target: '_blank', class: 'title-of-link'
