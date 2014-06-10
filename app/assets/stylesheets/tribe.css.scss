@@ -1,0 +1,9 @@
+.tribe-links{ 
+	color:#555 !important;
+	&:hover{
+		color:#72C02C !important;
+	}
+}
+.active .list-group-item  .tribe-links{
+	color:#72C02C !important;
+}

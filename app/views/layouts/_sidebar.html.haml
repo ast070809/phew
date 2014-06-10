@@ -1,0 +1,11 @@
+.col-md-12
+  %ul.list-group.sidebar-nav-v1
+
+    %li.list-group-item{class: "#{'active' if @post_index}"}
+      =link_to "All", root_path, class: 'tribe-links'
+    
+    -@tribes = Tribe.all
+    -@tribes.each do |tr|
+      %li.list-group-item{class: "#{'active' if @tribe && tr.name == @tribe.name}"}
+        =link_to tr.name, tr,  class: 'tribe-links'
+      

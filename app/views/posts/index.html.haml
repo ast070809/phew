@@ -1,9 +1,19 @@
 .row
 	.col-md-6.col-md-offset-3
 		=render 'layouts/messages'
+.margin-bottom-10
 .row
-	.col-lg-10.col-md-10.col-sm-10.col-xs-10.col-md-offset-1
+	.col-md-12
+		%div{style:'padding-left:15px;'}
+			=render 'layouts/trending_tribes'
+	.margin-bottom-10
+.row
+	.col-md-2
+		=render 'layouts/sidebar'
+	.col-md-10
 		#index-post-container
+			-if @post_index or @tribe_show
+				=render 'layouts/index'
 			-@posts.each do |p|
 				= render 'post', :p=> p
 			=paginate @posts

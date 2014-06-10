@@ -1,0 +1,8 @@
+%div{style:'background-color:white; padding-left:15px; padding-right:15px; padding-top:10px; padding-bottom:10px;'}
+	.pull-right
+	%strong Trending discussions - 
+	-ttrb= TrendingTribe.all
+	-ttrb.each do |t|
+		.label.label-warning	
+			=t.sub_tribe.name
+		&nbsp	
