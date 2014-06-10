@@ -14,7 +14,7 @@ Phew::Application.routes.draw do
 
   resources :sub_tribes do
     member do
-      get 'stribe/:duration', to: 'sub_tribes#show', as: :top
+      get 'sub_tribe/:duration', to: 'sub_tribes#show', as: :top
       get 'new/:duration', to: 'sub_tribes#show', as: :new  
     end
   end

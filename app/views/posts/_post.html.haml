@@ -69,6 +69,11 @@
 						-if p.tribe
 							to
 							=p.tribe.name
+						- if p.tribe && p.sub_tribe
+							and
+						- if p.sub_tribe
+							to
+							=p.sub_tribe.name
 				.col-md-3
 					.pull-right
 						-if user_signed_in?

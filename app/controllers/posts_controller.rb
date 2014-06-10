@@ -52,6 +52,8 @@ class PostsController < ApplicationController
     end
     @post = Post.new
     @tribes = Tribe.all
+    @trending_tribes = TrendingTribe.all
+
     #@images = get_images(@url)
     ##It will be better to move this job in background
   end
@@ -98,9 +100,16 @@ class PostsController < ApplicationController
     post = current_user.posts.create(post_params)
   	
     #assigning the tribe
-    tribe = Tribe.find(params[:post][:tribe])
-    post.tribe_id = tribe.id
+    if params[:post][:tribe]
+      tribe = Tribe.find(params[:post][:tribe])
+      post.tribe_id = tribe.id
+    end
     
+    #assigning the sub tribe if present
+    if params[:post][:sub_tribe]
+      stribe = SubTribe.find(params[:post][:sub_tribe])
+      post.sub_tribe_id = stribe.id
+    end
     #assigning the source
     @uri = URI.parse(params[:post][:link])
     post.source = @uri.host

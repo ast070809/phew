@@ -1,8 +1,9 @@
 %div{style:'background-color:white; padding-left:15px; padding-right:15px; padding-top:10px; padding-bottom:10px;'}
-	.pull-right
 	%strong Trending discussions - 
 	-ttrb= TrendingTribe.all
 	-ttrb.each do |t|
-		.label.label-warning	
-			=t.sub_tribe.name
+		=link_to t.sub_tribe.name, t.sub_tribe, class: 'label label-warning'
 		&nbsp	
+	.pull-right{style:'padding-top:2px;'}
+		%strong
+			Share, Vote and Discuss things that you relate with

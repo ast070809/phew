@@ -41,7 +41,6 @@ class TribesController < ApplicationController
       else
         @posts = @tribe.posts.order("hotness desc").page(params[:page]).per(links_per_page)
       end
-
     end
   end
 

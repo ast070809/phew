@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610094647) do
+ActiveRecord::Schema.define(version: 20140610153415) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -108,7 +108,10 @@ ActiveRecord::Schema.define(version: 20140610094647) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.string   "source"
+    t.integer  "sub_tribe_id"
   end
+
+  add_index "posts", ["sub_tribe_id"], name: "index_posts_on_sub_tribe_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

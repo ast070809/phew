@@ -17,6 +17,7 @@
 #  pic_file_size    :integer
 #  pic_updated_at   :datetime
 #  source           :string(255)
+#  sub_tribe_id     :integer
 #
 
 class Post < ActiveRecord::Base
@@ -35,7 +36,8 @@ class Post < ActiveRecord::Base
 	
 	belongs_to :user
 	belongs_to :tribe
-		
+	belongs_to :sub_tribe
+	
 	has_many :comments
 
 	has_many :reports, as: :reportable

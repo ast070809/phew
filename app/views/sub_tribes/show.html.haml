@@ -1,0 +1,10 @@
+.row
+	.margin-bottom-10
+	.col-md-2
+		=render 'layouts/sidebar'
+	.col-md-10
+		.tribe-post-cont
+			=render 'layouts/st_index'
+			-@posts.each do |p|
+				= render 'posts/post', :p=> p
+			=paginate @posts

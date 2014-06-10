@@ -27,6 +27,13 @@
 		=f.label :tribe, class: "col-sm-2 control-label"
 		.col-sm-4	
 			=f.select :tribe, @tribes.collect{|t| [t.name, t.id]}, {},class: 'form-control'
+		
+		=f.label 'and Submit it to a trending tribe also', class: 'col-sm-2 control-label'
+		.col-sm-4
+			-@trending_tribes.each do |t|
+				=f.radio_button :sub_tribe, t.sub_tribe.id
+				=f.label t.sub_tribe.name 
+			
 	.form-group
 		=#f.label 'Photo', class: "col-sm-2 control-label"
 		.col-sm-4	
