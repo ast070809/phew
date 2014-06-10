@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: tribes
+# Table name: sub_tribes
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
+#  tribe_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
-#  priority   :integer
 #
 
-class Tribe < ActiveRecord::Base
-  has_and_belongs_to_many :users
-  has_many :posts
+class SubTribe < ActiveRecord::Base
 
-  has_many :sub_tribes
+	has_many :trending_tribes
+	has_many :posts
+	belongs_to :tribe
+	
 end

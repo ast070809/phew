@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: sub_tribes
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  tribe_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  tribe_id: 1
+
+two:
+  name: MyString
+  tribe_id: 1

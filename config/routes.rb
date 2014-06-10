@@ -12,12 +12,21 @@ Phew::Application.routes.draw do
     end
   end
 
+  resources :sub_tribes do
+    member do
+      get 'stribe/:duration', to: 'sub_tribes#show', as: :top
+      get 'new/:duration', to: 'sub_tribes#show', as: :new  
+    end
+  end
+  
   resources :users do
     member do 
       get :following, :followers
     end
   end
   resources :relationships, only: [:create, :destroy]
+  
+
   
   resources :posts do 
     member do

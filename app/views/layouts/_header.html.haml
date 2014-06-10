@@ -15,11 +15,7 @@
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#',  id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-default top-nav-create-btn'
       
     %ul.nav.navbar-nav.navbar-right
-      %li{style: 'padding-left:15px;padding-right:15px;padding-top:15px;'}
-        %h2{style:'font-size:20px !important;color:#5FB611; margin-top:0px; font-weight:bold !important;'}
-          Share, Vote and Discuss
-          %span{style:'font-size:13px !important; font-weight:400;'}
-            stuff you relate with
+      
             
       -if user_signed_in?
         %li{style: 'padding-right: 10px;'}

@@ -1,5 +1,6 @@
 %nav.navbar.navbar-center{id: 'tribe-navigation'}
   %ul.nav.navbar-nav
+    
     %li.custom-center
       =link_to "All", root_path, class: "tribe-nav-links #{'active' if @post_index}"
     -@tribes.each do |tr|
@@ -42,8 +43,17 @@
         %li
           =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-default'
     .col-md-5
-      %ul.nav.navbar-nav.navbar-right{id: 'username-refine', style: 'display:none;'}
-        %li{style: 'padding-right: 25px;'}
+      
+      %ul.nav.navbar-nav.navbar-right
+        
+        %li{id: 'tagline',style: 'padding-top:15px; padding-right:75px;'}
+          %h2{style:'font-size:20px !important;color:#5FB611; margin-top:0px; font-weight:bold !important;'}
+            Share, Vote and Discuss
+            %span{style:'font-size:13px !important; font-weight:400;'}
+              stuff you relate with
+
+        
+        %li{id: 'username-refine', style: 'display:none;'}
           -if user_signed_in?
             .btn-group{style: 'cursor:pointer;'}
               #user-name-nav{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"10","data-close-others"=>"false"}
@@ -58,7 +68,7 @@
                   =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
           -else
             =link_to('Login', new_user_session_path)
-      
+    
     .col-md-4.hidden-div{id: 'user-duration-header'}
       %ul.nav.navbar-nav.navbar-right
         %li
@@ -77,7 +87,8 @@
       $createLink = $('#submit-new-link-refine'),
       $userLogin = $('#user-duration-header'),
       $brand = $('#brand-refine-bar'),
-      $userName = $('#username-refine')
+      $userName = $('#username-refine'),
+      $tagLine = $('#tagline'),
       $win = $(window),
 
       $filter = $('#refine-nav'),
@@ -89,17 +100,20 @@
       if(!$filter.hasClass('navbar-fixed-top remove-grey-bck-nav') && $win.scrollTop() > $filter.offset().top){
         $filter.before($filterSpacer);
         $filter.addClass("navbar-fixed-top remove-grey-bck-nav");
+        $tagLine.hide();
         $createLink.show();
         $brand.fadeIn();
-        $userName.fadeIn();
+        $userName.show();
         $userLogin.show();
+        
       } else if ($filter.hasClass('navbar-fixed-top remove-grey-bck-nav')  && $win.scrollTop() < $filterSpacer.offset().top){
         $filter.removeClass("navbar-fixed-top remove-grey-bck-nav");
         $filterSpacer.remove();
         $createLink.hide();
         $userLogin.hide();
         $brand.fadeOut();
-        $userName.fadeOut();
+        $userName.hide();
+        $tagLine.fadeIn();
 
       }
     });

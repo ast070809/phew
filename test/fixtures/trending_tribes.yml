@@ -1,0 +1,17 @@
+# == Schema Information
+#
+# Table name: trending_tribes
+#
+#  id           :integer          not null, primary key
+#  sub_tribe_id :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sub_tribe_id: 1
+
+two:
+  sub_tribe_id: 1
