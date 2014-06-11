@@ -15,10 +15,9 @@
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#',  id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-default top-nav-create-btn'
       
     %ul.nav.navbar-nav.navbar-right
-      
-            
+      %span{style:'margin-right:7px;'}
       -if user_signed_in?
-        %li{style: 'padding-right: 10px;'}
+        %li
           .btn-group{style: 'cursor:pointer;'}
             #user-name-nav{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"10","data-close-others"=>"false"}
               =fa_icon "user"
