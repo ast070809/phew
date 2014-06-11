@@ -15,13 +15,7 @@ module PostsHelper
 	def comment_count(post_id)
 		post = Post.find(post_id)
 
-		@root_comments = post.root_comments
-    	rcount = @root_comments.count
-	    c = 0
-	    @root_comments.each do |r|
-	      c += r.children.size
-	    end
-	    @com_count = c + rcount
+		@com_count = post.comment_threads.size
 	end
 
 	def current_user_poster?(post)
