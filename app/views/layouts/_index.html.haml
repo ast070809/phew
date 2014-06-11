@@ -33,7 +33,7 @@
         %li
           =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-default'
     .col-md-7
-      %ul.nav.navbar-nav         
+      %ul.nav.navbar-nav.navbar-right{style:'margin-right:7px;'}         
         %li{id: 'username-refine', style: 'display:none;'}
           -if user_signed_in?
             .btn-group{style: 'cursor:pointer;'}
@@ -48,7 +48,7 @@
                 %li
                   =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
           -else
-            =link_to('Login', new_user_session_path)
+            =link_to('Login', new_user_session_path, style:'font-weight:bold')
         
     
 
