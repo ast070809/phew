@@ -8,14 +8,23 @@
 					=p.netvotes
 				.row
 					=fa_icon "chevron-down"
-			.col-md-9
+			
+			.col-md-11
 				.row
-					.col-md-12
+					.col-md-10
 						%strong
 							=link_to "#{p.title}", p
+							
+					.col-md-2
+						%span
+							%strong
+								(
+								=pluralize(comment_count(p.id), 'comment')
+								)
 						
 				.row
 					.col-md-12
+						
 						%p
 							Submited
 							=time_ago_in_words(p.created_at)
@@ -27,6 +36,5 @@
 
 
 
-				%p
-					=p.description
+			
 	
