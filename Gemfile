@@ -99,6 +99,8 @@ gem 'clockwork', '~> 0.7.5'
 # realtime notification
 gem 'pusher', '~> 0.12.0'
 
+#for activity stream
+gem 'stream-ruby'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

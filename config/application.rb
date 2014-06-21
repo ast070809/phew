@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'stream'
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,5 +21,8 @@ module Phew
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    # the ruby client takes care of auth for you
+    config.client = Stream::Client.new('nfmcbszq3yr2', 'v4ywctem9526yqt2gs245xem6qbrj6yxt8u332tum4gnm898x4aawetf8rceekjc')
   end
 end
