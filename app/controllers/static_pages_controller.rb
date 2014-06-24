@@ -8,12 +8,11 @@ class StaticPagesController < ApplicationController
 
 	def test
 		
-		# Instantiate a feed object
-		user_feed_1 = Rails.configuration.client.feed('user:1')
-		# Add an activity to the feed
-		# Create a new activity
-		activity_data = {:actor => 1, :verb => 'tweet', :object => 1}
-		@activity_response = user_feed_1.add_activity(activity_data)
+  	require 'pusher'
+			Pusher.url = "http://6b2448376d4955fa296c:77c911158c8bf9314a4b@api.pusherapp.com/apps/76475"
+	Pusher['test_channel'].trigger('my_event', {
+	  message: "not hello"
+	})
 	end
 
 end

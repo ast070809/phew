@@ -72,6 +72,9 @@ group :development do
 
   # for previewing emails
   gem "letter_opener"
+
+  # to run unicorn in dev
+  gem "unicorn-rails"
 end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -91,7 +94,12 @@ group :doc do
 end
 
 # Asynchronous processing
-gem 'sidekiq'
+gem 'delayed_job_active_record'
+#gem 'sidekiq'
+
+## For working with sidekiq
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'slim'
 
 #clockwork for scheduling jobs
 gem 'clockwork', '~> 0.7.5'
@@ -101,6 +109,10 @@ gem 'pusher', '~> 0.12.0'
 
 #for activity stream
 gem 'stream-ruby'
+
+
+#unicorn server
+gem 'unicorn'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

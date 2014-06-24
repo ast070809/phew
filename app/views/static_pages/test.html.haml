@@ -1,1 +1,18 @@
-=@activity_response
+-user_feed_1 = Rails.configuration.client.feed('user:1')
+-result = user_feed_1.get(:limit=>20, :offset=>0)
+%table.table
+	%thead
+		%td
+			Object
+		%td
+			Time
+		%td
+			Tweet
+	-result['results'].each do |r|
+		%tr 
+			%td
+				=r['object']
+			%td
+				=r['time']
+			%td
+				=r['tweet']
