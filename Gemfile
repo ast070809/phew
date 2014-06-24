@@ -94,8 +94,8 @@ group :doc do
 end
 
 # Asynchronous processing
-gem 'delayed_job_active_record'
-#gem 'sidekiq'
+#gem 'delayed_job_active_record'
+gem 'sidekiq'
 
 ## For working with sidekiq
 gem 'sinatra', '>= 1.3.0', :require => nil
