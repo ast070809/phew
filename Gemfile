@@ -119,9 +119,6 @@ gem 'pusher', '~> 0.12.0'
 gem 'stream-ruby'
 
 
-#unicorn server
-gem 'unicorn'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
