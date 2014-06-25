@@ -103,7 +103,7 @@ gem 'delayed_job_active_record'
 #gem 'sidekiq'
 
 ##redis server
-#gem 'redis'
+gem 'redis'
 
 ## For working with sidekiq
 #gem 'sinatra', '>= 1.3.0', :require => nil
