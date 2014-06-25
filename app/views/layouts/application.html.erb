@@ -38,7 +38,6 @@
     var pusher = new Pusher('6b2448376d4955fa296c');
     var channel = pusher.subscribe('test_channel');
     channel.bind('my_event', function(data) {
-      alert(data.message);
     });
   </script>
 </head>
