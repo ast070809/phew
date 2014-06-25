@@ -72,6 +72,9 @@ group :development do
 
   # for previewing emails
   gem "letter_opener"
+
+  # running background jobs
+  gem "foreman"
 end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -91,7 +94,8 @@ group :doc do
 end
 
 # Asynchronous processing
-gem 'sidekiq'
+#gem 'sidekiq'
+gem 'delayed_job_active_record'
 
 #clockwork for scheduling jobs
 gem 'clockwork', '~> 0.7.5'
@@ -103,8 +107,8 @@ gem 'pusher', '~> 0.12.0'
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
-
+gem 'unicorn'
+gem "unicorn-rails"
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
