@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+#require 'sidekiq/web'
 Phew::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
