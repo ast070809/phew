@@ -19,6 +19,11 @@ Phew::Application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
+  # for log output to be sent to console for unicorn
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(
+    ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
+  )
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
 
@@ -53,5 +58,6 @@ Phew::Application.configure do
        :password => "7rcejt4vh212"
   }
   require 'net/http'
+
 
 end

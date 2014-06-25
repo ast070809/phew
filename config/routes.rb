@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Phew::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -68,6 +69,11 @@ Phew::Application.routes.draw do
   post 'pusher/auth'
 
   get 'test', to: 'static_pages#test'
+
+  #authenticate :user, lambda { |u| u.email=='p11atulst@iimahd.ernet.in' } do
+  #  mount Sidekiq::Web => '/sidekiq'
+  #end
+
   #match '/fill', to: 'static_pages#fill', as: 'fill'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
