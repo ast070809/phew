@@ -302,6 +302,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_12factor (= 0.0.2)
   recaptcha
+  redis
   sass-rails (~> 4.0.0)
   sdoc
   select2-rails
