@@ -99,6 +99,11 @@ end
 gem 'delayed_job_active_record'
 
 #gem 'sidekiq'
+#gem 'delayed_job_active_record'
+#gem 'sidekiq'
+
+##redis server
+#gem 'redis'
 
 ## For working with sidekiq
 #gem 'sinatra', '>= 1.3.0', :require => nil
@@ -116,6 +121,7 @@ gem 'stream-ruby'
 
 #unicorn server
 gem 'unicorn'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
