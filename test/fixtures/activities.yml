@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  actor: 1
+  verb: MyString
+  object: 1
+  target: 1
+  user_id: 1
+  seen: false
+  msg: MyString
+
+two:
+  actor: 1
+  verb: MyString
+  object: 1
+  target: 1
+  user_id: 1
+  seen: false
+  msg: MyString

@@ -7,10 +7,9 @@ class StaticPagesController < ApplicationController
 	end
 
 	def test
-
-		post = Post.first
-		post.delay.test_notify
-
+		#post = Post.first
+		#post.delay.test_notify
+		
 	end
 
 end

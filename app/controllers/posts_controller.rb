@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
   require 'fastimage'
-  
   has_mobile_fu_for :index, :upvote, :downvote
   before_filter :authenticate, except: [:index, :show]  
   
@@ -219,6 +218,7 @@ class PostsController < ApplicationController
       
       if @comment.save
         @comment.move_to_child_of(parent_comment)
+        
         flash[:notice] = "Successfully saved"
       else
         flash[:notice] = "#{@comment.errors.full_messages}"

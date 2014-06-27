@@ -77,12 +77,12 @@ class Post < ActiveRecord::Base
 	end
 
 	def test_notify
+		
 		Pusher.url = "http://6b2448376d4955fa296c:77c911158c8bf9314a4b@api.pusherapp.com/apps/76475"
 
 		Pusher['test_channel'].trigger('my_event', {
-		  message: 'hello world'
+		  message: 'hello alok'
 		})
-
 	end
 	#handle_asynchronously :test_notify
 

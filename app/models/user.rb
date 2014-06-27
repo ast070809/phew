@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
   has_many :posts
   has_and_belongs_to_many :tribes
   has_many :reports
-  
+  has_many :activities
+
   acts_as_tagger
   acts_as_voter
 
@@ -68,11 +69,17 @@ class User < ActiveRecord::Base
 	end
 
 	def follow!(other_user)
-		relationships.create!(followed_id: other_user.id)
+		if relationships.create!(followed_id: other_user.id)
+
+		end
 	end
 
 	def unfollow!(other_user)
     	relationships.find_by(followed_id: other_user.id).destroy
+    end
+
+    def recent_activities(limit)
+	    activities.order('created_at DESC').limit(limit)
     end
 
  end

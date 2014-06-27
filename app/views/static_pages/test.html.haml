@@ -1,1 +1,30 @@
+-user_feed_1 = Rails.configuration.client.feed("aggregated:#{current_user.id}")
+-result = user_feed_1.get(:limit=>30, :offset=>0)
+-#result = user_feed_1.get(:limit=>20, :offset=>0)
+=@activity_response
+%table.table
+	-result['results'].each_with_index do |r,i|
+		%tr
+			%td
+				%table
+					%thead
+						%td
+							%strong actor
+						%td
+							%strong verb
+						%td
+							%strong target
 
+					-r['activities'].each do |a|
+						%tr
+							%td
+								=a["actor"]
+							%td
+								=a["verb"]
+							%td
+								=a["target"]
+							%td
+								=a[""]
+			%td
+				=i	
+			%td
