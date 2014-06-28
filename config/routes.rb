@@ -4,7 +4,7 @@ Phew::Application.routes.draw do
   ActiveAdmin.routes(self)
   #devise_for :admins
   get "posts/index"
-  devise_for :users,  controllers: { registrations: "registrations" }
+  devise_for :users,  controllers: { registrations: "registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :tribes do 
     member do

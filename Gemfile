@@ -8,8 +8,17 @@ gem 'rails', '4.0.2'
 gem 'sass-rails', '~> 4.0.0'
 gem "bootstrap-sass", "~> 3.1.1.0"
 
+
+#**************
+# for login and signup
 ## Devise for authentication
 gem "devise", "3.2.2"
+gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
+gem 'omniauth-twitter'
+
+#**************
+
 ##annotate for getting details of the models
 gem "annotate"
 ##for getting haml

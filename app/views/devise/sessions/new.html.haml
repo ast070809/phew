@@ -4,12 +4,20 @@
     .row
       .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
         = form_for(resource, :as => resource_name, :url => session_path(resource_name), html:{class: 'reg-page'}) do |f|
-          .reg-header
+          .reg-header{style:'margin-bottom:30px !important;'}
             .pull-right
               =link_to 'X', root_path
             %h2 
               Sign in  
           =render 'layouts/messages'
+          %a{href: user_omniauth_authorize_path(:facebook)}
+            .fb-btn
+              %span.fb-btn-icon
+                =fa_icon "facebook"
+              Login with Facebook
+          .or.custom-center
+            Or,
+          
           .input-group.margin-bottom-20
             %span.input-group-addon
               %i.icon-user
