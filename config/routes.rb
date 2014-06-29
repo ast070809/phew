@@ -9,7 +9,7 @@ Phew::Application.routes.draw do
   resources :tribes do 
     member do
       get 'tribe/:duration', to: 'tribes#show', as: :top
-      get 'new/:duration', to: 'tribes#show', as: :new  
+      get 'new/:duration',   to: 'tribes#show', as: :new  
     end
   end
 
@@ -55,6 +55,7 @@ Phew::Application.routes.draw do
   get 'tags/:tag', to: 'posts#index', as: :tag
   get 'top/:duration', to: 'posts#index', as: :top
   get 'new/:duration', to: 'posts#index', as: :new
+  get 'search', to: 'posts#search'
   
   post 'add_post_directly', to: 'posts#add_post_directly'
 

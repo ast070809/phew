@@ -151,6 +151,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def search
+    @post= Post.search(params[:searchquery])
+  end
+
   def delete
     @post = Post.find(params[:id])
     @post.destroy

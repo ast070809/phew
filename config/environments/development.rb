@@ -29,7 +29,7 @@ Phew::Application.configure do
 
 
   # Set host for mailer
-  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+  config.action_mailer.default_url_options = {:host => "localhost:8080"}
   
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -39,9 +39,9 @@ Phew::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'phewpost',
-      :access_key_id => 'AKIAJBWWDXQPD32U6UMQ',
-      :secret_access_key => '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',
+      :bucket => 'niblintest',
+      :access_key_id => 'AKIAJV6D5BI65OMETYZQ',
+      :secret_access_key => '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',
       :s3_host_name => "s3-ap-southeast-1.amazonaws.com"
     }
   }
