@@ -77,7 +77,7 @@ end
 
 
 group :development do
-  gem 'sqlite3', '1.3.8'
+  #gem 'sqlite3', '1.3.8'
 
   # for previewing emails
   gem "letter_opener"
@@ -134,8 +134,12 @@ gem 'stream-ruby'
 # Use unicorn as the app server
 gem 'unicorn'
 gem "unicorn-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'mysql2'
+gem 'pg', '0.15.1'
+gem 'thinking-sphinx', '~> 3.1.0'
