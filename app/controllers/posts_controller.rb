@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   require 'nokogiri'
   require 'fastimage'
   has_mobile_fu_for :index, :upvote, :downvote
-  before_filter :authenticate, except: [:index, :show]  
+  before_filter :authenticate, except: [:index, :show, :search]  
   
   def index
     links_per_page = 10
@@ -151,7 +151,8 @@ class PostsController < ApplicationController
   end
 
   def search
-    @post= Post.search(params[:searchquery])
+    links_per_page = 10
+    @posts= Post.search(params[:searchquery]).page(params[:page]).per(links_per_page)
   end
 
   def delete

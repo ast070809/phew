@@ -1,16 +1,23 @@
-.panel-body
-	=form_tag search_path, :method => 'get', class: 'form-horizontal' do
-		%label.col-md-6.control-label
-			Search Posts:
-		.form-group
-			.col-md-6
-				=text_field :searchquery, '', class: 'form-control'
-		.form-group
-			.col-md-3.col-md-offset-6
-				=submit_tag :submit, class: 'btn btn-default form-control'
+.margin-bottom-10
+.row
+	.margin-bottom-10
+	.col-md-12
+		%div{style:'background-color:white; margin-left:15px; margin-right:15px; padding-top:4px; padding-bottom:4px; '}
+			.custom-center
+				%h4
+					Search Results
+.margin-bottom-10
 
-.col-md-10
-	#index-post-container
-		-@post.each do |p|
-			= render 'post', :p=> p
-		=paginate @post
+.row
+	.col-md-2
+		=render 'layouts/sidebar'
+	.col-md-10
+		#searchpage-container
+			- if @posts.empty?
+				.panel.panel-body.custom-center{style:'margin-right:15px;'}
+					%strong No Results Found
+			-else
+				-@posts.each do |p|
+					= render 'post', :p=> p
+				=paginate @posts
+.margin-bottom-20
