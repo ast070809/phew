@@ -7,21 +7,25 @@
 	.ui-panel-inner
 		%ul.ui-listview
 			%li.mobile-panel-cont
-				%div{style:'padding-right:10px;padding-left:10px;'}
+				%div
 					=link_to 'Submit a link', new_temp_path, class: 'ui-btn ui-shadow ui-corner-all ui-btn-b ui-icon-plus ui-btn-icon-left mobile-submit-btn', 'data-ajax'=> false
-			.margin-bottom-10
 			
+			%li.mobile-panel-cont
+				=form_tag search_path, :method => 'get' do
+					.ui-field-contain#mobile-search
+						%input#search{name: "searchquery", placeholder: "Search Posts", type: "search", value: ""}/
+
 			%li.mobile-panel-cont
 				.center-wrapper
 					=link_to "Edit Profile", edit_user_registration_path, class: 'ui-btn ui-shadow ui-icon-edit ui-btn-icon-left'
-			.margin-bottom-10
 			%li.mobile-panel-cont
 				.center-wrapper
 					=link_to "My Account",current_user, class: 'ui-btn ui-shadow ui-icon-user ui-btn-icon-left'
-			.margin-bottom-10
 			%li.mobile-panel-cont
 				.center-wrapper
 					=link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'ui-btn ui-shadow ui-icon-power ui-btn-icon-left'
-			.margin-bottom-10
 			%li.mobile-panel-cont
-				%a.ui-btn.ui-shadow.ui-corner-all.ui-btn-a.ui-icon-delete.ui-btn-icon-left.ui-btn-inline{"data-rel" => "close", href: "#demo-links"} Close panel
+				
+				%a.ui-btn.ui-shadow.ui-corner-all.ui-icon-delete.ui-btn-icon-left.ui-btn-inline{"data-rel" => "close", href: "#demo-links"} 
+					.center-wrapper
+						Close panel

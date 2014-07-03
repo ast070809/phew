@@ -1,24 +1,24 @@
 -#.panel.panel-default.post_panel
-.tag-box.tag-box-v1.tag-box-v2.mob-post-container
+.mob-post-container
 	.row
-		.col-xs-1{style:'padding-left:17px; padding-right:25px;'}
+		.col-xs-1{style:'padding-left:15px; padding-right:15px; '}
 			.row
-				.col-xs-12
+				.mobile-vote
 					=button_to(upvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-upvote-btn', 'data-role'=>'none')  do
-						.mobile-vote{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "mob-upvote-#{p.id}"}
+						%div{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "mob-upvote-#{p.id}"}
 							=fa_icon "chevron-up"
 			.row
-				.col-xs-12
-					.mobile-net-vote
-						%strong{id: "mob-netvote-#{p.id}", class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)} #{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)} "} 
+				.col-xs-1
+					%strong{id: "mob-netvote-#{p.id}", class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)} #{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)} "} 
+						.mobile-net-vote
 							=p.likes.size-p.downvotes.size
 			.row
-				.col-xs-12
+				.mobile-vote
 					=button_to(downvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-downvote-btn', 'data-role'=>'none') do
-						.mobile-vote{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "mob-downvote-#{p.id}"}
+						%div{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "mob-downvote-#{p.id}"}
 							=fa_icon "chevron-down"
 				#post-ajax-chk
-		.col-xs-9
+		.col-xs-9{style:'padding-left:10px;'}
 			=link_to "#{p.title}", p, class: 'mobile-title-link', 'data-ajax'=>false
 			-if p.source?
 				%span.source_link
@@ -26,7 +26,7 @@
 					=p.source
 					)
 			.row.post_footer
-				.col-xs-9
+				.col-xs-12
 					.submited_ago_cont
 						Submited
 						=time_ago_in_words(p.created_at)
@@ -37,8 +37,6 @@
 							to
 							%strong
 								=p.tribe.name
-				.col-xs-3
-					.pull-right
 						-if user_signed_in?
 							=link_to "report", report_post_path(p), method: :post, class: 'mobile-report-post'
 						
@@ -62,10 +60,11 @@
 						=pluralize(comment_count(p.id), 'comment')
 						)
 		.col-xs-1.mobile-img-cont
+			-pic_height = 55
 			- if p.pic.url(:thumb) != '/pics/thumb/missing.png'
-				=image_tag p.pic.url(:thumb), alt: 'post photo', height:40, class: 'post-img'
+				=image_tag p.pic.url(:thumb), alt: 'post photo', height:pic_height, class: 'post-img'
 			-else 
-				=image_tag 'lamp_post.jpg', alt:'post photo', height:40, class: 'post-img'
+				=image_tag 'lamp_post.jpg', alt:'post photo', height:pic_height, class: 'post-img'
 			
 	.clearfix
 :javascript
