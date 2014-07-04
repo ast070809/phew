@@ -141,4 +141,7 @@ gem "unicorn-rails"
 # gem 'debugger', group: [:development, :test]
 gem 'mysql2'
 gem 'pg', '0.15.1'
+
+#For search
 gem 'thinking-sphinx', '~> 3.1.0'
+gem 'flying-sphinx',   '1.2.0'
