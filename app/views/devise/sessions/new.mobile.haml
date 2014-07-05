@@ -5,6 +5,10 @@
   .ui-content{role: "main"}
     =render 'layouts/mobile/messages'
     =devise_error_messages!
+    .ui-field-contain
+      =link_to(user_omniauth_authorize_path(:facebook), 'data-ajax'=> false, class: 'ui-btn mobile-fb-btn') do
+        =fa_icon "facebook"
+        Login with Facebook
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       .ui-field-contain
         %label{for:'user[login]'}

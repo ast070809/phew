@@ -1,7 +1,7 @@
 -#.panel.panel-default.post_panel
 .mob-post-container
 	.row
-		.col-xs-1{style:'padding-left:15px; padding-right:15px; '}
+		.col-xs-1{style:'padding-left:15px; padding-right:25px; '}
 			.row
 				.mobile-vote
 					=button_to(upvote_post_path(p), remote:true, form:{'data-ajax'=>false}, class: 'mobile-upvote-btn', 'data-role'=>'none')  do
@@ -18,7 +18,7 @@
 						%div{class: "#{'downvoted' if user_signed_in? && current_user.voted_down_on?(p)}", id: "mob-downvote-#{p.id}"}
 							=fa_icon "chevron-down"
 				#post-ajax-chk
-		.col-xs-9{style:'padding-left:10px;'}
+		.col-xs-8{style:'padding-left:10px;padding-right:0px;'}
 			=link_to "#{p.title}", p, class: 'mobile-title-link', 'data-ajax'=>false
 			-if p.source?
 				%span.source_link

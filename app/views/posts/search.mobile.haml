@@ -8,8 +8,8 @@
 			.ui-field-contain#mobile-search
 				%input#search{name: "searchquery", placeholder: "Search Posts", type: "search", value: ""}/
 
-		-@post.each do |p|
+		-@posts.each do |p|
 			= render 'post', :p=> p
-		=paginate @post
+		=paginate @posts
 	%div{"data-role" => "footer"}
 		= render 'layouts/mobile/footer'
