@@ -60,8 +60,8 @@
 						=time_ago_in_words(p.created_at)
 						ago by
 						%strong 
-							%span{style:'font-size:13px;'}
-								=link_to p.user.username, p.user
+							%span
+								=link_to p.user.username, p.user, class: 'user-link'
 							(
 							= pluralize(p.user.followers.count, 'follower')
 							)
@@ -92,9 +92,6 @@
 					- tc = top_comment(p.id)
 					-if tc.present?
 						%p.top-cmnt-indx
-							%strong Top comment - 
-							=link_to truncate(tc.body, length:50), p
-							%p 
-								by
-								%strong 
-									=link_to tc.user.username, tc.user
+							%strong 
+								Top commenter - 
+								=link_to tc.user.username, tc.user, class: 'top-commenter'

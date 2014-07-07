@@ -28,11 +28,11 @@
 			.row.post_footer
 				.col-xs-12
 					.submited_ago_cont
-						Submited
 						=time_ago_in_words(p.created_at)
 						ago by
 						%strong 
-							=link_to p.user.username, p.user
+							%span
+								=link_to p.user.username, p.user, class: 'mobile-user-link'
 						-if p.tribe
 							to
 							%strong
