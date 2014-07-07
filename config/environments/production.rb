@@ -112,5 +112,5 @@ Phew::Application.configure do
   # set caching for cloudfront
   config.static_cache_control = "public, max-age=31536000"
   # host name for the CDN
-  config.action_controller.asset_host = ENV['CDN_HOSTNAME']
+  #config.action_controller.asset_host = ENV['CDN_HOSTNAME']
 end
