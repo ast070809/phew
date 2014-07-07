@@ -24,14 +24,14 @@ Phew::Application.configure do
 
   #"http://aqueous-ocean-1510.herokuapp.com/"
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -109,5 +109,8 @@ Phew::Application.configure do
   require 'net/http'
   GA.tracker = "UA-50235584-1"
 
-  
+  # set caching for cloudfront
+  config.static_cache_control = "public, max-age=31536000"
+  # host name for the CDN
+  #config.action_controller.asset_host = ENV['CDN_HOSTNAME']
 end
