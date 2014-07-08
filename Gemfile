@@ -145,3 +145,6 @@ gem 'pg', '0.15.1'
 #For search
 gem 'thinking-sphinx', '~> 3.1.0'
 gem 'flying-sphinx',   '1.2.0'
+
+# For rich text
+gem 'tinymce-rails'

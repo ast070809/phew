@@ -16,4 +16,5 @@
 //= require select2
 //= require manifest
 //= require notify
+//= require tinymce-jquery
 //= require_tree .

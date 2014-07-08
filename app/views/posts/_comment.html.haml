@@ -15,7 +15,7 @@
 								=time_ago_in_words(comment.created_at)
 								ago
 						%p.comment-body
-							= comment.body
+							= raw(comment.body)
 						=link_to upvote_post_comment_path(@post, comment), method: 'put', class: 'comment-vote-arrow' do
 							=fa_icon "chevron-up"
 						%span
@@ -34,7 +34,7 @@
 									.form-group
 										=label_tag 'comment', 'Comment',class: 'col-md-2'
 										.col-md-6
-											=text_area_tag 'comment','', class: 'form-control'
+											=text_area_tag 'comment','', class: 'tinymce'
 									=hidden_field_tag 'parent_id', comment.id
 									=hidden_field_tag 'post_id', @post.id 
 									.form-group
@@ -50,3 +50,4 @@
 
 				= render :partial => 'comment', :collection => comment.children.order('created_at desc')
 
+=tinymce						

@@ -1,3 +1,4 @@
+=tinymce_assets
 .row{id: 'comments-page-cont'}
 	.col-md-10.col-md-offset-1
 		- flash.each do |key, value|
@@ -20,7 +21,8 @@
 					=label_tag 'Comment'
 				.form-group
 					.col-md-10
-						=text_area_tag 'comment',"", type:'text', class: 'form-control write-comment-box-desktop'
+						=text_area_tag 'comment',"", class: 'tinymce'
+				=tinymce						
 				=hidden_field_tag 'post_id', @post.id
 				=submit_tag 'Submit', class: 'btn btn-success'
 		-else
