@@ -1,5 +1,5 @@
 /* Global styling*/
-
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,300,500);
 
 #main-container{
 	padding:0px;
@@ -100,6 +100,10 @@ body{
 	color:#003399;
 	border-bottom: 5px solid #003399 !important;
 }
+#main-nav{
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;
+}
 #refine-nav{
 	padding-top:0px;
 	padding-bottom:0px;
@@ -108,6 +112,12 @@ body{
 	min-height:20px;
 	border-radius:0px;
 	z-index:999;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;
+}
+#trending-tribes{
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;	
 }
 #hot-btn{
 	font-size:10px;
@@ -190,10 +200,12 @@ body{
 	border:none;
 	padding-top:0px;
 	line-height: 10px;
+	color:gray;
 }
 .downvote-btn{
 	background:none;
 	border:none;
+	color:gray;
 }
 
 .rules-list-cont{
@@ -204,13 +216,15 @@ body{
 }
 
 .vote-arrow{
-	color:#333339;
+	color:#B6B6B6;
 	&:hover{
 		color:#E67E2A;
 	}
+	font-size:18px;
+
 }
 .upvoted{
-	color:#E67E2A;
+	color:#EFAD7C;
 }
 .downvoted{
 	color:#CFCE96;
@@ -218,19 +232,20 @@ body{
 
 .post-container{
 	padding-top:7px !important;
-	padding-bottom:20px !important;
+	padding-bottom:30px !important;
 	padding-left:0px !important;
-	
 	border-bottom:1px dotted #E9E9E9;
 }
 .post-mid-part{
 	/* border-right:1px solid #E5E5E5; */
 	padding-top:0px !important;
 	padding-left:10px;
+	margin-left:10px;
 }
 .vote-cont{
 	padding-left:0px !important;
-	padding-right:0px !important;	
+	padding-right:0px !important;
+	margin-right:0px;	
 }
 
 .post-heading{
@@ -244,10 +259,17 @@ body{
 .cmnt-indx-cont{
 	padding-top:5px;
 }
+.comment-count-cont{
+	color:#629C0F;
+}
+.comment-count-cont a{
+	color:#629C0F !important;
+}
 #index-post-container{
 	margin-top:0px;
 	background-color:white;
 	margin-right:15px;
+	border-left:2px solid #5E8B06;
 }
 .tribe-post-cont{
 	margin-top:0px;
@@ -265,20 +287,28 @@ body{
 .link_descrip{
 	font-size:13px;
 	line-height:19.5px;
-	color:#444;
+	color:gray;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;
 }
 .source_link{
 	font-size: 12px;
 	color: gray;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;
 }
 .title-of-link{
-	font-size:16px;
-	color:#19558D;
-	font-weight:bold;
+	font-size:18px;
+	/* color:#19558D; */
+	color:#1F6AA8;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;
 }
 .user-link{
 	font-size:13px;
-	color:#7EA0BF;
+	color:#1F6AA8;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:400;
 }
 .comments-btn{
 	font-size: 13px !important;
@@ -301,14 +331,20 @@ span.glyphicon-arrow-down{
 .net-vote{
 	margin-top:0px;
 	margin-bottom:0px;
+	color:gray;
+	font-size:12px;
 }
 .up-down-vote-box{
 	padding-top:0px;
+	padding-right:0px;
+	margin-left:18px;
 }
 .post_footer{
 	margin-top:10px; 
-	/* border-top:1px solid #E5E5E5; */
-	color:#313538;
+	/*border-top:1px dotted #E5E5E5; */
+	color:#4F5052;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight:200;
 }
 .submited_ago_cont{
 	font-size:12px;	

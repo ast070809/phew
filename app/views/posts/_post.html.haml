@@ -1,13 +1,12 @@
 -#.panel.panel-default.post_panel
 .post-container
 	.row
-		.col-xs-1.col-md-1.text-center.vote-cont
-			.up-down-vote-box
-				%div
-					=button_to upvote_post_path(p), method: 'post', remote:true, class: 'upvote-btn' do
-						%h4
-							.vote-arrow{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "upvote-#{p.id}"}
-								=fa_icon "chevron-up"
+		.col-md-1.text-center.vote-cont
+			.up-down-vote-box{style:'background-color:white; line-height:10px;'}
+				=button_to upvote_post_path(p), method: 'post', remote:true, class: 'upvote-btn' do
+					%h4
+						.vote-arrow{class: "#{'upvoted' if user_signed_in? && current_user.voted_up_on?(p)}", id: "upvote-#{p.id}"}
+							=fa_icon "chevron-up"
 					
 						=#image_tag "arrow-up.png", height:25, width:20
 						=#fa_icon "arrow-up 2x"
@@ -23,75 +22,86 @@
 						
 		.col-md-1.post-image-cont
 			- if p.pic.url(:thumb) != '/pics/thumb/missing.png'
-				=link_to image_tag(p.pic.url(:thumb), alt: 'post photo', height:85, class: 'post-img'), p
+				=link_to image_tag(p.pic.url(:thumb), alt: 'post photo', height:100, class: 'post-img'), p
 			-else 
-				=image_tag 'lamp_post.jpg', alt:'post photo', height:85, class: 'post-img'
-		.col-xs-10.col-md-8.post-mid-part
-			
-			=link_to "#{p.title}", p.link,target:'_blank', class: 'title-of-link'
-			-if p.source?
-				%span.source_link
-					(
-					=p.source
-					)
-			.link_descrip
-				=truncate(p.description, length:240)
-				-tags = p.tag_list
-				- if tags.any?
-					-tags.each do |t|
-						%span
-							=link_to t, tag_path(t), class: 'tag'
-				
-			.row.post_footer
-				.col-md-9
-					.submited_ago_cont
-						Votes:
-						(
-						%span{id:"total-upvote-#{p.id}"}
-							=p.likes.size
-						='/'
-						%span{id:"total-downvote-#{p.id}"}
-							=p.downvotes.size
-						)
-						&nbsp
-						|
-						&nbsp			
-						Submited
-						=time_ago_in_words(p.created_at)
-						ago by
-						%strong 
-							%span
-								=link_to p.user.username, p.user, class: 'user-link'
+				=image_tag 'lamp_post.jpg', alt:'post photo', height:100, class: 'post-img'
+		.col-md-9.post-mid-part
+			.row
+				.col-md-11
+					=link_to "#{p.title}", p.link,target:'_blank', class: 'title-of-link'
+					-if p.source?
+						%span.source_link
 							(
-							= pluralize(p.user.followers.count, 'follower')
+							=p.source
 							)
-
-						-if p.tribe
-							to
-							=p.tribe.name
-						- if p.tribe && p.sub_tribe
-							and
-						- if p.sub_tribe
-							to
-							=p.sub_tribe.name
-				.col-md-3
+				.col-md-1
 					.pull-right
 						-if user_signed_in?
-							=link_to "report", report_post_path(p), method: :post
-						
-						-if user_signed_in? && current_user_poster?(p)
-							=link_to "delete", delete_post_path(p), method: "delete", class: 'delete-post'
-
-			.row
-				.col-md-12.tag-cont
+							%a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"30","data-close-others"=>"false"}
+								=fa_icon "caret-down"
+							%ul.dropdown-menu
+								%li
+									=link_to "report", report_post_path(p), method: :post
+								-if current_user_poster?(p)
+									%li.divider
+									%li
+										=link_to "delete", delete_post_path(p), method: "delete", class: 'delete-post'
 					
-		.col-xs-2.col-md-2.cmnt-indx-cont
-			=link_to "<i class='fa fa-comment color-light-green'></i>&nbsp#{pluralize(comment_count(p.id), 'comment')}</i>".html_safe, p, class: 'comments-btn', method: 'get'
-			.row
+			.link_descrip
+				=truncate(p.description, length:240)
+				.margin-bottom-10
+				.row	
+					.col-md-12
+						-tags = p.tag_list
+						- if tags.any?
+							-tags.each do |t|
+								%span
+									=link_to t, tag_path(t), class: 'tag'
+				
+			.row.post_footer
 				.col-md-12
-					- tc = top_comment(p.id)
-					-if tc.present?
-						%p.top-cmnt-indx
-							%strong 
-								Top commenter - 
-								=link_to tc.user.username, tc.user, class: 'top-commenter'
+					.submited_ago_cont
+						.row
+							.col-md-2
+								=fa_icon "filter"
+								Votes:
+								(
+								%span{id:"total-upvote-#{p.id}"}
+									=p.likes.size
+								='/'
+								%span{id:"total-downvote-#{p.id}"}
+									=p.downvotes.size
+								)
+						
+							.col-md-6
+								=fa_icon "clock-o"
+								=time_ago_in_words(p.created_at)
+								ago by
+								
+								%span
+									=link_to p.user.username, p.user, class: 'user-link'
+								(
+								= pluralize(p.user.followers.count, 'follower')
+								)
+
+								-if p.tribe
+									to
+									=p.tribe.name
+								- if p.tribe && p.sub_tribe
+									and
+								- if p.sub_tribe
+									to
+									=p.sub_tribe.name
+								
+							.col-md-4.comment-count-cont
+								= link_to p do 
+									=fa_icon "comments"
+									=pluralize(comment_count(p.id), 'comment')
+									- tc = top_comment(p.id)
+									
+									-if tc.present?
+										(
+										Top commenter - 
+										=link_to tc.user.username, tc.user, class: 'top-commenter'
+										)
+				
