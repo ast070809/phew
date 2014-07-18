@@ -148,3 +148,6 @@ gem 'flying-sphinx',   '1.2.0'
 
 # For rich text
 gem 'tinymce-rails'
+
+# For Twitter like hash tag
+gem 'twitter-text', '~> 1.9.0'
