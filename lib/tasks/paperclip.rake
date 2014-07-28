@@ -12,6 +12,7 @@ namespace :paperclip do
           post.pic = image
           post.save
           # if there are multiple styles, you want to recreate them :
+          # New line
           post.pic.reprocess! 
           image.close
         end
