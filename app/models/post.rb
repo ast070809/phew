@@ -22,7 +22,7 @@
 
 class Post < ActiveRecord::Base
 	
-	has_attached_file :pic, styles: {
+	has_attached_file :pic, :path => "posts/pics/000/000/:id/:style/:filename", styles: {
 	    thumb: '100x100#',
 	    square: '200x200#',
 	    medium: '300x300>'

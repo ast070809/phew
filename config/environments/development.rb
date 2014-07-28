@@ -38,12 +38,15 @@ Phew::Application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_host_alias => "d1snwzgenlw3pw.cloudfront.net",
+    :url => ':s3_alias_url',
     :s3_credentials => {
       :bucket => 'niblintest',
       :access_key_id => 'AKIAJV6D5BI65OMETYZQ',
       :secret_access_key => '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',
       :s3_host_name => "s3-ap-southeast-1.amazonaws.com"
     }
+    
   }
 
   config.action_mailer.delivery_method = :letter_opener
