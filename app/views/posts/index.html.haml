@@ -3,20 +3,20 @@
 		=render 'layouts/messages'
 .margin-bottom-10
 .row
-	.col-md-12
-		%div{style:'padding-left:15px;'}
-			=render 'layouts/trending_tribes'
+	.col-md-8.col-md-offset-2
+		=render 'layouts/trending_tribes'
 	.margin-bottom-10
 .row
-	.col-md-2
-		=render 'layouts/sidebar'
-	.col-md-10
+	-#.col-md-2
+		=#render 'layouts/sidebar'
+	.col-md-8.col-md-offset-2
 		#index-post-container
 			-if @post_index or @tribe_show
 				=render 'layouts/index'
 			-@posts.each do |p|
 				= render 'post', :p=> p
 			=paginate @posts
+	
 	
 .margin-bottom-60
 :javascript

@@ -1,4 +1,4 @@
-=tinymce_assets
+
 .row{id: 'comments-page-cont'}
 	.col-md-10.col-md-offset-1
 		- flash.each do |key, value|
@@ -16,15 +16,15 @@
 					%strong 
 						=link_to @post.user.username, @post.user
 		-if user_signed_in?
-			=form_tag add_comment_path, method: :post, class:'form-inline' do
-				.form-group
-					=label_tag 'Comment'
-				.form-group
-					.col-md-10
-						=text_area_tag 'comment',"", class: 'tinymce'
-					=tinymce
-				=hidden_field_tag 'post_id', @post.id
-				=submit_tag 'Submit', class: 'btn btn-success'
+			.row
+				.col-md-8
+					=form_tag add_comment_path, method: :post, class:'form-inline' do
+						.form-group
+							=label_tag 'Comment'
+						.form-group
+							=text_area_tag 'comment',""
+						=hidden_field_tag 'post_id', @post.id
+						=submit_tag 'Submit', class: 'btn btn-success'
 		-else
 			%h4
 				=link_to('Sign in to add comments or to reply to comments', new_user_session_path) 

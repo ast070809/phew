@@ -22,9 +22,9 @@
 						
 		.col-md-1.post-image-cont
 			- if p.pic.url(:thumb) != '/pics/thumb/missing.png'
-				=link_to image_tag(p.pic.url(:thumb), alt: 'post photo', height:100, class: 'post-img'), p
+				=link_to image_tag(p.pic.url(:thumb), alt: 'post photo', height:90, class: 'post-img'), p
 			-else 
-				=image_tag 'lamp_post.jpg', alt:'post photo', height:100, class: 'post-img'
+				=image_tag 'lamp_post.jpg', alt:'post photo', height:90, class: 'post-img'
 		.col-md-9.post-mid-part
 			.row
 				.col-md-11
@@ -62,7 +62,7 @@
 				.col-md-12
 					.submited_ago_cont
 						.row
-							.col-md-2
+							.col-md-3
 								=fa_icon "filter"
 								Votes:
 								(
@@ -93,7 +93,7 @@
 									to
 									=p.sub_tribe.name
 								
-							.col-md-4.comment-count-cont
+							.col-md-3.comment-count-cont
 								= link_to p do 
 									=fa_icon "comments"
 									=pluralize(comment_count(p.id), 'comment')
