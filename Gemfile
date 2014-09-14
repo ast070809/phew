@@ -151,3 +151,6 @@ gem 'tinymce-rails'
 
 # For Twitter like hash tag
 gem 'twitter-text', '~> 1.9.0'
+
+# For friendly Id
+gem 'friendly_id', '~> 5.0.0'

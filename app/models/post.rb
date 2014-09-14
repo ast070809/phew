@@ -45,6 +45,10 @@ class Post < ActiveRecord::Base
 	acts_as_commentable
 	acts_as_taggable_on :tags
 
+	#Friendly Id
+	extend FriendlyId
+	friendly_id :title, use: [:slugged, :history]
+
 	def self.refresh_hotness(post)
 		hotness = Post.hot(post)
 		post.hotness = hotness

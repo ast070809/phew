@@ -129,7 +129,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @post_show = true
     @tribes = Tribe.all
     @type = 'top'
@@ -156,7 +156,7 @@ class PostsController < ApplicationController
   end
 
   def delete
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @post.destroy
     redirect_to :back
   end
@@ -165,7 +165,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       post_id = params[:post_id]
       comment = params[:comment]
-      @post = Post.find(post_id)
+      @post = Post.friendly.find(post_id)
       @user_who_commented = current_user
       @comment = Comment.build_from( @post, @user_who_commented.id, comment )
       if @comment.save
@@ -180,7 +180,7 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @post.liked_by current_user
     Post.refresh_votes(@post)
     if @post.save
@@ -194,7 +194,7 @@ class PostsController < ApplicationController
   end
   
   def downvote
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @post.downvote_from current_user
     Post.refresh_votes(@post)
     if @post.save
@@ -214,7 +214,7 @@ class PostsController < ApplicationController
       parent_id = params[:parent_id]
       comment = params[:comment]
 
-      @post = Post.find(post_id)
+      @post = Post.friendly.find(post_id)
       parent_comment = Comment.find(parent_id)
 
 
@@ -236,7 +236,7 @@ class PostsController < ApplicationController
 
   def report_post
     post_id = params[:id]
-    post = Post.find(post_id)
+    post = Post.friendly.find(post_id)
     r = post.reports.find_or_create_by(user_id: current_user.id)
     if r
       flash[:success] = "Reported Successfully"
