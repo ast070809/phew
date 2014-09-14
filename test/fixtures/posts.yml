@@ -18,6 +18,7 @@
 #  pic_updated_at   :datetime
 #  source           :string(255)
 #  sub_tribe_id     :integer
+#  slug             :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
