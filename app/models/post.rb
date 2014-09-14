@@ -18,6 +18,7 @@
 #  pic_updated_at   :datetime
 #  source           :string(255)
 #  sub_tribe_id     :integer
+#  slug             :string(255)
 #
 
 class Post < ActiveRecord::Base
@@ -48,6 +49,11 @@ class Post < ActiveRecord::Base
 	#Friendly Id
 	extend FriendlyId
 	friendly_id :title, use: [:slugged, :history]
+
+	def should_generate_new_friendly_id?
+	  title_changed?
+	end
+	## End of friendly Id
 
 	def self.refresh_hotness(post)
 		hotness = Post.hot(post)

@@ -21,6 +21,9 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
 #  username               :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
+#  slug                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -59,6 +62,12 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  extend FriendlyId
+  friendly_id :username, use: [:slugged, :history]
+	
+	def should_generate_new_friendly_id?
+	  username_changed?
+	end
 
 	def self.find_first_by_auth_conditions(warden_conditions)
 	  conditions = warden_conditions.dup
