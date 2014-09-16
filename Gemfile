@@ -72,6 +72,10 @@ group :production do
 
   ## for new relic monitoring
   gem 'newrelic_rpm'
+
+  ## for serving compressed assets on heroku
+  gem 'heroku_rails_deflate'
+
 end
 
 
