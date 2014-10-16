@@ -13,7 +13,7 @@
 				Notifications
 	#no_more_noti_plc
 	-noti = Noti.get_notis(current_user.id)
-	-if current_user.urn >0
+	-if current_user.urn && current_user.urn >0
 		-noti.each do |n|
 			- if !n.is_read
 				.row.noti-row{class: "#{'unread' if !n.is_read}"}
