@@ -24,6 +24,7 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  slug                   :string(255)
+#  urn                    :integer          default(0)
 #
 
 require 'test_helper'

@@ -71,6 +71,8 @@ Phew::Application.routes.draw do
 
   get 'test', to: 'static_pages#test'
 
+  post 'get_feed', to: 'users#get_feed', as: :get_feed
+  post 'mark_read', to: 'users#mark_read', as: :mark_read
   #authenticate :user, lambda { |u| u.email=='p11atulst@iimahd.ernet.in' } do
   #  mount Sidekiq::Web => '/sidekiq'
   #end

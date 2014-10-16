@@ -5,9 +5,11 @@ class PostsController < ApplicationController
   has_mobile_fu_for :index, :upvote, :downvote
   before_filter :authenticate, except: [:index, :show, :search]  
   
+  include Feed
+
   def index
     links_per_page = 10
-    
+      
     @post_index = true
     if params[:tag]
       @posts = Post.tagged_with(params[:tag]).order("hotness desc").page(params[:page]).per(links_per_page)
@@ -35,6 +37,8 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.order("hotness desc").page(params[:page]).per(links_per_page)
     end
+    
+
   end
 
   ## Controller for mobile
@@ -174,6 +178,7 @@ class PostsController < ApplicationController
       @comment = Comment.build_from( @post, @user_who_commented.id, comment )
       if @comment.save
           flash[:notice] = "Successfully saved"
+          Noti.add_comment_noti(post_id, current_user.id)
       else
         @err = @comment.errors
       end
@@ -355,5 +360,8 @@ class PostsController < ApplicationController
 
     def get_tribe(tribe)
       Tribe.find_by(name: tribe)
+    end
+
+    def get_feed
     end
 end

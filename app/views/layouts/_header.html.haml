@@ -14,7 +14,8 @@
         =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#',  id: 'submit-new-link','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", class: 'btn btn-default top-nav-create-btn'
     
     %ul.nav.navbar-nav.navbar-right
-      %li
+      
+      %li{style:'display:none'}
         =form_tag search_path, :method => 'get', class: 'navbar-right navbar-form ' do
           .form-group
             .input-group
@@ -23,6 +24,9 @@
               =text_field :searchquery, '', class: 'form-control', placeholder:'Search...'
       
       -if user_signed_in?
+        %li
+          =render 'layouts/notification'
+
         %li{style:'margin-right:7px; margin-left:7px;'}
           .btn-group{style: 'cursor:pointer;'}
             #user-name-nav{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"10","data-close-others"=>"false"}
@@ -41,7 +45,7 @@
         %li.devider
         %li
           =link_to('Login', new_user_session_path, style: 'font-weight:bold;')
-
+        
 
 
 / Modal
@@ -50,20 +54,5 @@
 -if user_signed_in?
   :javascript
     $(function(){
-      var pusher = new Pusher('6b2448376d4955fa296c');
-      var channel = pusher.subscribe("private-#{current_user.id}");
-
-      channel.bind('comment_upvote', function(data) {
-          msg = data.by + ' has upvoted your comment ' + data.id;
-          dom_notify(msg);
-        });
-
-        function dom_notify(msg) {
-          $('#notify').text(msg);
-          $('#notify').fadeIn();
-          setTimeout(function() {
-            $('#notify').fadeOut
-            ();
-          }, 2000);
-        }
+      $.post( "#{get_feed_path}");
     });

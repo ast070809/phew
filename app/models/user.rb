@@ -24,6 +24,7 @@
 #  provider               :string(255)
 #  uid                    :string(255)
 #  slug                   :string(255)
+#  urn                    :integer          default(0)
 #
 
 class User < ActiveRecord::Base
@@ -48,9 +49,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :tribes
   has_many :reports
   has_many :activities
+  has_many :notis
 
   acts_as_tagger
   acts_as_voter
+  acts_as_messageable
 
   ## Associations for Follower and following users
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -96,51 +99,64 @@ class User < ActiveRecord::Base
     end
 
 
-	  	def self.find_for_oauth(auth, signed_in_resource = nil)
+  	def self.find_for_oauth(auth, signed_in_resource = nil)
 
-	    # Get the identity and user if they exist
-	    identity = Identity.find_for_oauth(auth)
+		    # Get the identity and user if they exist
+		    identity = Identity.find_for_oauth(auth)
 
-	    # If a signed_in_resource is provided it always overrides the existing user
-	    # to prevent the identity being locked with accidentally created accounts.
-	    # Note that this may leave zombie accounts (with no associated identity) which
-	    # can be cleaned up at a later date.
-	    user = signed_in_resource ? signed_in_resource : identity.user
+		    # If a signed_in_resource is provided it always overrides the existing user
+		    # to prevent the identity being locked with accidentally created accounts.
+		    # Note that this may leave zombie accounts (with no associated identity) which
+		    # can be cleaned up at a later date.
+		    user = signed_in_resource ? signed_in_resource : identity.user
 
-	    # Create the user if needed
-	    if user.nil?
+		    # Create the user if needed
+		    if user.nil?
 
-	      # Get the existing user by email if the provider gives us a verified email.
-	      # If no verified email was provided we assign a temporary email and ask the
-	      # user to verify it on the next step via UsersController.finish_signup
-	      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-	      email = auth.info.email 
-   	      #email = auth.info.email if email_is_verified
+		      # Get the existing user by email if the provider gives us a verified email.
+		      # If no verified email was provided we assign a temporary email and ask the
+		      # user to verify it on the next step via UsersController.finish_signup
+		      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+		      email = auth.info.email 
+			      #email = auth.info.email if email_is_verified
 
-	      user = User.where(:email => email).first if email
+		      user = User.where(:email => email).first if email
 
-	      # Create the user if it's a new registration
-	      if user.nil?
-	        user = User.new(
-	          username: auth.extra.raw_info.name,
-	          #username: auth.info.nickname || auth.uid,
-	          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-	          password: Devise.friendly_token[0,20]
-	        )
-	        user.skip_confirmation!
-	        user.save!
-	      end
-	    end
+		      # Create the user if it's a new registration
+		      if user.nil?
+		        user = User.new(
+		          username: auth.extra.raw_info.name,
+		          #username: auth.info.nickname || auth.uid,
+		          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+		          password: Devise.friendly_token[0,20]
+		        )
+		        user.skip_confirmation!
+		        user.save!
+		      end
+	    	end
 
-	    # Associate the identity with the user if needed
-	    if identity.user != user
-	      identity.user = user
-	      identity.save!
-	    end
-	    user
+		    # Associate the identity with the user if needed
+		    if identity.user != user
+		      identity.user = user
+		      identity.save!
+		    end
+		    user
 	  end
 
 	  def email_verified?
 	    self.email && self.email !~ TEMP_EMAIL_REGEX
+	  end
+
+	 
+	  def self.get_feed(user_feed)
+	  	feed = user_feed.get(:limit=>20, :offset=>0)
+	  end
+
+	  def name
+	  	return username
+	  end
+
+	  def mailboxer_email(object)
+	  	return nil
 	  end
  end

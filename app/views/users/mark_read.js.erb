@@ -1,0 +1,7 @@
+<% if current_user.urn>=0 %>
+	$('#notification-text').html("<%= @urn %>")
+	<% if current_user.urn==0 %>
+		$('#notification-text').hide();
+		$('#no_more_noti_plc').html('No new notification');
+	<% end %>
+<% end %>

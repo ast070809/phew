@@ -88,6 +88,8 @@ group :development do
   # running background jobs
   gem "foreman"
 
+  # for better rails console
+  gem 'hirb'
 end
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -109,6 +111,7 @@ end
 # Asynchronous processing
 #gem 'sidekiq'
 gem 'delayed_job_active_record'
+gem 'daemons', '~> 1.1.9'
 
 #gem 'sidekiq'
 #gem 'delayed_job_active_record'
@@ -127,6 +130,8 @@ gem 'clockwork', '~> 0.7.5'
 # realtime notification
 gem 'pusher', '~> 0.12.0'
 
+# for noitification
+gem 'mailboxer'
 #for activity stream
 gem 'stream-ruby'
 
@@ -158,3 +163,6 @@ gem 'twitter-text', '~> 1.9.0'
 
 # For friendly Id
 gem 'friendly_id', '~> 5.0.0'
+
+#For storing session in db
+gem 'activerecord-session_store'

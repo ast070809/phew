@@ -1,0 +1,75 @@
+%a{id: 'notification-holder', 'data-toggle'=>'tooltip', 'data-placement'=>'top', 'title'=> 'this is a tooltip', style:'cursor:pointer'}
+	%span{style:"color:black"}
+		=fa_icon "bell-o lg"
+	-if current_user.urn>0
+		%span{id:'notification-text'}
+			=current_user.urn
+
+.messagepop.pop
+	-#%a.noti-close.pull-right{style: 'color:#A9A9A9; cursor:pointer'}
+	.row
+		.col-md-12.notification-heading
+			%strong
+				Notifications
+	#no_more_noti_plc
+	-noti = Noti.get_notis(current_user.id)
+	-if current_user.urn >0
+		-noti.each do |n|
+			- if !n.is_read
+				.row.noti-row{class: "#{'unread' if !n.is_read}"}
+					.col-md-11
+						-u = User.find(n.actor)
+						=link_to u.username, u
+						-if n.verb =='post_comment'
+							commented on your post
+							-p = Post.find(n.object)
+							=link_to p.title, p
+
+					.col-md-1.pull-left{onmouseover: 'goLight(this)', onmouseout: 'goDark(this)', style: 'cursor:pointer'}
+						=link_to mark_read_path(id: n.id), method: 'post', remote: true, onClick:'hideIt(this)', class: 'dismiss-noti' do
+							=fa_icon 'times'				
+	-else
+		No new notifications
+					
+	
+:javascript
+	function deselect(e) {
+	  $('.pop').slideFadeToggle(function() {
+	    e.removeClass('selected');
+	  });    
+	}
+
+	$(function() {
+	  $('#notification-holder').on('click', function() {
+	    if($(this).hasClass('selected')) {
+	      deselect($(this));               
+	    } else {
+	      $(this).addClass('selected');
+	      $('.pop').slideFadeToggle();
+	    }
+	    return false;
+	  });
+
+	  $('.noti-close').on('click', function() {
+	    deselect($('#notification-holder'));
+	    return false;
+	  });
+	});
+
+	$.fn.slideFadeToggle = function(easing, callback) {
+	  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+	};
+
+	function goLight(x) {
+		x.style.color = '#AAAAAA';
+	}
+
+	function goDark(x){
+		x.style.color = '#555555';
+	}
+
+	function hideIt(x){
+		y = $(x).parent();
+		z = $(y).parent();
+		$(z).fadeOut('slow');
+	}

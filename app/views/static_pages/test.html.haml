@@ -1,8 +1,13 @@
--user_feed_1 = Rails.configuration.client.feed("aggregated:#{current_user.id}")
--result = user_feed_1.get(:limit=>30, :offset=>0)
--#result = user_feed_1.get(:limit=>20, :offset=>0)
-=@activity_response
+-user_feed_1 = session[:user_feed]
+-# Rails.configuration.client.feed("notification:#{current_user_id}")
+-#result = user_feed_1.get(:limit=>2, :offset=>0, :mark_seen=> true)
+-result = @userfeed
+-#activity_data = {:actor => 2, :verb => 'pin', :object => 1, :target => 8, :time=> Time.now.strftime("%Y-%m-%dT%H:%M:%S.%L")}
+
+-#add = user_feed_1.delay.add_activity(activity_data)
 %table.table
+	=result['results'][1]
+	
 	-result['results'].each_with_index do |r,i|
 		%tr
 			%td
@@ -14,8 +19,15 @@
 							%strong verb
 						%td
 							%strong target
+						%td
+							%strong time
+						%td
+							%strong id
+
+
 
 					-r['activities'].each do |a|
+						
 						%tr
 							%td
 								=a["actor"]
@@ -25,6 +37,14 @@
 								=a["target"]
 							%td
 								=a[""]
+							%td
+								=a["time"]
+							%td
+								=a["id"]	
 			%td
-				=i	
+				Is Seen->
+				=r['is_seen']
+			%td
+				Is read ->
+				=r['is_read']
 			%td
