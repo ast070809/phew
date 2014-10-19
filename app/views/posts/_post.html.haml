@@ -21,11 +21,11 @@
 								=fa_icon "chevron-down"
 						
 		.col-md-1.post-image-cont
-			- if p.pic.url(:thumb) != '/pics/thumb/missing.png'
-				=link_to image_tag(p.pic.url(:thumb), alt: 'post photo', height:80, class: 'post-img'), p
+			- if p.pic.url(:square) != '/pics/thumb/missing.png'
+				=link_to image_tag(p.pic.url(:square), alt: 'post photo', height:130, class: 'post-img'), p
 			-else 
-				=image_tag 'lamp_post.jpg', alt:'post photo', height:80, class: 'post-img'
-		.col-md-9.post-mid-part
+				=image_tag 'lamp_post.jpg', alt:'post photo', height:130, class: 'post-img'
+		.col-md-8.post-mid-part.col-md-offset-1
 			.row
 				.col-md-11
 					=link_to "#{p.title}", p.link,target:'_blank', class: 'title-of-link'
@@ -58,50 +58,36 @@
 								%span
 									=link_to t, tag_path(t), class: 'tag'
 				
-			.row.post_footer
-				.col-md-12
-					.submited_ago_cont
-						.row
-							.col-md-3
-								=fa_icon "filter"
-								Votes:
-								(
-								%span{id:"total-upvote-#{p.id}"}
-									=p.likes.size
-								='/'
-								%span{id:"total-downvote-#{p.id}"}
-									=p.downvotes.size
-								)
-						
-							.col-md-6
-								=fa_icon "clock-o"
-								=time_ago_in_words(p.created_at)
-								ago by
-								
-								%span
-									=link_to p.user.username, p.user, class: 'user-link'
-								(
-								= pluralize(p.user.followers.count, 'follower')
-								)
+			.row.post_footer			
+				.col-md-6
+					=fa_icon "clock-o"
+					=time_ago_in_words(p.created_at)
+					ago by
+					
+					%span
+						=link_to p.user.username, p.user, class: 'user-link'
+					(
+					= pluralize(p.user.followers.count, 'follower')
+					)
 
-								-if p.tribe
-									to
-									=p.tribe.name
-								- if p.tribe && p.sub_tribe
-									and
-								- if p.sub_tribe
-									to
-									=p.sub_tribe.name
-								
-							.col-md-3.comment-count-cont
-								= link_to p do 
-									=fa_icon "comments"
-									=pluralize(comment_count(p.id), 'comment')
-									- tc = top_comment(p.id)
-									
-									-if tc.present?
-										(
-										Top commenter - 
-										=link_to tc.user.username, tc.user, class: 'top-commenter'
-										)
-				
+					-if p.tribe
+						to
+						=p.tribe.name
+					- if p.tribe && p.sub_tribe
+						and
+					- if p.sub_tribe
+						to
+						=p.sub_tribe.name
+					
+				.col-md-6.comment-count-cont
+					= link_to p do 
+						=fa_icon "comments"
+						=pluralize(comment_count(p.id), 'comment')
+						- tc = top_comment(p.id)
+						
+						-if tc.present?
+							(
+							Top commenter - 
+							=link_to tc.user.username, tc.user, class: 'top-commenter'
+							)
+	
