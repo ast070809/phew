@@ -32,9 +32,8 @@ body{
 	font-size:30px;
 }
 #intro-line{
-	color:white;
-	font-size:50px;
-	padding-top:20px;
+	font-size:22px;
+	color:#A2A2A2;
 	text-shadow: rgba(0,0,0,0.1) 0px 1px 0px;
 }
 #post-show-top-img-cont{
@@ -70,8 +69,7 @@ body{
 	margin-bottom:0px;
 	background-color:white;
 	border-radius:0px;
-	border-bottom: 1px solid #767676;
-	
+	border: 1px solid #D6D6D6;
 }
 #tribe-navigation{
 	margin-top:0px;
@@ -271,6 +269,9 @@ body{
 	background-color:white;
 	margin-right:15px;
 	border-left:2px solid #5E8B06;
+	border-bottom:1px solid #D6D6D6;
+	border-right:1px solid #D6D6D6;
+
 }
 .tribe-post-cont{
 	margin-top:0px;
@@ -363,6 +364,11 @@ span.glyphicon-arrow-down{
 	background-color:white;
 }
 /* comments page */
+.comment-input{
+	width:400px;
+	height:100px;
+
+}
 .user-detail-box-comment-page{
 	border-left:1px solid black;
 	padding-left:10px;

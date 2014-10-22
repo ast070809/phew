@@ -1,7 +1,7 @@
 $("#netvote-<%= @post.id %>").html("<%= @post.likes.size-@post.downvotes.size %>");
 
-$("#netvote-<%= @post.id %>").css("color", "#EFAD7C");
-$("#upvote-<%= @post.id %>").css("color", "#EFAD7C");
+$("#netvote-<%= @post.id %>").css("color", "#629C0F");
+$("#upvote-<%= @post.id %>").css("color", "#629C0F");
 $("#downvote-<%= @post.id %>").css("color", "#B6B6B6");
 $("#total-upvote-<%= @post.id %>").html("<%= @post.likes.size %>");
 $("#total-downvote-<%= @post.id %>").html("<%= @post.downvotes.size %>");

@@ -88,13 +88,15 @@ class PostsController < ApplicationController
 
       if post.save
         Post.refresh_hotness(post)
-        redirect_to root_path, notice: 'Successfully posted'
+        flash[:success] = 'Successfully posted'
+        redirect_to root_path
       else
         flash[:error] = 'Some error occurred'
         redirect_to new_post_path
       end
     else
-      redirect_to root_path, notice: 'Link not provided, please provide the link and try again'
+      flash[:error] = 'Link not provided, please provide the link and try again'
+      redirect_to root_path
     end
 
   end
@@ -124,8 +126,8 @@ class PostsController < ApplicationController
 
     if post.save
       Post.refresh_hotness(post)
-
-      redirect_to root_path, notice: 'Successfully posted'
+      flash[:success] = 'Successfully posted'
+      redirect_to root_path
   	else
       flash[:error] = 'Some error occurred'
       redirect_to new_post_path
@@ -177,7 +179,7 @@ class PostsController < ApplicationController
       @user_who_commented = current_user
       @comment = Comment.build_from( @post, @user_who_commented.id, comment )
       if @comment.save
-          flash[:notice] = "Successfully saved"
+          flash[:success] = "Successfully saved"
           Noti.add_comment_noti(post_id, current_user.id)
       else
         @err = @comment.errors
@@ -233,9 +235,9 @@ class PostsController < ApplicationController
       if @comment.save
         @comment.move_to_child_of(parent_comment)
         
-        flash[:notice] = "Successfully saved"
+        flash[:success] = "Successfully saved"
       else
-        flash[:notice] = "#{@comment.errors.full_messages}"
+        flash[:warning] = "#{@comment.errors.full_messages}"
       end
       redirect_to :back
     else

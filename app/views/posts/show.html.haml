@@ -2,7 +2,9 @@
 .row{id: 'comments-page-cont'}
 	.col-md-10.col-md-offset-1
 		- flash.each do |key, value|
-			= content_tag(:div, value, class: "alert alert-#{key}")
+			:javascript
+				toastr.options.timeOut= "1500"
+				toastr.success("#{value}");
 		%h2
 			=link_to @post.title, @post.link, target: '_blank', class: 'post-title-comment-page'
 		.row
@@ -22,7 +24,7 @@
 						.form-group
 							=label_tag 'Comment'
 						.form-group
-							=text_area_tag 'comment',""
+							=text_area_tag 'comment',"", class: 'comment-input'
 						=hidden_field_tag 'post_id', @post.id
 						=submit_tag 'Submit', class: 'btn btn-success'
 		-else
@@ -51,4 +53,5 @@
 			notify('Please Sign in to vote!', 'error', 2000);
 		}
 	});
+
 	

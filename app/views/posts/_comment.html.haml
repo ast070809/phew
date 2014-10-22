@@ -41,7 +41,7 @@
 										.col-md-offset-2
 											=submit_tag 'Submit', class: 'btn'
 								%a{onclick: "$(this).parent().hide();$(this).parent().prev().show()", id: 'cancel', style: 'cursor:pointer'}
-									Cancel
+									cancel
 							-if user_signed_in? && current_user_commenter?(comment)
 								=link_to "delete", delete_post_comment_path(@post, comment), method: "delete", class: 'delete-link'
 							&nbsp
