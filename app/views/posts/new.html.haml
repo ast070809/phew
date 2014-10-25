@@ -41,6 +41,9 @@
 	.form-group
 		.col-sm-10.col-sm-offset-2
 			=f.submit 'Post', class: 'btn btn-large btn-success',:onClick => "return checkform();"
+	.form-group
+		.col-sm-10.col-sm-offset-2
+			=link_to 'cancel', :back, style: 'font-size:12px;'
 
 
 :javascript

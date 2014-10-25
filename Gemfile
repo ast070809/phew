@@ -166,3 +166,4 @@ gem 'friendly_id', '~> 5.0.0'
 
 #For storing session in db
 gem 'activerecord-session_store'
+
