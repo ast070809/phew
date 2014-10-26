@@ -28,6 +28,8 @@
 		.col-sm-4	
 			=f.select :tribe, @tribes.collect{|t| [t.name, t.id]}, {},class: 'form-control'
 		
+		-@tribes.each do |t|
+			= image_tag t.avatar.url(:thumb), height: 86, width: 116
 		=f.label 'and Submit it to a trending tribe also', class: 'col-sm-2 control-label'
 		.col-sm-4
 			-@trending_tribes.each do |t|

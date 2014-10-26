@@ -1,7 +1,5 @@
 %nav.navbar{id: 'refine-nav'}
   .row{style:'margin-right:0px !important; margin-left:0px !important;'}  
-    
-    
     .col-md-5{id: "duration-header", style: 'padding-left:20px; padding-top:5px;'}
       %ul.nav.nav-pills.refine-top
         %li.refine-link{class: "#{'active' if !@duration_header }"}
@@ -33,59 +31,26 @@
         %li
           =link_to (fa_icon "plus-circle", class: 'color-light-green', text: 'Submit a new link'), '#', id: 'submit-new-link-refine','data-toggle'=>"modal" ,'data-target'=>"#create-link-modal", style: 'display:none', class: 'btn btn-default'
     .col-md-7
-      %ul.nav.navbar-nav.navbar-right{style:'margin-right:7px;'}         
-        %li{id: 'username-refine', style: 'display:none;'}
-          -if user_signed_in?
-            .btn-group{style: 'cursor:pointer;'}
-              #user-name-nav{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"10","data-close-others"=>"false"}
-                =fa_icon "user"
-                =current_user.username
-                =fa_icon "caret-down"
-              %ul.dropdown-menu
-                %li
-                  =link_to 'My Account', current_user
-                %li.divider
-                %li
-                  =link_to 'Sign out', destroy_user_session_path, method: 'delete'      
+      .nav.navbar-nav.navbar-right
+        %button.btn-u.btn-u-default.dropdown-toggle{"data-toggle" => "dropdown", href: "#", "data-toggle"=>"dropdown", "data-hover"=>"dropdown", "data-delay"=>"30","data-close-others"=>"false", id: 'tribe-toggle'}
+          - if @tribe
+            =@tribe.name
           -else
-            =link_to('Login', new_user_session_path, style:'font-weight:bold')
-        
+            Browse by Tribes
+          =fa_icon "caret-down"
+        %ul.dropdown-menu{style:'padding-bottom:0px; padding-top:0px;'}
+          %li
+            =link_to root_path, style: 'padding-top:8px !important; padding-bottom:8px !important;'  do 
+              All
+          %li.divider{style: 'margin-bottom:0px; margin-top:0px;'}
+          -Tribe.all.each do |t|
+            %li
+              =link_to t, style: 'padding-top:8px !important; padding-bottom:8px !important;'  do 
+                =t.name
+          
+            %li.divider{style: 'margin-bottom:0px; margin-top:0px;'}
+
+
     
-
 :javascript
-  $(function(){
-    var
-      $createLink = $('#submit-new-link-refine'),
-      $userLogin = $('#user-duration-header'),
-      $brand = $('#brand-refine-bar'),
-      $userName = $('#username-refine'),
-      $tagLine = $('#tagline'),
-      $win = $(window),
-
-      $filter = $('#refine-nav'),
-      $filterSpacer = $('<div />', {
-        "class": "filter-drop-spacer",
-        "height": $filter.outerHeight()
-      });
-    $win.scroll(function(){     
-      if(!$filter.hasClass('navbar-fixed-top remove-grey-bck-nav') && $win.scrollTop() > $filter.offset().top){
-        $filter.before($filterSpacer);
-        $filter.addClass("navbar-fixed-top remove-grey-bck-nav");
-        $tagLine.hide();
-        $createLink.show();
-        $brand.fadeIn();
-        $userName.show();
-        $userLogin.show();
-        
-      } else if ($filter.hasClass('navbar-fixed-top remove-grey-bck-nav')  && $win.scrollTop() < $filterSpacer.offset().top){
-        $filter.removeClass("navbar-fixed-top remove-grey-bck-nav");
-        $filterSpacer.remove();
-        $createLink.hide();
-        $userLogin.hide();
-        $brand.fadeOut();
-        $userName.hide();
-        $tagLine.fadeIn();
-
-      }
-    });
-  });
+  

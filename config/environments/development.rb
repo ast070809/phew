@@ -62,7 +62,5 @@ Phew::Application.configure do
   }
   require 'net/http'
 
-  require 'stream'
-  config.client = Stream::Client.new('nfmcbszq3yr2', 'v4ywctem9526yqt2gs245xem6qbrj6yxt8u332tum4gnm898x4aawetf8rceekjc')
-
+  
 end

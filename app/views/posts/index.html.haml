@@ -7,9 +7,9 @@
 		=render 'layouts/trending_tribes'
 	.margin-bottom-10
 .row
-	-#.col-md-2
+	.col-md-2
 		=#render 'layouts/sidebar'
-	.col-md-8.col-md-offset-2
+	.col-md-8
 		#index-post-container
 			-if @post_index or @tribe_show
 				=render 'layouts/index'

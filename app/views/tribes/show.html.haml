@@ -1,15 +1,15 @@
 .row
 	.margin-bottom-10
-	.col-md-12
-		%div{style:'background-color:white; margin-left:15px; margin-right:15px; padding-top:4px; padding-bottom:4px; '}
+	.col-md-8.col-md-offset-2
+		%div{style:'background-color:white;  margin-right:15px; padding-top:4px; padding-bottom:4px; '}
 			.custom-center
 				%h4
 					=@tribe.name
 .row
 	.margin-bottom-10
 	.col-md-2
-		=render 'layouts/sidebar'
-	.col-md-10
+		=#render 'layouts/sidebar'
+	.col-md-8
 		.tribe-post-cont
 			-if @post_index or @tribe_show
 				=render 'layouts/index'
